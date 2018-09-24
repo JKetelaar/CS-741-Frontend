@@ -5,7 +5,7 @@ import {map, catchError} from 'rxjs/operators';
 import {Product} from '../../../models/Product';
 
 const routes = {
-    products: () => `https://reqres.in/api/products`,
+    products: () => `/product/`,
     product: (c: ProductContext) => `/product/${c.id}`
 };
 
@@ -24,7 +24,7 @@ export class ProductService {
             .cache()
             .get(routes.products())
             .pipe(
-                map((body: any) => body.data),
+                map((body: any) => body),
                 catchError(() => of('Error, could not get products'))
             );
     }
