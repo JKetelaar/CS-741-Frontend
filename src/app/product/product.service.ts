@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {map, catchError} from 'rxjs/operators';
-import {Product} from '../../../models/Product';
+import {Product} from '../models/Product';
 
 const routes = {
     products: () => `https://reqres.in/api/products`,
