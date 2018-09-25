@@ -12,6 +12,7 @@ import { SharedModule } from '@app/shared';
 import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
 import { AboutModule } from './about/about.module';
+import { ProductModule } from './product/product.module';
 import { LoginModule } from './login/login.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +30,7 @@ import { AppRoutingModule } from './app-routing.module';
     ShellModule,
     HomeModule,
     AboutModule,
+    ProductModule,
     LoginModule,
     AppRoutingModule
   ],
