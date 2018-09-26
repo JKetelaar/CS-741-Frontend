@@ -16,11 +16,12 @@ export class ProductComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.productService.getProducts()
-            .pipe()
-            .subscribe((products: Product[]) => {
-                this.products = products;
-            });
+        // TODO: after db is set up
+        // this.productService.getProducts()
+        //     .pipe()
+        //     .subscribe((products: Product[]) => {
+        //         this.products = products;
+        //     });
     }
 
 }
