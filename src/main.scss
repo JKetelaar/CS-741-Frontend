@@ -4,7 +4,8 @@
  */
 
 // Theme variables, must be included before the libraries to allow overriding defaults
-@import "theme/theme-variables";
+@import "theme/theme-variables.scss";
+@import "theme/theme.scss";
 
 // 3rd party libraries
 @import "~bootstrap/scss/bootstrap";
@@ -14,8 +15,9 @@
 @import "~@fortawesome/fontawesome-free-webfonts/scss/fa-solid.scss";
 
 // Theme customization
-@import "theme/css/font-awesome";
-@import "theme/css/responsive";
-@import "theme/css/base";
-@import "theme/css/style";
-@import "theme/theme";
+@import "theme/css/font-awesome.css";
+@import "theme/css/responsive.css";
+@import "theme/css/base.css";
+@import "theme/css/style.css";
+@import "theme/css/switcher.css";
+
