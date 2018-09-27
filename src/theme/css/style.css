@@ -1467,19 +1467,19 @@ span.skill-title i {
 }
 
 .notification.success .close {
-    background: url(/src/theme/css/images/alert_boxes_close_ico.png) 0 -8px no-repeat;
+    background: url("/src/theme/css/images/alert_boxes_close_ico.png") 0 -8px no-repeat;
 }
 
 .notification.error .close {
-    background: url(/src/theme/css/images/alert_boxes_close_ico.png) 0 0 no-repeat;
+    background: url("/src/theme/css/images/alert_boxes_close_ico.png") 0 0 no-repeat;
 }
 
 .notification.warning .close {
-    background: url(/src/theme/css/images/alert_boxes_close_ico.png) 0 -16px no-repeat;
+    background: url("/src/theme/css/images/alert_boxes_close_ico.png") 0 -16px no-repeat;
 }
 
 .notification.notice .close {
-    background: url(/src/theme/css/images/alert_boxes_close_ico.png) 0 -24px no-repeat;
+    background: url("/src/theme/css/images/alert_boxes_close_ico.png") 0 -24px no-repeat;
 }
 
 /* Counters
@@ -2074,7 +2074,7 @@ label.checkbox {
 .checkout-content select,
 .checkout-summary select {
     overflow: hidden;
-    background: url(/src/theme/css/images/down_arrow_select.png) no-repeat right #f5f5f5;
+    background: url("/src/theme/css/images/down_arrow_select.png") no-repeat right #f5f5f5;
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -2325,7 +2325,7 @@ ul.delivery-options {
     width: 50px;
     height: 50px;
     padding: 0;
-    background: url(/src/theme/css/images/home.png) 50% no-repeat;
+    background: url("/src/theme/css/images/home.png") 50% no-repeat;
 }
 
 .menu > li:hover,
@@ -2772,7 +2772,7 @@ li.dropdown ul li a:hover {
     transition: all 0.3s ease-in-out;
     background-position: center;
     background-size: cover;
-    background-image: url('/src/theme/css/images/adv-search.jpg');
+    background-image: url("/src/theme/css/images/adv-search.jpg");
 }
 
 .woo-search-main input[type="text"] {
@@ -3889,7 +3889,7 @@ blockquote {
 .comment-by span.date {
     color: #999;
     font-weight: 300;
-    background: url('/src/theme/css/images/comments-divider.png') no-repeat 0 55%;
+    background: url("/src/theme/css/images/comments-divider.png") no-repeat 0 55%;
     padding: 0 0 0 9px;
     margin: 0 0 0 2px;
     float: none;
@@ -4802,7 +4802,7 @@ a.caption-btn:hover {
 .tp-caption.slidelink a div {
     width: 3000px;
     height: 1500px;
-    background: url(/src/theme/css/images/coloredbg.png) repeat;
+    background: url("/src/theme/css/images/coloredbg.png") repeat;
 }
 
 /* Loader
@@ -4817,7 +4817,7 @@ a.caption-btn:hover {
 .tp-loader.spinner0 {
     width: 40px;
     height: 40px;
-    background: url(/src/theme/css/images/loader.gif) no-repeat center center;
+    background: url("/src/theme/css/images/loader.gif") no-repeat center center;
     background-color: #fff;
     margin-top: -20px;
     margin-left: -20px;
@@ -6964,7 +6964,7 @@ img.rsImg {
 .rsDefault .rsPreloader {
     width: 20px;
     height: 20px;
-    background-image: url(/src/theme/css/images/preloader.gif);
+    background-image: url("/src/theme/css/images/preloader.gif");
     left: 50%;
     top: 50%;
     margin-left: -10px;
@@ -7988,7 +7988,7 @@ html[xmlns] .slides {
     width: 16px;
     top: 16px;
     left: 16px;
-    background: url(/src/theme/css/images/loading.png) no-repeat;
+    background: url("/src/theme/css/images/loading.png") no-repeat;
     display: block;
     -webkit-animation: spin 2s infinite linear;
     -ms-animation: spin 2s infinite linear;
@@ -9135,7 +9135,7 @@ div.layout-style {
 }
 
 .bg16 {
-    background-image: url("/src/theme/css/images/bg/vichy");
+    background-image: url("/src/theme/css/images/bg/vichy.png");
 }
 
 .colors li a.active {
