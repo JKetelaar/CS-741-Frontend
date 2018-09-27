@@ -14,7 +14,6 @@ describe('FooterComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        NgbModule.forRoot(),
         TranslateModule.forRoot()
       ],
       declarations: [FooterComponent],
