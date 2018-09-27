@@ -14,7 +14,7 @@ describe('HeaderComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        NgbModule.forRoot(),
+        //NgbModule.forRoot(),
         TranslateModule.forRoot()
       ],
       declarations: [HeaderComponent],

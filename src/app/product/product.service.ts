@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {map, catchError} from 'rxjs/operators';
 import {Product} from '../models/Product';
+import {ProductView} from '@app/models/ProductView';
 
 const routes = {
     products: () => `/product/`,
@@ -19,7 +20,7 @@ export class ProductService {
     constructor(private httpClient: HttpClient) {
     }
 
-    getProducts(): Observable<Product[]> {
+    getProducts(): Observable<ProductView[]> {
         return this.httpClient
             .cache()
             .get(routes.products())
