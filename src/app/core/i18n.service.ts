@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { includes } from 'lodash';
 
 import { Logger } from './logger.service';
-import * as enUS from '../../translations/en-US.json';
-import * as frFR from '../../translations/fr-FR.json';
-
 const log = new Logger('I18nService');
 const languageKey = 'language';
 
@@ -25,12 +21,6 @@ export class I18nService {
   defaultLanguage: string;
   supportedLanguages: string[];
 
-  constructor(private translateService: TranslateService) {
-    // Embed languages to avoid extra HTTP requests
-    translateService.setTranslation('en-US', enUS);
-    translateService.setTranslation('fr-FR', frFR);
-  }
-
   /**
    * Initializes i18n for the application.
    * Loads language from local storage if present, or sets default language.
@@ -42,8 +32,7 @@ export class I18nService {
     this.supportedLanguages = supportedLanguages;
     this.language = '';
 
-    this.translateService.onLangChange
-      .subscribe((event: LangChangeEvent) => { localStorage.setItem(languageKey, event.lang); });
+
   }
 
   /**
@@ -53,7 +42,7 @@ export class I18nService {
    * @param {string} language The IETF language code to set.
    */
   set language(language: string) {
-    language = language || localStorage.getItem(languageKey) || this.translateService.getBrowserCultureLang();
+    language = language || localStorage.getItem(languageKey);
     let isSupportedLanguage = includes(this.supportedLanguages, language);
 
     // If no exact match is found, search without the region
@@ -69,15 +58,7 @@ export class I18nService {
     }
 
     log.debug(`Language set to ${language}`);
-    this.translateService.use(language);
   }
 
-  /**
-   * Gets the current language.
-   * @return {string} The current language code.
-   */
-  get language(): string {
-    return this.translateService.currentLang;
-  }
 
 }
