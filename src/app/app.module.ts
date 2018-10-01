@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { TranslateModule } from '@ngx-translate/core';
 
 import { environment } from '@env/environment';
 import { CoreModule } from '@app/core';
@@ -24,7 +23,6 @@ import {FooterComponent} from '@app/shell/footer/footer.component';
     ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
     FormsModule,
     HttpClientModule,
-    TranslateModule.forRoot(),
     CoreModule,
     SharedModule,
     ShellModule,

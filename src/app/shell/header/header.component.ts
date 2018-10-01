@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthenticationService, I18nService } from '@app/core';
+import { AuthenticationService } from '@app/core';
 
 @Component({
   selector: 'app-header',
@@ -13,8 +13,8 @@ export class HeaderComponent implements OnInit {
   menuHidden = true;
 
   constructor(private router: Router,
-              private authenticationService: AuthenticationService,
-              private i18nService: I18nService) { }
+              private authenticationService: AuthenticationService
+              ) { }
 
   ngOnInit() { }
 
@@ -22,21 +22,10 @@ export class HeaderComponent implements OnInit {
     this.menuHidden = !this.menuHidden;
   }
 
-  setLanguage(language: string) {
-    this.i18nService.language = language;
-  }
 
   logout() {
     this.authenticationService.logout()
       .subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
-  }
-
-  get currentLanguage(): string {
-    return this.i18nService.language;
-  }
-
-  get languages(): string[] {
-    return this.i18nService.supportedLanguages;
   }
 
   get username(): string | null {
