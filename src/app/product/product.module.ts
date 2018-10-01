@@ -6,13 +6,16 @@ import { SharedModule } from '@app/shared';
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product.component';
 import {ProductService} from '@app/product/product.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   imports: [
     CommonModule,
     CoreModule,
     SharedModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+      NgxPaginationModule
   ],
   declarations: [
     ProductComponent

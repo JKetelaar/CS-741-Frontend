@@ -39,8 +39,7 @@
     <!-- Products -->
     <div class="products">
 
-        <!-- Product #1 -->
-        <div class="four columns" *ngFor="let product of products">
+        <div class="four columns" *ngFor="let product of products | paginate: { itemsPerPage: 12, currentPage: page }">
             <figure class="product">
                 <div class="mediaholder">
                     <a href="variable-product-page.html">
@@ -64,23 +63,9 @@
 
         <div class="clearfix"></div>
 
-
         <!-- Pagination -->
         <div class="pagination-container">
-            <nav class="pagination">
-                <ul>
-                    <li><a href="#" class="current-page">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                </ul>
-            </nav>
-
-            <nav class="pagination-next-prev full-width">
-                <ul>
-                    <li><a href="#" class="prev"></a></li>
-                    <li><a href="#" class="next"></a></li>
-                </ul>
-            </nav>
+            <pagination-controls class="pagination" (pageChange)="page = $event"></pagination-controls>
         </div>
 
     </div>
