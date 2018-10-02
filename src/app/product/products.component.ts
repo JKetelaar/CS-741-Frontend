@@ -10,6 +10,13 @@ import {ProductView} from '@app/models/ProductView';
     styleUrls: ['./product.component.scss'],
 
 })
+
+@Component({
+    selector: 'app-single-product',
+    templateUrl: './single-product.component.html',
+    styleUrls: ['./single-product.component.scss'],
+
+})
 export class ProductComponent implements OnInit {
     page = 1;
     products: ProductView[];

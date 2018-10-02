@@ -7,7 +7,8 @@ import { Shell } from '@app/shell/shell.service';
 
 const routes: Routes = [
   Shell.childRoutes([
-    { path: 'product', component: ProductComponent, data: { title: extract('Product') } }
+    { path: 'product', component: ProductComponent, data: { title: extract('Product') } },
+      { path: 'single-product/:id', component: ProductComponent, data: { title: extract('Product') } },
   ])
 ];
 
