@@ -5779,7 +5779,7 @@ a.product-button i {
     font-weight: 700;
     color: #606060;
     padding: 1px 0 5px 0;
-    display: block;
+    display: inline;
 }
 
 .product-price-discount {

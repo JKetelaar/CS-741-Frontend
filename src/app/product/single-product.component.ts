@@ -14,11 +14,11 @@ export class SingleProductComponent implements OnInit {
     product: Product;
     id: number;
 
-    constructor(private singleProductService: ProductsService, private route: ActivatedRoute) {
+    constructor(private productsService: ProductsService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
-        this.singleProductService.getProduct({id: parseInt(this.route.snapshot.paramMap.get('id'), 10) })
+        this.productsService.getProduct({id: parseInt(this.route.snapshot.paramMap.get('id'), 10) })
             .pipe()
             .subscribe((product: Product) => {
                 this.product = product;

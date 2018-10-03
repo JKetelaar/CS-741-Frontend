@@ -15,11 +15,11 @@ export class ProductsComponent implements OnInit {
     page = 1;
     products: ProductView[];
 
-    constructor(private productService: ProductsService) {
+    constructor(private productsService: ProductsService) {
     }
 
     ngOnInit() {
-        this.productService.getProducts()
+        this.productsService.getProducts()
             .pipe()
             .subscribe((products: ProductView[]) => {
                 this.products = products;

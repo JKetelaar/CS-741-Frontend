@@ -56,7 +56,8 @@
                         <span class="product-category">Skirts</span>
                         <h5>{{product.name}}</h5>
                         <div *ngIf="product.finalPrice != product.price;else other_content">
-                            <span class="product-price-discount">{{product.price}}<i>{{product.finalPrice}}</i></span>
+                            <span class="product-price-discount">{{product.price}}</span>
+                            <span class="product-price">{{product.finalPrice}}</span>
                         </div>
 
                         <ng-template #other_content> <span class="product-price">{{product.price}}</span> </ng-template>

@@ -42,8 +42,9 @@
             <section class="title">
                 <h2>{{product.name}}</h2>
 
-                <div *ngIf="product.hasPromo == true;else other_content">
-                    <span class="product-price-discount">{{product.price}}<i>{{product.promoPrice}}</i></span>
+                <div *ngIf="product.promo == true;else other_content">
+                    <span class="product-price-discount">{{product.price}}</span>
+                    <span class="product-price">{{product.promoPrice}}</span>
                 </div>
 
                 <ng-template #other_content> <span class="product-price">{{product.price}}</span> </ng-template>
