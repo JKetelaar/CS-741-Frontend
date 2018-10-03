@@ -12,6 +12,6 @@ export interface Product {
     images: ProductImage[];
     quantity: number;
     creationDate: Date;
-    hasPromo: boolean;
+    promo: boolean;
 }
 
