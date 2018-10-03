@@ -8,9 +8,8 @@
             <nav id="breadcrumbs">
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Accessories</a></li>
-                    <li>Hats</li>
+                    <li><a href="products">Products</a></li>
+                    <li><a href="product/{{product.id}}">{{product.name}}</a></li>
                 </ul>
             </nav>
         </div>
@@ -25,9 +24,9 @@
     <div class="eight columns" >
         <div class="slider-padding">
             <div id="product-slider-vertical" class="royalSlider rsDefault">
-                <a href="images/product_item_04a-big.jpg" class="mfp-gallery" title="First Title"><img class="rsImg" src="images/product_item_04a.jpg" data-rsTmb="images/product_item_thumb_04a.png" alt="" /></a>
-                <a href="images/product_item_04b-big.jpg" class="mfp-gallery" title="Second Title"><img class="rsImg" src="images/product_item_04b.jpg" data-rsTmb="images/product_item_thumb_04b.png" alt="" /></a>
-                <a href="images/product_item_04c-big.jpg" class="mfp-gallery" title="Third Title"><img class="rsImg" src="images/product_item_04c.jpg" data-rsTmb="images/product_item_thumb_04c.png" alt="" /></a>
+                <a href="/src/theme/css/images/product_item_04a-big.jpg" class="mfp-gallery" title="First Title"><img class="rsImg" src="/src/theme/css/images/product_item_04a.jpg" data-rsTmb="/src/theme/css/images/product_item_thumb_04a.png" alt="" /></a>
+                <a href="/src/theme/css/images/product_item_04b-big.jpg" class="mfp-gallery" title="Second Title"><img class="rsImg" src="/src/theme/css/images/product_item_04b.jpg" data-rsTmb="/src/theme/css/images/product_item_thumb_04b.png" alt="" /></a>
+                <a href="/src/theme/css/images/product_item_04c-big.jpg" class="mfp-gallery" title="Third Title"><img class="rsImg" src="/src/theme/css/images/product_item_04c.jpg" data-rsTmb="/src/theme/css/images/product_item_thumb_04c.png" alt="" /></a>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -41,13 +40,20 @@
 
             <!-- Headline -->
             <section class="title">
-                <h2>Single Product</h2>
-                <span class="product-price">$49.00</span>
+                <h2>{{product.name}}</h2>
+
+                <div *ngIf="product.hasPromo == true;else other_content">
+                    <span class="product-price-discount">{{product.price}}<i>{{product.promoPrice}}</i></span>
+                </div>
+
+                <ng-template #other_content> <span class="product-price">{{product.price}}</span> </ng-template>
+
+
             </section>
 
             <!-- Text Parapgraph -->
             <section>
-                <p class="margin-reset">Maecenas consequat mauris nec semper tristique. Etiam fermentum augue ac vulputate pulvinar. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque <a href="#">ThemeForest</a> arcu sed mollis. Nulla egestas nulla elit, eu condimentum diam fringilla blandit.</p>
+                <p class="margin-reset">{{product.description}}</p>
 
                 <!-- Share Buttons -->
                 <div class="share-buttons">
@@ -96,7 +102,7 @@
         <div class="tabs-container">
 
             <div class="tab-content" id="tab1">
-                <p>Lorem ipsum pharetra lorem felis. Aliquam egestas consectetur elementum class aptentea taciti sociosqu ad litora torquent perea conubia nostra lorem consectetur adipiscing elit. Donec vestibulum justo a diam ultricies pellentesque. Fusce vehicula libero arcu, vitae ornare turpis elementum at. Etiam posuere quam nec ligula dignissim iaculis donec eleifend laoreet ornare. Quisque mattis luctus est, a placerat elit pharetra.</p>
+                <p>{{product.description}}</p>
             </div>
 
             <div class="tab-content" id="tab2">
@@ -195,9 +201,9 @@
             <figure class="product">
                 <div class="mediaholder">
                     <a href="#">
-                        <img alt="" src="images/shop_item_01.jpg"/>
+                        <img alt="" src="/src/theme/css/images/shop_item_01.jpg"/>
                         <div class="cover">
-                            <img alt="" src="images/shop_item_01_hover.jpg"/>
+                            <img alt="" src="/src/theme/css/images/shop_item_01_hover.jpg"/>
                         </div>
                     </a>
                     <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
@@ -218,9 +224,9 @@
             <figure class="product">
                 <div class="mediaholder">
                     <a href="#">
-                        <img alt="" src="images/shop_item_04.jpg"/>
+                        <img alt="" src="/src/theme/css/images/shop_item_04.jpg"/>
                         <div class="cover">
-                            <img alt="" src="images/shop_item_04_hover.jpg"/>
+                            <img alt="" src="/src/theme/css/images/shop_item_04_hover.jpg"/>
                         </div>
                     </a>
                     <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
@@ -241,9 +247,9 @@
             <figure class="product">
                 <div class="mediaholder">
                     <a href="#">
-                        <img alt="" src="images/shop_item_07.jpg"/>
+                        <img alt="" src="/src/theme/css/images/shop_item_07.jpg"/>
                         <div class="cover">
-                            <img alt="" src="images/shop_item_07_hover.jpg"/>
+                            <img alt="" src="/src/theme/css/images/shop_item_07_hover.jpg"/>
                         </div>
                     </a>
                     <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
@@ -264,9 +270,9 @@
             <figure class="product">
                 <div class="mediaholder">
                     <a href="#">
-                        <img alt="" src="images/shop_item_09.jpg"/>
+                        <img alt="" src="/src/theme/css/images/shop_item_09.jpg"/>
                         <div class="cover">
-                            <img alt="" src="images/shop_item_09_hover.jpg"/>
+                            <img alt="" src="/src/theme/css/images/shop_item_09_hover.jpg"/>
                         </div>
                     </a>
                     <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>

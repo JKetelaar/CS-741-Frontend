@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from '../models/Product';
-import {SingleProductContext, SingleProductService} from './single-product.service';
+import {ProductsService} from '@app/product/products.service';
+import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -12,15 +13,16 @@ import {SingleProductContext, SingleProductService} from './single-product.servi
 export class SingleProductComponent implements OnInit {
     product: Product;
     id: number;
-    constructor(private singleProductService: SingleProductService) {
+
+    constructor(private singleProductService: ProductsService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
-        this.singleProductService.getProduct(this.product)
+        this.singleProductService.getProduct({id: parseInt(this.route.snapshot.paramMap.get('id'), 10) })
             .pipe()
             .subscribe((product: Product) => {
-                console.log(this.product.id)
                 this.product = product;
+                console.log(this.product);
             });
     }
 

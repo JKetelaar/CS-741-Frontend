@@ -15,7 +15,7 @@ export interface ProductContext {
 }
 
 @Injectable()
-export class ProductService {
+export class ProductsService {
 
     constructor(private httpClient: HttpClient) {
     }
@@ -35,8 +35,8 @@ export class ProductService {
             .cache()
             .get(routes.product(context))
             .pipe(
-                map((body: any) => body.value),
-                catchError(() => of('Error, could not get products'))
+                map((body: any) => body),
+                catchError(() => of('Error, could not get product'))
             );
     }
 

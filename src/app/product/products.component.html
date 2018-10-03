@@ -42,7 +42,7 @@
         <div class="four columns" *ngFor="let product of products | paginate: { itemsPerPage: 12, currentPage: page }">
             <figure class="product">
                 <div class="mediaholder">
-                    <a href="../single-product/single-product.component.html">
+                    <a href="product/{{product.id}}">
                         <img alt="" src="src/theme/css/images/shop_item_01.jpg"/>
                         <div class="cover">
                             <img alt="" src="src/theme/css/images/shop_item_01_hover.jpg"/>
@@ -55,7 +55,11 @@
                     <section>
                         <span class="product-category">Skirts</span>
                         <h5>{{product.name}}</h5>
-                        <span class="product-price">${{product.finalPrice}}</span>
+                        <div *ngIf="product.finalPrice != product.price;else other_content">
+                            <span class="product-price-discount">{{product.price}}<i>{{product.finalPrice}}</i></span>
+                        </div>
+
+                        <ng-template #other_content> <span class="product-price">{{product.price}}</span> </ng-template>
                     </section>
                 </a>
             </figure>

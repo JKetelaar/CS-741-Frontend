@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
-import { ProductRoutingModule } from './product-routing.module';
-import { ProductComponent } from './product.component';
-import {ProductService} from '@app/product/product.service';
+import { ProductsRoutingModule } from './products-routing.module';
+import { ProductsComponent } from './products.component';
+import {ProductsService} from '@app/product/products.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {SingleProductComponent} from '@app/product/single-product.component';
 
 
 @NgModule({
@@ -14,14 +15,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     CoreModule,
     SharedModule,
-    ProductRoutingModule,
+    ProductsRoutingModule,
       NgxPaginationModule
   ],
   declarations: [
-    ProductComponent
+    ProductsComponent,
+      SingleProductComponent
   ],
   providers: [
-    ProductService
+    ProductsService
   ]
 })
-export class ProductModule { }
+export class ProductsModule { }
