@@ -10,7 +10,7 @@ import { SharedModule } from '@app/shared';
 import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
 import { AboutModule } from './about/about.module';
-import { ProductModule } from './product/product.module';
+import { ProductsModule } from './product/products.module';
 import { LoginModule } from './login/login.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +28,7 @@ import {FooterComponent} from '@app/shell/footer/footer.component';
     ShellModule,
     HomeModule,
     AboutModule,
-    ProductModule,
+    ProductsModule,
     LoginModule,
     AppRoutingModule
   ],

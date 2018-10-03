@@ -5779,19 +5779,19 @@ a.product-button i {
     font-weight: 700;
     color: #606060;
     padding: 1px 0 5px 0;
-    display: block;
+    display: inline;
 }
 
 .product-price-discount {
     color: #888;
     text-decoration: line-through;
-    padding: 0;
+    /*padding: 0;*/
 }
 
 .product-price-discount i {
     color: #666;
     text-decoration: none;
-    display: inline-block;
+    /*display: inline-block;*/
     background-color: #ffecb7;
     padding: 3px 5px;
     margin: -1px 0 1px 4px;
