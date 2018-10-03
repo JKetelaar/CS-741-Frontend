@@ -9,6 +9,7 @@ import env from './.env';
 export const environment = {
   production: false,
   version: env.npm_package_version + '-dev',
+    // serverUrl: 'http://cs741.test/api',
   serverUrl: 'http://cs741.test',
   defaultLanguage: 'en-US',
   supportedLanguages: [

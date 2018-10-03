@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
-
-import { QuoteService } from './quote.service';
+import {ProductView} from '@app/models/ProductView';
+import {ProductsService} from '@app/product/products.service';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +9,17 @@ import { QuoteService } from './quote.service';
 })
 export class HomeComponent implements OnInit {
 
-  ngOnInit() {}
+    latestProducts: ProductView[];
 
+    constructor(private productsService: ProductsService) {
+    }
+
+    ngOnInit() {
+        this.productsService.getProductsBy({orderby: 'date', limit: 4  })
+            .pipe()
+            .subscribe((products: ProductView[]) => {
+              console.log(products)
+                this.latestProducts = products;
+            });
+    }
 }
