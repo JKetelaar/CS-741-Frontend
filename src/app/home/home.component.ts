@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.productsService.getProductsBy({orderby: 'date', limit: 4  })
+        this.productsService.getProductsBy({orderby: 'creationDate', limit: 4  })
             .pipe()
             .subscribe((products: ProductView[]) => {
               console.log(products)
