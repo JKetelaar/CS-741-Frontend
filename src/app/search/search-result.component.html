@@ -1,0 +1,41 @@
+<!-- Products -->
+<div class="container">
+    <div class="products">
+
+        <div class="four columns"
+             *ngFor="let result of searchQuery | paginate: { itemsPerPage: 12, currentPage: page }">
+            <figure class="product">
+                <div class="mediaholder">
+                    <a href="product/{{result.id}}">
+                        <img alt="" src="src/theme/css/images/shop_item_01.jpg"/>
+                        <div class="cover">
+                            <img alt="" src="src/theme/css/images/shop_item_01_hover.jpg"/>
+                        </div>
+                    </a>
+                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                </div>
+
+                <a href="variable-product-page.html">
+                    <section>
+                        <span class="product-category">Skirts</span>
+                        <h5>{{result.name}}</h5>
+                        <div *ngIf="result.finalPrice != result.price;else other_content">
+                            <span class="product-price-discount">{{result.price}}</span>
+                            <span class="product-price">{{result.finalPrice}}</span>
+                        </div>
+
+                        <ng-template #other_content><span class="product-price">{{result.price}}</span></ng-template>
+                    </section>
+                </a>
+            </figure>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!-- Pagination -->
+        <div class="pagination-container">
+            <pagination-controls class="pagination" (pageChange)="page = $event"></pagination-controls>
+        </div>
+
+    </div>
+</div>

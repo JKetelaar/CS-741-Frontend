@@ -8,18 +8,13 @@ import {ProductsService} from '@app/product/products.service';
     styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-
+    search: string;
     searchQuery: ProductView[];
 
     constructor(private productsService: ProductsService) {
     }
 
     ngOnInit() {
-        this.productsService.searchProduct({searchQuery: 'culpa'})
-            .pipe()
-            .subscribe((results: ProductView[]) => {
-                console.log(results);
-                this.searchQuery = results;
-            });
+
     }
 }

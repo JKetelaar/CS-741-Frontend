@@ -4,11 +4,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {extract} from '@app/core';
 import {SearchComponent} from './search.component';
 import {Shell} from '@app/shell/shell.service';
+import {SearchResultComponent} from '@app/search/search-result.component';
 
 const routes: Routes = [
     Shell.childRoutes([
         {path: 'search', component: SearchComponent, data: {title: extract('Search')}},
-        // {path: 'search/:searchQuery', component: SearchResultComponent, data: {title: extract('Product')}},
+        {path: 'search/result/:searchItem', component: SearchResultComponent, data: {title: extract('SearchResult')}},
     ])
 ];
 

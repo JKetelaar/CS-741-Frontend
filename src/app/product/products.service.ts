@@ -4,12 +4,14 @@ import {Observable, of} from 'rxjs';
 import {map, catchError} from 'rxjs/operators';
 import {Product} from '../models/Product';
 import {ProductView} from '@app/models/ProductView';
+import { Router } from '@angular/router';
+
 
 const routes = {
     products: () => `/product/`,
     productsFilter: (c: ProductByContext) => `/product/?orderby=${c.orderby}&limit=${c.limit}`,
     product: (c: ProductContext) => `/product/${c.id}`,
-    searchProduct: (c: SearchProductContext) => `/product/?search=${c.searchQuery}`,
+    searchProduct: (c: SearchProductContext) => `/product/?search=${c.searchItem}`,
 };
 
 export interface ProductContext {
@@ -22,13 +24,13 @@ export interface ProductByContext {
 }
 
 export interface SearchProductContext {
-    searchQuery: string;
+    searchItem: string;
 }
 
 @Injectable()
 export class ProductsService {
 
-    constructor(private httpClient: HttpClient) {
+    constructor(private httpClient: HttpClient, private router: Router) {
     }
 
     getProducts(): Observable<ProductView[]> {
@@ -62,6 +64,7 @@ export class ProductsService {
     }
 
     searchProduct(context: SearchProductContext): Observable<ProductView[]> {
+        //  this.router.navigate(['search/result/et']);
         return this.httpClient
             .cache()
             .get(routes.searchProduct(context))
