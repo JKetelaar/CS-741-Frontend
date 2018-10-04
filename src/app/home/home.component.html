@@ -1,56 +1,11 @@
-<!-- Slider
-   ================================================== -->
-<div class="container fullwidth-element home-slider">
-    <div class="tp-banner-container">
-        <div class="tp-banner">
-            <ul>
-                <!-- Slide 1  -->
-                <li data-transition="fade" data-slotamount="7" data-masterspeed="1000">
-                    <img src="/src/theme/css/images/slider2.jpg" alt="darkblurbg" data-bgfit="cover" data-bgposition="left top"
-                         data-bgrepeat="no-repeat">
-                    <div class="caption dark sfb fadeout" data-x="750" data-y="170" data-speed="400"
-                         data-start="800" data-easing="Power4.easeOut">
-                        <h2>Urban Style</h2>
-                        <h3>Every cut and colour</h3>
-                        <a href="shop-with-sidebar.html" class="caption-btn">Shop The Collection</a>
-                    </div>
-                </li>
-
-
-                <!-- Slide 2  -->
-                <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1500">
-                    <img src="/src/theme/css/images/slider.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="left top"
-                         data-bgrepeat="no-repeat">
-                    <div class="caption sfb fadeout" data-x="145" data-y="170" data-speed="400" data-start="800"
-                         data-easing="Power4.easeOut">
-                        <h2>Dress Sharp</h2>
-                        <h3>Learn from the classics</h3>
-                        <a href="shop-with-sidebar.html" class="caption-btn">Shop The Collection</a>
-                    </div>
-                </li>
-
-
-                <!-- Slide 3  -->
-                <li data-transition="fadetotopfadefrombottom" data-slotamount="7" data-masterspeed="1000">
-                    <img src="/src/theme/css/images/slider3.jpg" alt="darkblurbg" data-bgfit="cover" data-bgposition="left top"
-                         data-bgrepeat="no-repeat">
-                    <div class="caption dark sfb fadeout" data-x="850" data-y="170" data-speed="400"
-                         data-start="800" data-easing="Power4.easeOut">
-                        <h2>New In</h2>
-                        <h3>Pants and T-Shirts</h3>
-                        <a href="shop-with-sidebar.html" class="caption-btn">Shop The Collection</a>
-                    </div>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-</div>
-
-
 <!-- Featured
 ================================================== -->
 <div class="container">
+    <!-- Headline -->
+    <div class="sixteen columns">
+        <h3 class="headline">Featured Categories</h3>
+        <span class="line margin-bottom-0"></span>
+    </div>
     <div class="one-third column">
         <a href="#" class="img-caption">
             <figure>
@@ -90,189 +45,44 @@
 </div>
 <div class="clearfix"></div>
 
-
 <!-- New Arrivals
-================================================== -->
+    ================================================== -->
 <div class="container">
-
     <!-- Headline -->
     <div class="sixteen columns">
         <h3 class="headline">New Arrivals</h3>
         <span class="line margin-bottom-0"></span>
     </div>
+    <div class="products">
 
-    <!-- Carousel -->
-    <div id="new-arrivals" class="showbiz-container sixteen columns">
+        <div class="four columns" *ngFor="let product of latestProducts ">
+            <figure class="product">
+                <div class="mediaholder">
+                    <a href="product/{{product.id}}">
+                        <img alt="" src="src/theme/css/images/shop_item_01.jpg"/>
+                        <div class="cover">
+                            <img alt="" src="src/theme/css/images/shop_item_01_hover.jpg"/>
+                        </div>
+                    </a>
+                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                </div>
 
-        <!-- Navigation -->
-        <div class="showbiz-navigation">
-            <div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
-            <div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
+                <a href="variable-product-page.html">
+                    <section>
+                        <span class="product-category">Skirts</span>
+                        <h5>{{product.name}}</h5>
+                        <div *ngIf="product.finalPrice != product.price;else other_content">
+                            <span class="product-price-discount">{{product.price}}</span>
+                            <span class="product-price">{{product.finalPrice}}</span>
+                        </div>
+
+                        <ng-template #other_content> <span class="product-price">{{product.price}}</span> </ng-template>
+                    </section>
+                </a>
+            </figure>
         </div>
+
         <div class="clearfix"></div>
-
-        <!-- Products -->
-        <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1">
-            <div class="overflowholder">
-
-                <ul>
-
-                    <!-- Product #1 -->
-                    <li>
-                        <figure class="product">
-                            <div class="mediaholder">
-                                <a href="variable-product-page.html">
-                                    <img alt="" src="/src/theme/css/images/shop_item_01.jpg"/>
-                                    <div class="cover">
-                                        <img alt="" src="/src/theme/css/images/shop_item_01_hover.jpg"/>
-                                    </div>
-                                </a>
-                                <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to
-                                    Cart</a>
-                            </div>
-
-                            <a href="variable-product-page.html">
-                                <section>
-                                    <span class="product-category">Skirts</span>
-                                    <h5>Brown Mini Skirt</h5>
-                                    <span class="product-price">$79.00</span>
-                                </section>
-                            </a>
-                        </figure>
-                    </li>
-
-
-                    <!-- Product #2 -->
-                    <li>
-                        <figure class="product">
-                            <div class="mediaholder">
-                                <a href="variable-product-page.html">
-                                    <img alt="" src="/src/theme/css/images/shop_item_02.jpg"/>
-                                    <div class="cover">
-                                        <img alt="" src="/src/theme/css/images/shop_item_02_hover.jpg"/>
-                                    </div>
-                                </a>
-                                <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to
-                                    Cart</a>
-                            </div>
-
-                            <a href="variable-product-page.html">
-                                <section>
-                                    <span class="product-category">Shoes</span>
-                                    <h5>Glory High Shoes</h5>
-                                    <span class="product-price">$99.00</span>
-                                </section>
-                            </a>
-                        </figure>
-                    </li>
-
-
-                    <!-- Product #3 -->
-                    <li>
-                        <figure class="product">
-                            <div class="product-discount">SALE</div>
-                            <div class="mediaholder">
-                                <a href="single-product-page.html">
-                                    <img alt="" src="/src/theme/css/images/shop_item_03.jpg"/>
-                                    <div class="cover">
-                                        <img alt="" src="/src/theme/css/images/shop_item_03_hover.jpg"/>
-                                    </div>
-                                </a>
-                                <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to
-                                    Cart</a>
-                            </div>
-
-                            <a href="single-product-page.html">
-                                <section>
-                                    <span class="product-category">Suits</span>
-                                    <h5>Wool Two-Piece Suit</h5>
-                                    <span class="product-price-discount">$499.00<i>$399.00</i></span>
-                                </section>
-                            </a>
-                        </figure>
-                    </li>
-
-
-                    <!-- Product #4 -->
-                    <li>
-                        <figure class="product">
-                            <div class="mediaholder">
-                                <a href="variable-product-page.html">
-                                    <img alt="" src="/src/theme/css/images/shop_item_04.jpg"/>
-                                    <div class="cover">
-                                        <img alt="" src="/src/theme/css/images/shop_item_04_hover.jpg"/>
-                                    </div>
-                                </a>
-                                <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to
-                                    Cart</a>
-                            </div>
-
-                            <a href="variable-product-page.html">
-                                <section>
-                                    <span class="product-category">Longsleeves</span>
-                                    <h5>Vintage Stripe Jumper</h5>
-                                    <span class="product-price">$49.00</span>
-                                </section>
-                            </a>
-                        </figure>
-                    </li>
-
-
-                    <!-- Product #5 -->
-                    <li>
-                        <figure class="product">
-                            <div class="mediaholder">
-                                <a href="single-product-page.html">
-                                    <img alt="" src="/src/theme/css/images/shop_item_05.jpg"/>
-                                    <div class="cover">
-                                        <img alt="" src="/src/theme/css/images/shop_item_05_hover.jpg"/>
-                                    </div>
-                                </a>
-                                <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to
-                                    Cart</a>
-                            </div>
-
-                            <a href="singlee-product-page.html">
-                                <section>
-                                    <span class="product-category">Accessories</span>
-                                    <h5>Vintage Sunglasses</h5>
-                                    <span class="product-price">$29.00</span>
-                                </section>
-                            </a>
-                        </figure>
-                    </li>
-
-
-                    <!-- Product #6 -->
-                    <li>
-                        <figure class="product">
-                            <div class="mediaholder">
-                                <a href="single-product-page.html">
-                                    <img alt="" src="/src/theme/css/images/shop_item_06.jpg"/>
-                                    <div class="cover">
-                                        <img alt="" src="/src/theme/css/images/shop_item_06_hover.jpg"/>
-                                    </div>
-                                </a>
-                                <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to
-                                    Cart</a>
-                            </div>
-
-                            <a href="single-product-page.html">
-                                <section>
-                                    <span class="product-category">Shirts</span>
-                                    <h5>Solid Blue Polo Shirt</h5>
-                                    <span class="product-price">$29.00</span>
-                                </section>
-                            </a>
-                        </figure>
-                    </li>
-
-                </ul>
-                <div class="clearfix"></div>
-
-            </div>
-            <div class="clearfix"></div>
-        </div>
     </div>
 
 </div>
@@ -412,91 +222,3 @@
 
 </div>
 <div class="clearfix"></div>
-
-
-<!-- Latest Articles
-================================================== -->
-<div class="container">
-    <!-- Headline -->
-    <div class="sixteen columns">
-        <h3 class="headline">Latest Articles</h3>
-        <span class="line margin-bottom-30"></span>
-    </div>
-
-    <!-- Post #1 -->
-    <div class="four columns">
-        <article class="from-the-blog">
-
-            <figure class="from-the-blog-image">
-                <a href="blog-single-post.html"><img src="/src/theme/css/images/from_the_blog_01.jpg" alt=""/></a>
-                <div class="hover-icon"></div>
-            </figure>
-
-            <section class="from-the-blog-content">
-                <a href="blog-single-post.html"><h5>Amazon Raises Threshold for Free Shipping</h5></a>
-                <i>By Vasterad on May 31, 2014</i>
-                <span>Pellentesque ultricies vehicula eleifend. Aenean eu nunc semper faucibus sapien viverra.</span>
-                <a href="blog-single-post.html" class="button gray">Read More</a>
-            </section>
-
-        </article>
-    </div>
-
-    <!-- Post #2 -->
-    <div class="four columns">
-        <article class="from-the-blog">
-
-            <figure class="from-the-blog-image">
-                <a href="blog-single-post.html"><img src="/src/theme/css/images/from_the_blog_02.jpg" alt=""/></a>
-                <div class="hover-icon"></div>
-            </figure>
-
-            <section class="from-the-blog-content">
-                <a href="blog-single-post.html"><h5>How To Read The Symbols on Your Clothing Tags</h5></a>
-                <i>By Vasterad on May 16, 2014</i>
-                <span>Morbi quis magna nec lacus nunc eratu pharetra lorem sed sapien velit adipiscing. </span>
-                <a href="blog-single-post.html" class="button gray">Read More</a>
-            </section>
-
-        </article>
-    </div>
-
-    <!-- Post #3 -->
-    <div class="four columns">
-        <article class="from-the-blog">
-
-            <figure class="from-the-blog-image">
-                <a href="blog-single-post.html"><img src="/src/theme/css/images/from_the_blog_03.jpg" alt=""/></a>
-                <div class="hover-icon"></div>
-            </figure>
-
-            <section class="from-the-blog-content">
-                <a href="blog-single-post.html"><h5>Online Shopping Hit New Highs on Mobile Sales</h5></a>
-                <i>By Vasterad on May 10, 2014</i>
-                <span>Donec non egestas nisl. Aliquam tincidunt sem sed nisl dictum. Fusce gravida arius gravida.</span>
-                <a href="blog-single-post.html" class="button gray">Read More</a>
-            </section>
-
-        </article>
-    </div>
-
-    <!-- Post #4 -->
-    <div class="four columns">
-        <article class="from-the-blog">
-
-            <figure class="from-the-blog-image">
-                <a href="blog-single-post.html"><img src="/src/theme/css/images/from_the_blog_04.jpg" alt=""/></a>
-                <div class="hover-icon"></div>
-            </figure>
-
-            <section class="from-the-blog-content">
-                <a href="blog-single-post.html"><h5>How to Choose Size - Does Your Shirt Fit Properly?</h5></a>
-                <i>By Vasterad on April 20, 2014</i>
-                <span>Nullam eget ante cursus, dignissim velit sit amet, tempus massa bibendum venenatis.</span>
-                <a href="blog-single-post.html" class="button gray">Read More</a>
-            </section>
-
-        </article>
-    </div>
-
-</div>
