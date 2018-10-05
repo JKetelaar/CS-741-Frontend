@@ -1,0 +1,12 @@
+<div class="container" style="background: #c0c0c0">
+    <!-- Advanced Search Banner
+    ================================================== -->
+    <section class="woo-search">
+
+            <div class="woo-search-main">
+                <label for="s">Search For The Finest Products:</label>
+                <input [(ngModel)]="searchQuery" value="" (keydown.enter)="search()" name="s" id="s" placeholder="e.g. t-shirt" autocomplete="off" type="text">
+                <button (click)="search()"><i class="fa fa-search"></i></button>
+            </div>
+    </section>
+</div>
