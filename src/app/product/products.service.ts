@@ -64,7 +64,6 @@ export class ProductsService {
     }
 
     searchProduct(context: SearchProductContext): Observable<ProductView[]> {
-        //  this.router.navigate(['search/result/et']);
         return this.httpClient
             .cache()
             .get(routes.searchProduct(context))

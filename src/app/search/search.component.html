@@ -2,12 +2,11 @@
     <!-- Advanced Search Banner
     ================================================== -->
     <section class="woo-search">
-        <form  method="get" class="search-form" action="search/result/{{search}}" role="search">
 
             <div class="woo-search-main">
                 <label for="s">Search For The Finest Products:</label>
-                <input value="" ng-model="search" name="s" id="s" placeholder="e.g. t-shirt" autocomplete="off" type="text">
-                <button><i class="fa fa-search"></i></button>
+                <input [(ngModel)]="searchQuery" value="" (keydown.enter)="search()" name="s" id="s" placeholder="e.g. t-shirt" autocomplete="off" type="text">
+                <button (click)="search()"><i class="fa fa-search"></i></button>
             </div>
             <a href="#" class="advanced-search-btn button">Advanced Search <i class="fa fa-caret-down"></i></a>
 
@@ -52,6 +51,5 @@
 
             </div>
 
-        </form>
     </section>
 </div>

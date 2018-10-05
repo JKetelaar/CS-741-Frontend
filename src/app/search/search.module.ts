@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
@@ -17,7 +18,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
         CoreModule,
         SharedModule,
         SearchRoutingModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        FormsModule
     ],
     declarations: [
         SearchComponent,

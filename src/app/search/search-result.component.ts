@@ -19,7 +19,6 @@ export class SearchResultComponent implements OnInit {
         this.productsService.searchProduct({searchItem: this.route.snapshot.paramMap.get('searchItem')})
             .pipe()
             .subscribe((results: ProductView[]) => {
-                console.log(results);
                 this.searchQuery = results;
             });
     }

@@ -22,7 +22,6 @@ export class SingleProductComponent implements OnInit {
             .pipe()
             .subscribe((product: Product) => {
                 this.product = product;
-                console.log(this.product);
             });
     }
 

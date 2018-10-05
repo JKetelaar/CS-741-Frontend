@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductView} from '@app/models/ProductView';
 import {ProductsService} from '@app/product/products.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-search',
@@ -8,13 +8,15 @@ import {ProductsService} from '@app/product/products.service';
     styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-    search: string;
-    searchQuery: ProductView[];
+    searchQuery: string;
 
-    constructor(private productsService: ProductsService) {
+    constructor(private productsService: ProductsService, private router: Router) {
     }
 
     ngOnInit() {
+    }
 
+    search() {
+        this.router.navigate(['search/result/' + this.searchQuery]);
     }
 }
