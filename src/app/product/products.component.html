@@ -2,7 +2,6 @@
 ================================================== -->
 <section class="parallax-titlebar fullwidth-element" data-background="#000" data-opacity="0.45" data-height="160">
 
-    <img src="src/theme/css/images/titlebar_bg_01.jpg" alt=""/>
     <div class="parallax-overlay"></div>
 
     <div class="parallax-content">
@@ -25,17 +24,6 @@
     <!-- Content
     ================================================== -->
 
-    <div class="sixteen columns full-width">
-
-        <!-- Ordering -->
-        <select class="orderby">
-            <option>Default Sorting</option>
-            <option>Sort by Popularity</option>
-            <option>Sort by Newness</option>
-        </select>
-
-    </div>
-
     <!-- Products -->
     <div class="products">
 
@@ -43,9 +31,9 @@
             <figure class="product">
                 <div class="mediaholder">
                     <a href="product/{{product.id}}">
-                        <img alt="" src="src/theme/css/images/shop_item_01.jpg"/>
+                        <img alt="" src="{{getImageURL(product)}}"/>
                         <div class="cover">
-                            <img alt="" src="src/theme/css/images/shop_item_01_hover.jpg"/>
+                            <img alt="" src="{{getImageURL(product)}}"/>
                         </div>
                     </a>
                     <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
