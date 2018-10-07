@@ -14,4 +14,3 @@ export interface Product {
     creationDate: Date;
     promo: boolean;
 }
-

@@ -24,9 +24,9 @@
     <div class="eight columns" >
         <div class="slider-padding">
             <div id="product-slider-vertical" class="royalSlider rsDefault">
-                <a href="/src/theme/css/images/product_item_04a-big.jpg" class="mfp-gallery" title="First Title"><img class="rsImg" src="/src/theme/css/images/product_item_04a.jpg" data-rsTmb="/src/theme/css/images/product_item_thumb_04a.png" alt="" /></a>
-                <a href="/src/theme/css/images/product_item_04b-big.jpg" class="mfp-gallery" title="Second Title"><img class="rsImg" src="/src/theme/css/images/product_item_04b.jpg" data-rsTmb="/src/theme/css/images/product_item_thumb_04b.png" alt="" /></a>
-                <a href="/src/theme/css/images/product_item_04c-big.jpg" class="mfp-gallery" title="Third Title"><img class="rsImg" src="/src/theme/css/images/product_item_04c.jpg" data-rsTmb="/src/theme/css/images/product_item_thumb_04c.png" alt="" /></a>
+              <a *ngFor="let image of product.images" href="{{getImageURL(image)}}" class="mfp-gallery">
+                <img class="rsImg" src="{{getImageURL(image)}}" [attr.data-rsTmb]="getImageURL(image)" alt=""/>
+              </a>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -47,8 +47,9 @@
                     <span class="product-price">{{product.promoPrice}}</span>
                 </div>
 
-                <ng-template #other_content> <span class="product-price">{{product.price}}</span> </ng-template>
-
+                <ng-template #other_content>
+                  <span class="product-price">{{product.price}}</span>
+                </ng-template>
 
             </section>
 
