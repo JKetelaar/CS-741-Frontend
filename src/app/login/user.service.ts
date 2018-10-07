@@ -42,7 +42,7 @@ export class UserService {
     register(context: RegisterContext): Observable<string> {
         return this.httpClient
             .cache()
-            .post(routes.register(), 'email=' + encodeURI(context.email) + '&password=' + encodeURI(context.password1), {
+            .post(routes.register(), 'email=' + encodeURI(context.email) + '&password1=' + encodeURI(context.password1) + '&password2=' + encodeURI(context.password2), {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
             })
             .pipe(
