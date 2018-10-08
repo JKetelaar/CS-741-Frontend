@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
     }
 
     register() {
-        this.userService.register({email: this.registerEmail, password1: this.registerPassword1, password2: this.registerPassword2})
+        this.userService.register({email: this.registerEmail, password: this.registerPassword1, password2: this.registerPassword2})
             .subscribe(result => {
                 console.log(result);
             });
