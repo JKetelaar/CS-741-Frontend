@@ -86,29 +86,36 @@
 
                 <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
 
-                <p class="form-row form-row-wide">
-                    <label for="username">Username or Email Address: <span class="required">*</span></label>
-                    <input [ngModelOptions]="{standalone: true}"[(ngModel)]="loginUsername" type="text" class="input-text" name="username" id="username" value=""/>
-                </p>
+                    <p class="form-row form-row-wide">
+                        <label for="username">Username or Email Address: <span class="required">*</span></label>
+                        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="loginUsername" type="text"
+                               class="input-text" name="username" id="username" value=""/>
+                    </p>
 
-                <p class="form-row form-row-wide">
-                    <label for="password">Password: <span class="required">*</span></label>
-                    <input [ngModelOptions]="{standalone: true}"[(ngModel)]="loginPassword" class="input-text" type="password" name="password" id="password"/>
-                </p>
+                    <p class="form-row form-row-wide">
+                        <label for="password">Password: <span class="required">*</span></label>
+                        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="loginPassword" class="input-text"
+                               type="password" name="password" id="password"/>
+                    </p>
 
-                <p class="form-row">
-                    <input type="submit" class="button" name="login" value="Login"/>
+                    <p class="form-row">
+                        <input type="submit" class="button" name="login" value="Login"/>
 
-                    <label for="rememberme" class="rememberme">
-                        <input name="rememberme" type="checkbox" id="rememberme" value="forever"/> Remember Me</label>
-                </p>
+                        <label for="rememberme" class="rememberme">
+                            <input name="rememberme" type="checkbox" id="rememberme" value="forever"/> Remember
+                            Me</label>
+                    </p>
 
-                <p class="lost_password">
-                    <a href="#">Lost Your Password?</a>
-                </p>
-
+                    <p class="lost_password">
+                        <a href="#">Lost Your Password?</a>
+                    </p>
+                    <div *ngIf="isValid == false" class="notification error closeable">
+                        <p><span>Error!</span> Please fill in all the fields required.</p>
+                        <a class="close" href="#"></a>
+                    </div>
                 </form>
             </div>
+
 
             <!-- Register -->
             <div class="tab-content" id="tab2" style="display: none;">
@@ -120,18 +127,21 @@
 
                     <p class="form-row form-row-wide">
                         <label for="reg_email">Email Address: <span class="required">*</span></label>
-                        <input [ngModelOptions]="{standalone: true}"[(ngModel)]="registerEmail" type="email" class="input-text" name="email" id="reg_email" value=""/>
+                        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="registerEmail" type="email"
+                               class="input-text" name="email" id="reg_email" value=""/>
                     </p>
 
 
                     <p class="form-row form-row-wide">
                         <label for="reg_password">Password: <span class="required">*</span></label>
-                        <input [ngModelOptions]="{standalone: true}"[(ngModel)]="registerPassword1"  type="password" class="input-text" name="password" id="reg_password"/>
+                        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="registerPassword1" type="password"
+                               class="input-text" name="password" id="reg_password"/>
                     </p>
 
                     <p class="form-row form-row-wide">
                         <label for="reg_password2">Repeat Password: <span class="required">*</span></label>
-                        <input [ngModelOptions]="{standalone: true}"[(ngModel)]="registerPassword2"  type="password" class="input-text" name="password" id="reg_password2"/>
+                        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="registerPassword2" type="password"
+                               class="input-text" name="password" id="reg_password2"/>
                     </p>
 
 
