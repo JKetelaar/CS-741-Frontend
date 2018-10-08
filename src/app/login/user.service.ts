@@ -9,6 +9,7 @@ import {catchError, map} from 'rxjs/operators';
 const routes = {
     login: () => `/users/login`,
     register: () => `/users/register`,
+    currentUser: () => `/users/current`,
     user: (c: UserContext) => `/user/${c.id}`,
     users: () => `/users`,
 };
@@ -60,6 +61,15 @@ export class UserService {
                 catchError(() => of('Error, could not login user'))
             );
     }
+
+  checkUser() {
+    return this.httpClient
+      .get(routes.currentUser())
+      .pipe(
+        map((body: any) => body),
+        catchError(() => of('Error, could not get logged in user'))
+      );
+  }
 
     getUser(context: UserContext): Observable<User> {
         return this.httpClient
