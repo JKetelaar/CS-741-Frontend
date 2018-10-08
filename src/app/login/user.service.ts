@@ -41,7 +41,6 @@ export class UserService {
 
     register(context: RegisterContext): Observable<string> {
         return this.httpClient
-            .cache()
             .post(routes.register(), 'email=' + encodeURI(context.email) + '&password=' + encodeURI(context.password) + '&password2=' + encodeURI(context.password2), {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
             })
@@ -52,7 +51,14 @@ export class UserService {
     }
 
     login(context: LoginContext) {
-        return this.httpClient.post(`/login`, context);
+        return this.httpClient
+            .post(routes.login(), 'username=' + encodeURI(context.username) + '&password=' + encodeURI(context.password), {
+                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+            })
+            .pipe(
+                map((body: any) => body),
+                catchError(() => of('Error, could not login user'))
+            );
     }
 
     getUser(context: UserContext): Observable<User> {

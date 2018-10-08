@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     registerForm: FormGroup;
     isLoading = false;
+    loginUsername: string;
+    loginPassword: string;
     registerEmail: string;
     registerPassword1: string;
     registerPassword2: string;
@@ -37,18 +39,23 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        this.isLoading = true;
-        this.authenticationService.login(this.loginForm.value)
-            .pipe(finalize(() => {
-                this.loginForm.markAsPristine();
-                this.isLoading = false;
-            }))
-            .subscribe(credentials => {
-                log.debug(`${credentials.username} successfully logged in`);
-                this.router.navigate(['/'], {replaceUrl: true});
-            }, error => {
-                log.debug(`Login error: ${error}`);
-                this.error = error;
+        // Not sure if we need this
+        // this.isLoading = true;
+        // this.authenticationService.login(this.loginForm.value)
+        //     .pipe(finalize(() => {
+        //         this.loginForm.markAsPristine();
+        //         this.isLoading = false;
+        //     }))
+        //     .subscribe(credentials => {
+        //         log.debug(`${credentials.username} successfully logged in`);
+        //         this.router.navigate(['/'], {replaceUrl: true});
+        //     }, error => {
+        //         log.debug(`Login error: ${error}`);
+        //         this.error = error;
+        //     });
+        this.userService.login({username: this.loginUsername, password: this.loginPassword })
+            .subscribe(result => {
+                console.log(result);
             });
     }
 

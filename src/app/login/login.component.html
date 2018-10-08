@@ -84,17 +84,16 @@
                 <h3 class="headline">Login</h3><span class="line" style="margin-bottom:20px;"></span>
                 <div class="clearfix"></div>
 
-                <!--<form method="post" class="login">-->
-
+                <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
 
                 <p class="form-row form-row-wide">
                     <label for="username">Username or Email Address: <span class="required">*</span></label>
-                    <input type="text" class="input-text" name="username" id="username" value=""/>
+                    <input [ngModelOptions]="{standalone: true}"[(ngModel)]="loginUsername" type="text" class="input-text" name="username" id="username" value=""/>
                 </p>
 
                 <p class="form-row form-row-wide">
                     <label for="password">Password: <span class="required">*</span></label>
-                    <input class="input-text" type="password" name="password" id="password"/>
+                    <input [ngModelOptions]="{standalone: true}"[(ngModel)]="loginPassword" class="input-text" type="password" name="password" id="password"/>
                 </p>
 
                 <p class="form-row">
@@ -108,8 +107,7 @@
                     <a href="#">Lost Your Password?</a>
                 </p>
 
-
-                <!--</form>-->
+                </form>
             </div>
 
             <!-- Register -->
