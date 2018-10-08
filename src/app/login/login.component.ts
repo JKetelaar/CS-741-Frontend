@@ -43,6 +43,10 @@ export class LoginComponent implements OnInit {
     login() {
         this.userService.login({username: this.loginUsername, password: this.loginPassword })
             .subscribe(result => {
+              this.userService.checkUser()
+                .subscribe(result2 => {
+                  console.log(result2);
+                });
                 result === 'Error, could not login user' ? this.isValid = false : this.isValid = true;
             });
     }
