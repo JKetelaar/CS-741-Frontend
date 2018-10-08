@@ -73,14 +73,13 @@
     <div class="six columns centered">
 
         <ul class="tabs-nav my-account">
-            <li class=""><a href="#tab1">Login</a></li>
-            <li><a href="#tab2">Register</a></li>
+            <li class=""><a (click)="resetValid()" href="#tab1">Login</a></li>
+            <li><a href="#tab2" (click)="resetValid()">Register</a></li>
         </ul>
 
         <div class="tabs-container">
             <!-- Login -->
             <div class="tab-content" id="tab1" style="display: none;">
-
                 <h3 class="headline">Login</h3><span class="line" style="margin-bottom:20px;"></span>
                 <div class="clearfix"></div>
 
@@ -110,7 +109,11 @@
                         <a href="#">Lost Your Password?</a>
                     </p>
                     <div *ngIf="isValid == false" class="notification error closeable">
-                        <p><span>Error!</span> Please fill in all the fields required.</p>
+                        <p><span>Error!</span> Please provide valid credentials.</p>
+                        <a class="close" href="#"></a>
+                    </div>
+                    <div *ngIf="isValid == true" class="notification success closeable">
+                        <p><span>Success!</span> {{loginUsername}} logged in!</p>
                         <a class="close" href="#"></a>
                     </div>
                 </form>
@@ -119,7 +122,6 @@
 
             <!-- Register -->
             <div class="tab-content" id="tab2" style="display: none;">
-
                 <h3 class="headline">Register</h3><span class="line" style="margin-bottom:20px;"></span>
                 <div class="clearfix"></div>
 
@@ -144,11 +146,17 @@
                                class="input-text" name="password" id="reg_password2"/>
                     </p>
 
-
                     <p class="form-row">
                         <input type="submit" class="button" name="register" value="Register"/>
                     </p>
-
+                    <div *ngIf="isValid == false" class="notification error closeable">
+                        <p><span>Error!</span> Please provide valid credentials.</p>
+                        <a class="close" href="#"></a>
+                    </div>
+                    <div *ngIf="isValid == true" class="notification success closeable">
+                        <p><span>Success!</span> {{registerEmail}} registered!</p>
+                        <a class="close" href="#"></a>
+                    </div>
                 </form>
             </div>
         </div>

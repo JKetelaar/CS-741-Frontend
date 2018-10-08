@@ -55,6 +55,10 @@ export class LoginComponent implements OnInit {
         console.log('Ready to register to the JSON API');
     }
 
+    resetValid(){
+        this.isValid = null;
+    }
+
     private createLoginForm() {
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
