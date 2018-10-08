@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {finalize} from 'rxjs/operators';
 
-import {environment} from '@env/environment';
 import {AuthenticationService, Logger} from '@app/core';
 import {UserService} from '@app/login/user.service';
 
@@ -16,11 +14,9 @@ const log = new Logger('Login');
 })
 export class LoginComponent implements OnInit {
 
-    version: string = environment.version;
     error: string;
     loginForm: FormGroup;
     registerForm: FormGroup;
-    isLoading = false;
     isValid: boolean;
     loginUsername: string;
     loginPassword: string;
