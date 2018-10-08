@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     registerForm: FormGroup;
     isLoading = false;
+    isValid: boolean;
     loginUsername: string;
     loginPassword: string;
     registerEmail: string;
@@ -33,36 +34,23 @@ export class LoginComponent implements OnInit {
                 private userService: UserService) {
         this.createLoginForm();
         this.createRegisterForm();
+        this.isValid = null;
     }
 
     ngOnInit() {
     }
 
     login() {
-        // Not sure if we need this
-        // this.isLoading = true;
-        // this.authenticationService.login(this.loginForm.value)
-        //     .pipe(finalize(() => {
-        //         this.loginForm.markAsPristine();
-        //         this.isLoading = false;
-        //     }))
-        //     .subscribe(credentials => {
-        //         log.debug(`${credentials.username} successfully logged in`);
-        //         this.router.navigate(['/'], {replaceUrl: true});
-        //     }, error => {
-        //         log.debug(`Login error: ${error}`);
-        //         this.error = error;
-        //     });
         this.userService.login({username: this.loginUsername, password: this.loginPassword })
             .subscribe(result => {
-                console.log(result);
+                result === 'Error, could not login user' ? this.isValid = false : this.isValid = true;
             });
     }
 
     register() {
         this.userService.register({email: this.registerEmail, password: this.registerPassword1, password2: this.registerPassword2})
             .subscribe(result => {
-                console.log(result);
+                result === 'Error, could not register user' ? this.isValid = false : this.isValid = true;
             });
         console.log('Ready to register to the JSON API');
     }
