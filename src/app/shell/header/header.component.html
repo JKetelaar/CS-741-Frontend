@@ -37,7 +37,8 @@
             <ul>
                 <li><a href="shopping-cart.html">Shopping Cart</a></li>
                 <li><a href="checkout-billing-details.html">Checkout</a></li>
-                <li><a href="my-account.html">My Account</a></li>
+                <li *ngIf="username != null"><a href="my-account.html">My Account</a></li>
+                <li *ngIf="username == null"><a href="/login">Login</a></li>
             </ul>
         </div>
     </div>

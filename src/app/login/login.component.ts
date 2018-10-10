@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import {AuthenticationService, Logger} from '@app/core';
 import {UserService} from '@app/login/user.service';
+import {CookieService} from 'ngx-cookie-service';
 
 const log = new Logger('Login');
 
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
     constructor(private router: Router,
                 private formBuilder: FormBuilder,
                 private authenticationService: AuthenticationService,
-                private userService: UserService) {
+                private userService: UserService,
+                private cookieService: CookieService) {
         this.createLoginForm();
         this.createRegisterForm();
         this.isValid = null;
@@ -39,23 +41,30 @@ export class LoginComponent implements OnInit {
     login() {
         this.userService.login({username: this.loginUsername, password: this.loginPassword })
             .subscribe(result => {
+              this.cookieService.set( 'username', this.loginUsername );
+
               this.userService.checkUser()
                 .subscribe(result2 => {
                   console.log(result2);
                 });
                 result === 'Error, could not login user' ? this.isValid = false : this.isValid = true;
+
+                if (this.isValid) {
+                  this.router.navigate(['/home']);
+                }
             });
     }
 
     register() {
-        this.userService.register({email: this.registerEmail, password: this.registerPassword1, password2: this.registerPassword2})
+        this.userService.register(
+          {email: this.registerEmail, password: this.registerPassword1, password2: this.registerPassword2}
+          )
             .subscribe(result => {
                 result === 'Error, could not register user' ? this.isValid = false : this.isValid = true;
             });
-        console.log('Ready to register to the JSON API');
     }
 
-    resetValid(){
+    resetValid() {
         this.isValid = null;
     }
 
