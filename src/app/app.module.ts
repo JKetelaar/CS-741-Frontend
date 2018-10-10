@@ -17,6 +17,7 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {FooterComponent} from '@app/shell/footer/footer.component';
 import {SearchModule} from '@app/search/search.module';
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
     imports: [
@@ -39,7 +40,7 @@ import {SearchModule} from '@app/search/search.module';
         AppComponent,
         FooterComponent
     ],
-    providers: [],
+    providers: [CookieService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from '@app/core';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit {
   menuHidden = true;
 
   constructor(private router: Router,
-              private authenticationService: AuthenticationService
+              private authenticationService: AuthenticationService,
+              private cookieService: CookieService
               ) { }
 
   ngOnInit() { }
@@ -29,8 +31,10 @@ export class HeaderComponent implements OnInit {
   }
 
   get username(): string | null {
-    const credentials = this.authenticationService.credentials;
-    return credentials ? credentials.username : null;
+    // const credentials = this.authenticationService.credentials;
+    // return credentials ? credentials.username : null;
+    const username = this.cookieService.get('username');
+    return username !== null && username.length > 0 ? username : null;
   }
 
 }
