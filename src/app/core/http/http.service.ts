@@ -96,7 +96,8 @@ export class HttpService extends HttpClient {
   // Override the original method to wire interceptors when triggering the request.
   request(method?: any, url?: any, options?: any): any {
     const pattern = /^((http|https|ftp):\/\/)/;
-
+    options['withCredentials'] = true;
+    console.log(options);
     const handler = this.interceptors.reduceRight(
       (next, interceptor) => new HttpInterceptorHandler(next, interceptor),
       this.httpHandler

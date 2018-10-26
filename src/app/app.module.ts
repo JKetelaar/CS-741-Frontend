@@ -18,6 +18,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {FooterComponent} from '@app/shell/footer/footer.component';
 import {SearchModule} from '@app/search/search.module';
 import {CookieService} from 'ngx-cookie-service';
+import {CartModule} from '@app/cart/cart.module';
 
 @NgModule({
     imports: [
@@ -33,6 +34,7 @@ import {CookieService} from 'ngx-cookie-service';
         ProductsModule,
         LoginModule,
         SearchModule,
+        CartModule,
         // Keep this module as last
         AppRoutingModule,
     ],

@@ -1,0 +1,114 @@
+<section class="titlebar">
+    <div class="container">
+        <div class="sixteen columns">
+            <h2>Shopping Cart</h2>
+
+            <nav id="breadcrumbs">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li>Shopping Cart</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<div *ngIf="cart == null || cart.products.length == 0;else other_content">
+    <div class="container">
+        <div class="sixteen columns">
+            <section id="not-found">
+                <h2>Whoops <i class="fa fa-shopping-cart"></i></h2>
+                <p>It appears you have no items in your cart.</p>
+                <p>Try shopping for some <a href="products">products.</a></p>
+            </section>
+        </div>
+    </div>
+</div>
+
+<ng-template #other_content>
+
+    <div class="container cart">
+
+        <div class="sixteen columns">
+
+            <!-- Cart -->
+            <table class="cart-table responsive-table">
+
+                <tr>
+                    <th>Item</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+
+                <tr *ngFor="let product of cart.products">
+                    <td> </td>
+                    <td class="cart-title"><a href="product/{{product.id}}">{{product.name}}</a></td>
+                    <td>{{product.price}}</td>
+                    <td>
+                        <form action='#'>
+                            <div class="qtyminus"></div>
+                            <input type='text' name="quantity" value={{product.quantity}} class="qty"/>
+                            <div class="qtyplus"></div>
+                        </form>
+                    </td>
+                    <td class="cart-total">{{product.price * product.quantity}}</td>
+                    <td><a href="#" class="cart-remove"></a></td>
+                </tr>
+
+            </table>
+
+            <!-- Apply Coupon Code / Buttons -->
+            <table class="cart-table bottom">
+
+                <tr>
+                    <th>
+                        <form action="#" method="get" class="apply-coupon">
+                            <input class="search-field" type="text" placeholder="Coupon Code" value=""/>
+                            <a href="#" class="button gray">Apply Coupon</a>
+                        </form>
+
+                        <div class="cart-btns">
+                            <a href="checkout-billing-details.html" class="button color cart-btns proceed">Proceed to
+                                Checkout</a>
+                            <a href="#" class="button gray cart-btns">Update Cart</a>
+                        </div>
+                    </th>
+                </tr>
+
+            </table>
+        </div>
+
+
+        <!-- Cart Totals -->
+        <div class="eight columns cart-totals">
+            <h3 class="headline">Cart Totals</h3><span class="line"></span>
+            <div class="clearfix"></div>
+
+            <table class="cart-table margin-top-5">
+
+                <tr>
+                    <th>Cart Subtotal</th>
+                    <td><strong>$178.00</strong></td>
+                </tr>
+
+                <tr>
+                    <th>Shipping and Handling</th>
+                    <td>Free Shipping</td>
+                </tr>
+
+                <tr>
+                    <th>Order Total</th>
+                    <td><strong>$178.00</strong></td>
+                </tr>
+
+            </table>
+            <br>
+            <!-- <a href="#" class="calculate-shipping"><i class="fa fa-arrow-circle-down"></i> Calculate Shipping</a> -->
+        </div>
+    </div>
+</ng-template>
+
+<div class="margin-top-40"></div>
