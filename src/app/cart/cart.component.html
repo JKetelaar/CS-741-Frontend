@@ -91,17 +91,17 @@
 
                 <tr>
                     <th>Cart Subtotal</th>
-                    <td><strong>$178.00</strong></td>
+                    <td><strong>${{getTotalCost()}}</strong></td>
                 </tr>
 
                 <tr>
-                    <th>Shipping and Handling</th>
-                    <td>Free Shipping</td>
+                    <th>Promotions</th>
+                    <td>- $ {{getTotalSavings()}}</td>
                 </tr>
 
                 <tr>
                     <th>Order Total</th>
-                    <td><strong>$178.00</strong></td>
+                    <td><strong>${{getTotalCost() - getTotalSavings()}}</strong></td>
                 </tr>
 
             </table>
