@@ -49,9 +49,9 @@
                     <td>{{product.price}}</td>
                     <td>
                         <form action='#'>
-                            <div class="qtyminus"></div>
+                            <div (click)="adjust(product.product.id, product.quantity - 1)" class="qtyminus"></div>
                             <input type='text' name="quantity" value={{product.quantity}} class="qty"/>
-                            <div class="qtyplus"></div>
+                            <div (click)="add(product.product.id)" class="qtyplus"></div>
                         </form>
                     </td>
                     <td class="cart-total">{{product.price * product.quantity}}</td>

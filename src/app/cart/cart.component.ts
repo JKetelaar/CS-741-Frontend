@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CartService} from '@app/cart/cart.service';
 import {Cart} from '@app/models/Cart';
 
@@ -6,19 +6,22 @@ import {ProductView} from '@app/models/ProductView';
 import {ProductsService} from '@app/product/products.service';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+    selector: 'app-cart',
+    templateUrl: './cart.component.html',
+    styleUrls: ['./cart.component.scss']
 })
 
 export class CartComponent implements OnInit {
     cart: Cart;
-    productId: number;
 
     constructor(private cartService: CartService, private productsService: ProductsService) {
     }
 
     ngOnInit() {
+        this.loadCart();
+    }
+
+    loadCart() {
         this.cartService.getCart()
             .pipe()
             .subscribe((cart: Cart) => {
@@ -26,8 +29,22 @@ export class CartComponent implements OnInit {
             });
     }
 
-    add() {
-        this.cartService.add({id: this.productId});
+    add(id: number) {
+        this.cartService.add({id: id}).pipe().subscribe(() => {
+            this.loadCart();
+        });
+    }
+
+    remove(id: number) {
+        this.cartService.delete({id: id}).pipe().subscribe(() => {
+            this.loadCart();
+        });
+    }
+
+    adjust(id: number, quantity: number) {
+        this.cartService.adjust({id: id, quantity: quantity}).pipe().subscribe(() => {
+            this.loadCart();
+        });
     }
 
     getTotalCost(): number {
@@ -36,7 +53,7 @@ export class CartComponent implements OnInit {
             const product = this.cart.products[i];
             total += (product.price * product.quantity);
         }
-        return total
+        return total;
     }
 
     getTotal(): number {
@@ -52,11 +69,12 @@ export class CartComponent implements OnInit {
         let total = 0;
         for (let i = 0; i < this.cart.products.length; i++) {
             const product = this.cart.products[i];
-            const promo = !product.promoPrice ? 0 : product.promoPrice
+            const promo = !product.product.promoPrice ? 0 : product.product.promoPrice;
             total += (product.price - promo);
         }
         return total === this.getTotal() ? 0 : total;
     }
+
     getImageURL(product: ProductView): string {
         return this.productsService.getImageURL(product.singleImage);
     }
