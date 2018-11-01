@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { AuthenticationService } from '@app/core';
-import {CookieService} from 'ngx-cookie-service';
+import {AuthenticationService} from '@app/core';
+import {UserService} from '@app/login/user.service';
 
 @Component({
   selector: 'app-header',
@@ -12,13 +12,15 @@ import {CookieService} from 'ngx-cookie-service';
 export class HeaderComponent implements OnInit {
 
   menuHidden = true;
+  loggedIn: boolean = null;
 
   constructor(private router: Router,
               private authenticationService: AuthenticationService,
-              private cookieService: CookieService
-              ) { }
+              private userService: UserService) {
+  }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
@@ -27,14 +29,18 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout()
-      .subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
+      .subscribe(() => this.router.navigate(['/login'], {replaceUrl: true}));
   }
 
-  get username(): string | null {
-    // const credentials = this.authenticationService.credentials;
-    // return credentials ? credentials.username : null;
-    const username = this.cookieService.get('username');
-    return username !== null && username.length > 0 ? username : null;
+  isLoggedIn(): boolean {
+    if (this.loggedIn === null) {
+      this.userService.getCurrentUser().subscribe(user => {
+        this.loggedIn = user !== null;
+      });
+      this.loggedIn = false;
+    }
+
+    return this.loggedIn === true;
   }
 
 }
