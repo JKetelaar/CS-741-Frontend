@@ -58,7 +58,7 @@
         <div class="four columns" *ngFor="let product of latestProducts ">
             <figure class="product">
                 <div class="mediaholder">
-                    <a routerLink="product/{{product.id}}">
+                    <a routerLink="/product/{{product.id}}">
                         <img alt="" src="src/theme/css/images/shop_item_01.jpg"/>
                         <div class="cover">
                             <img alt="" src="src/theme/css/images/shop_item_01_hover.jpg"/>
@@ -67,7 +67,7 @@
                     <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
                 </div>
 
-                <a routerLink="product/{{product.id}}">
+                <a routerLink="/product/{{product.id}}">
                     <section>
                         <span class="product-category">Skirts</span>
                         <h5>{{product.name}}</h5>
