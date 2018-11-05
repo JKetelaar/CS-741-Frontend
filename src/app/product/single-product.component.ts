@@ -4,6 +4,7 @@ import {ProductsService} from '@app/product/products.service';
 import {ActivatedRoute} from '@angular/router';
 import {ProductImage} from '@app/models/ProductImage';
 import {CartService} from '@app/cart/cart.service';
+import {HeaderComponent} from '@app/shell/header/header.component';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class SingleProductComponent implements OnInit {
   product: Product;
   id: number;
 
-  constructor(private productsService: ProductsService, private cartService: CartService, private route: ActivatedRoute) {
+  constructor(private productsService: ProductsService, private cartService: CartService, private route: ActivatedRoute, private header: HeaderComponent) {
   }
 
   ngOnInit() {
@@ -32,6 +33,8 @@ export class SingleProductComponent implements OnInit {
   }
 
     addToCart(id: number) {
-        this.cartService.add({id: id}).pipe().subscribe(() => {});
+        this.cartService.add({id: id}).pipe().subscribe(() => {
+            this.header.refreshCart(true);
+        });
     }
 }

@@ -7,11 +7,9 @@
         <div class="ten columns">
             <ul class="top-bar-menu">
                 <li><i class="fa fa-phone"></i> (123) 456 7890</li>
-                <li><i class="fa fa-envelope"></i> <a href="#">mail@example.com</a></li>
+                <li><i class="fa fa-envelope"></i> <a href="#">contact@cs741.com</a></li>
             </ul>
         </div>
-
-
 
     </div>
 </div>
@@ -27,7 +25,7 @@
     <!-- Logo -->
     <div class="four columns">
         <div id="logo">
-            <h1><a href="index.html"><img src="src/theme/css/images/logo.png"/></a></h1>
+            <h1><a routerLink="/home"><img src="src/theme/css/images/logo.png"/></a></h1>
         </div>
     </div>
 
@@ -35,16 +33,17 @@
     <div class="eight columns" style="float: right;">
         <div id="additional-menu">
             <ul>
-                <li><a href="cart">Shopping Cart</a></li>
-                <li><a href="checkout-billing-details.html">Checkout</a></li>
-                <li *ngIf="username != null"><a href="my-account.html">My Account</a></li>
-                <li *ngIf="username == null"><a href="/login">Login</a></li>
+                <li><a routerLink="/cart">Shopping Cart</a></li>
+                <li><a routerLink="/checkout">Checkout</a></li>
+                <li *ngIf="isLoggedIn()"><a routerLink="/account">My Account</a></li>
+                <li *ngIf="!isLoggedIn()"><a routerLink="/login">Login</a></li>
             </ul>
         </div>
     </div>
 
+    <p *ngIf="cart != null">{{cart.changed}}</p>
     <!-- Shopping Cart -->
-    <div class="eight columns" style="float: right">
+    <div class="eight columns" style="float: right;">
 
         <div id="cart">
 
@@ -91,9 +90,9 @@
                     </ul>
 
                     <div class="cart-buttons button">
-                        <a href="cart" class="view-cart"><span
+                        <a routerLink="/cart" class="view-cart"><span
                                 data-hover="View Cart"><span>View Cart</span></span></a>
-                        <a href="checkout-billing-details.html" class="checkout"><span
+                        <a routerLink="/checkout" class="checkout"><span
                                 data-hover="Checkout">Checkout</span></a>
                     </div>
                     <div class="clearfix">
@@ -127,29 +126,31 @@
         <nav id="navigation">
             <ul class="menu" id="responsive">
 
-                <li><a href="index.html" class="current homepage" id="current">Home</a></li>
-
-                <li class="demo-button">
-                    <a href="products">Products</a>
-                </li>
-                <!-- TODO: link once pages are created -->
-                <li class="demo-button">
-                    <a href="#">Categories</a>
+                <li>
+                  <a routerLink="/home" class="current homepage" id="current">Home</a>
                 </li>
 
+                <li class="demo-button">
+                    <a routerLink="/products">Products</a>
+                </li>
 
                 <li class="demo-button">
-                    <a href="search">Search</a>
+                    <a routerLink="/categories">Categories</a>
                 </li>
 
 
                 <li class="demo-button">
-                    <a href="cart">Shopping Cart</a>
+                    <a routerLink="/search">Search</a>
                 </li>
 
 
                 <li class="demo-button">
-                    <a href="#">My Account</a>
+                    <a routerLink="/cart">Shopping Cart</a>
+                </li>
+
+
+                <li class="demo-button">
+                    <a routerLink="/account">My Account</a>
                 </li>
             </ul>
         </nav>

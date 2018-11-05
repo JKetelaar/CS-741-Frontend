@@ -29,16 +29,16 @@
         <div class="four columns" *ngFor="let product of products | paginate: { itemsPerPage: 12, currentPage: page }">
             <figure class="product">
                 <div class="mediaholder">
-                    <a href="product/{{product.id}}">
+                    <a routerLink="/product/{{product.id}}">
                         <img alt="" src="{{getImageURL(product)}}"/>
                         <div class="cover">
                             <img alt="" src="{{getImageURL(product)}}"/>
                         </div>
                     </a>
-                    <a href="javascript:void(0);" (click)="addToCart(product.id)" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                    <a href="javascript:void(0);" (click)="addToCart(product.id)"  class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
                 </div>
 
-                <a href="variable-product-page.html">
+                <a routerLink="/product/{{product.id}}">
                     <section>
                         <span class="product-category">Skirts</span>
                         <h5>{{product.name}}</h5>

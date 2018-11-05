@@ -97,7 +97,6 @@ export class HttpService extends HttpClient {
   request(method?: any, url?: any, options?: any): any {
     const pattern = /^((http|https|ftp):\/\/)/;
     options['withCredentials'] = true;
-    console.log(options);
     const handler = this.interceptors.reduceRight(
       (next, interceptor) => new HttpInterceptorHandler(next, interceptor),
       this.httpHandler

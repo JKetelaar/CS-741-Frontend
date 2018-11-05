@@ -8,6 +8,7 @@ import {ProductsComponent} from './products.component';
 import {ProductsService} from '@app/product/products.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {SingleProductComponent} from '@app/product/single-product.component';
+import {HeaderComponent} from '@app/shell/header/header.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {SingleProductComponent} from '@app/product/single-product.component';
     SingleProductComponent
   ],
   providers: [
-    ProductsService
+    ProductsService,
+      HeaderComponent
   ]
 })
 export class ProductsModule {

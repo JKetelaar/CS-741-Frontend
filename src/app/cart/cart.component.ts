@@ -4,6 +4,7 @@ import {Cart} from '@app/models/Cart';
 
 import {ProductView} from '@app/models/ProductView';
 import {ProductsService} from '@app/product/products.service';
+import {HeaderComponent} from '@app/shell/header/header.component';
 
 @Component({
     selector: 'app-cart',
@@ -14,7 +15,7 @@ import {ProductsService} from '@app/product/products.service';
 export class CartComponent implements OnInit {
     cart: Cart;
 
-    constructor(private cartService: CartService, private productsService: ProductsService) {
+    constructor(private cartService: CartService, private productsService: ProductsService, private header: HeaderComponent) {
     }
 
     ngOnInit() {
@@ -32,18 +33,21 @@ export class CartComponent implements OnInit {
     add(id: number) {
         this.cartService.add({id: id}).pipe().subscribe(() => {
             this.loadCart();
+            this.header.refreshCart(true);
         });
     }
 
     delete(id: number) {
         this.cartService.delete({id: id}).pipe().subscribe(() => {
             this.loadCart();
+            this.header.refreshCart(true);
         });
     }
 
     adjust(id: number, quantity: number) {
         this.cartService.adjust({id: id, quantity: quantity}).pipe().subscribe(() => {
             this.loadCart();
+            this.header.refreshCart(true);
         });
     }
 

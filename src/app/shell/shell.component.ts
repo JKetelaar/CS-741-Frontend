@@ -11,4 +11,6 @@ export class ShellComponent implements OnInit {
 
   ngOnInit() { }
 
+  update() {
+  }
 }
