@@ -60,12 +60,12 @@ export class CartService {
 
     delete(context: ProductContext) {
         return this.httpClient
-            .post(routes.delete(context), 'product=' + context.id, {
+            .delete('/cart/delete?product=' + context.id, {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
             })
             .pipe(
                 map((body: any) => body),
-                catchError(() => of('Error, could not add product'))
+                catchError(() => of('Error, could not delete product'))
             );
     }
 
@@ -76,7 +76,7 @@ export class CartService {
             })
             .pipe(
                 map((body: any) => body),
-                catchError(() => of('Error, could not add product'))
+                catchError(() => of('Error, could not edit product'))
             );
     }
 }

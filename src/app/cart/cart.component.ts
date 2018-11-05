@@ -35,7 +35,7 @@ export class CartComponent implements OnInit {
         });
     }
 
-    remove(id: number) {
+    delete(id: number) {
         this.cartService.delete({id: id}).pipe().subscribe(() => {
             this.loadCart();
         });

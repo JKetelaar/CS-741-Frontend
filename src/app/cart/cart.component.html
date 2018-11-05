@@ -55,7 +55,7 @@
                         </form>
                     </td>
                     <td class="cart-total">{{product.price * product.quantity}}</td>
-                    <td><a href="#" class="cart-remove"></a></td>
+                    <td><a href="javascript:void(0);" (click)="delete(product.product.id)"  class="cart-remove"></a></td>
                 </tr>
 
             </table>
