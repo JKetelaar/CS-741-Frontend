@@ -5,6 +5,8 @@ import {Cart} from '@app/models/Cart';
 import {ProductView} from '@app/models/ProductView';
 import {ProductsService} from '@app/product/products.service';
 import {HeaderComponent} from '@app/shell/header/header.component';
+import {Product} from '@app/models/Product';
+import {OrderItem} from '@app/models/OrderItem';
 
 @Component({
     selector: 'app-cart',
@@ -52,31 +54,23 @@ export class CartComponent implements OnInit {
     }
 
     getTotalCost(): number {
-        let total = 0;
-        for (let i = 0; i < this.cart.products.length; i++) {
-            const product = this.cart.products[i];
-            total += (product.price * product.quantity);
-        }
-        return total;
+        return this.cartService.getTotalCost(this.cart);
+    }
+
+    getOrderTotal(): number {
+        return this.cartService.getOrderTotal(this.cart);
     }
 
     getTotal(): number {
-        let total = 0;
-        for (let i = 0; i < this.cart.products.length; i++) {
-            const product = this.cart.products[i];
-            total += product.quantity;
-        }
-        return total;
+        return this.cartService.getTotal(this.cart);
     }
 
     getTotalSavings(): number {
-        let total = 0;
-        for (let i = 0; i < this.cart.products.length; i++) {
-            const product = this.cart.products[i];
-            const promo = !product.product.promoPrice ? 0 : product.product.promoPrice;
-            total += (product.price - promo);
-        }
-        return total === this.getTotal() ? 0 : total;
+        return this.cartService.getTotalSavings(this.cart);
+    }
+
+    getTotalCostForProduct(product: OrderItem) {
+        return this.cartService.getTotalCostForProduct(product);
     }
 
     getImageURL(product: ProductView): string {

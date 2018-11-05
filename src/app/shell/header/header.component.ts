@@ -39,7 +39,6 @@ export class HeaderComponent implements OnInit {
             .pipe()
             .subscribe((cart: Cart) => {
                 this.cart = cart;
-
                 if (reload) {
                     window.location.reload();
                 }
@@ -68,21 +67,11 @@ export class HeaderComponent implements OnInit {
     }
 
     getTotalCost(): number {
-        let total = 0;
-        for (let i = 0; i < this.cart.products.length; i++) {
-            const product = this.cart.products[i];
-            total += (product.price * product.quantity);
-        }
-        return total;
+        return this.cartService.getTotalCost(this.cart);
     }
 
     getTotal(): number {
-        let total = 0;
-        for (let i = 0; i < this.cart.products.length; i++) {
-            const product = this.cart.products[i];
-            total += product.quantity;
-        }
-        return total;
+        return this.cartService.getTotal(this.cart);
     }
 
 }

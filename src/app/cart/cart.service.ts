@@ -79,4 +79,40 @@ export class CartService {
                 catchError(() => of('Error, could not edit product'))
             );
     }
+
+    getTotalCost(cart: Cart): number {
+        let total = 0;
+        for (let i = 0; i < cart.products.length; i++) {
+            const product = cart.products[i];
+            total += this.getTotalCostForProduct(product);
+        }
+        return total;
+    }
+
+    getOrderTotal(cart: Cart): number {
+        return parseFloat((this.getTotalCost(cart) - this.getTotalSavings(cart)).toFixed(2));
+    }
+
+    getTotalCostForProduct(product: OrderItem): number {
+        return parseFloat((product.price * product.quantity).toFixed(2));
+    }
+
+    getTotal(cart: Cart): number {
+        let total = 0;
+        for (let i = 0; i < cart.products.length; i++) {
+            const product = cart.products[i];
+            total += product.quantity;
+        }
+        return total;
+    }
+
+    getTotalSavings(cart: Cart): number {
+        let total = 0;
+        for (let i = 0; i < cart.products.length; i++) {
+            const product = cart.products[i];
+            const promo = !product.product.promoPrice ? 0 : parseFloat((product.product.promoPrice).toFixed(2));
+            total += parseFloat(((product.price - promo) * product.quantity).toFixed(2));
+        }
+        return total === this.getTotal(cart) ? 0 : total;
+    }
 }
