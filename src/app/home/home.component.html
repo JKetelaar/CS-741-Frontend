@@ -64,7 +64,7 @@
                             <img alt="" src="src/theme/css/images/shop_item_01_hover.jpg"/>
                         </div>
                     </a>
-                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                    <a href="javascript:void(0);" (click)="addToCart(product.id)" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
                 </div>
 
                 <a routerLink="/product/{{product.id}}">

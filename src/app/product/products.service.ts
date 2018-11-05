@@ -6,6 +6,7 @@ import {Product} from '../models/Product';
 import {ProductView} from '@app/models/ProductView';
 import {ProductImage} from '@app/models/ProductImage';
 import {environment} from '@env/environment';
+import {CartService} from '@app/cart/cart.service';
 
 const routes = {
   products: () => `/product/`,
@@ -76,4 +77,5 @@ export class ProductsService {
   getImageURL(productImage: ProductImage): string {
     return environment.imageUrl + '/' + productImage.filename;
   }
+
 }

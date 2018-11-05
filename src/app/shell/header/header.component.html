@@ -41,57 +41,65 @@
         </div>
     </div>
 
+    <p *ngIf="cart != null">{{cart.changed}}</p>
     <!-- Shopping Cart -->
     <div class="eight columns" style="float: right;">
 
         <div id="cart">
 
-            <!-- Button -->
-            <div class="cart-btn">
-                <a href="#" class="button adc">$178.00</a>
-            </div>
-
-            <div class="cart-list">
-
-                <div class="arrow"></div>
-
-                <div class="cart-amount">
-                    <span>2 items in the shopping cart</span>
+            <div *ngIf="cart == null || cart.products.length == 0;else other_content">
+                <!-- Button -->
+                <div class="cart-btn">
+                    <a href="cart" class="button adc">$0.00</a>
                 </div>
 
-                <ul>
-                    <li>
-                        <a href="#"><img src="src/theme/css/images/small_product_list_08.jpg" alt=""/></a>
-                        <a href="#">Converse All Star Trainers</a>
-                        <span>1 x $79.00</span>
-                        <div class="clearfix"></div>
-                    </li>
+                <div class="cart-list">
 
-                    <li>
-                        <a href="#"><img src="src/theme/css/images/small_product_list_09.jpg" alt=""/></a>
-                        <a href="#">Tommy Hilfiger <br/> Shirt Beat</a>
-                        <span>1 x $99.00</span>
-                        <div class="clearfix"></div>
-                    </li>
-                </ul>
+                    <div class="arrow"></div>
 
-                <div class="cart-buttons button">
+                    <div class="cart-amount">
+                        <span>0 items in the shopping cart</span>
+                    </div>
+                    <div class="clearfix">
 
-                    <a routerLink="/cart" class="view-cart">
-                      <span data-hover="View Cart">
-                        <span>View Cart</span>
-                      </span>
-                    </a>
-
-                    <a routerLink="/checkout" class="checkout">
-                      <span data-hover="Checkout">Checkout</span>
-                    </a>
-
-                </div>
-                <div class="clearfix">
-
+                    </div>
                 </div>
             </div>
+
+            <ng-template #other_content>
+                <!-- Button -->
+                <div class="cart-btn">
+                    <a href="cart" class="button adc">${{getTotalCost()}}</a>
+                </div>
+
+                <div class="cart-list">
+
+                    <div class="arrow"></div>
+
+                    <div class="cart-amount">
+                        <span>{{getTotal()}} items in the shopping cart</span>
+                    </div>
+
+                    <ul *ngFor="let product of cart.products">
+                        <li>
+                            <a href="product/{{product.id}}"><img src="src/theme/css/images/small_product_list_08.jpg" alt=""/></a>
+                            <a href="product/{{product.id}}">{{product.name}}</a>
+                            <span>{{product.quantity}} x ${{product.price}}</span>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+
+                    <div class="cart-buttons button">
+                        <a routerLink="/cart" class="view-cart"><span
+                                data-hover="View Cart"><span>View Cart</span></span></a>
+                        <a routerLink="/checkout" class="checkout"><span
+                                data-hover="Checkout">Checkout</span></a>
+                    </div>
+                    <div class="clearfix">
+
+                    </div>
+                </div>
+            </ng-template>
 
         </div>
 

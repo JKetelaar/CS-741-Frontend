@@ -8,23 +8,25 @@ import {ProductsComponent} from './products.component';
 import {ProductsService} from '@app/product/products.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {SingleProductComponent} from '@app/product/single-product.component';
+import {HeaderComponent} from '@app/shell/header/header.component';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CoreModule,
-    SharedModule,
-    ProductsRoutingModule,
-    NgxPaginationModule
-  ],
-  declarations: [
-    ProductsComponent,
-    SingleProductComponent
-  ],
-  providers: [
-    ProductsService
-  ]
+    imports: [
+        CommonModule,
+        CoreModule,
+        SharedModule,
+        ProductsRoutingModule,
+        NgxPaginationModule
+    ],
+    declarations: [
+        ProductsComponent,
+        SingleProductComponent
+    ],
+    providers: [
+        ProductsService,
+        HeaderComponent
+    ]
 })
 export class ProductsModule {
 }
