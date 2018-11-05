@@ -12,21 +12,21 @@ import {HeaderComponent} from '@app/shell/header/header.component';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CoreModule,
-    SharedModule,
-    ProductsRoutingModule,
-    NgxPaginationModule
-  ],
-  declarations: [
-    ProductsComponent,
-    SingleProductComponent
-  ],
-  providers: [
-    ProductsService,
-      HeaderComponent
-  ]
+    imports: [
+        CommonModule,
+        CoreModule,
+        SharedModule,
+        ProductsRoutingModule,
+        NgxPaginationModule
+    ],
+    declarations: [
+        ProductsComponent,
+        SingleProductComponent
+    ],
+    providers: [
+        ProductsService,
+        HeaderComponent
+    ]
 })
 export class ProductsModule {
 }

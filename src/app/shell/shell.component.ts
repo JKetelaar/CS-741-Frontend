@@ -10,7 +10,4 @@ export class ShellComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
-
-  update() {
-  }
 }
