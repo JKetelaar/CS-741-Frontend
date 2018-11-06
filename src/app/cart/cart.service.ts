@@ -93,7 +93,7 @@ export class CartService {
     }
 
     getTotalCostForProduct(product: OrderItem): number {
-        return parseFloat((product.price * product.quantity).toFixed(2));
+        return parseFloat((product.product.price * product.quantity).toFixed(2));
     }
 
     getTotal(cart: Cart): number {
