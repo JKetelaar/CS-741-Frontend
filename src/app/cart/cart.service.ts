@@ -85,7 +85,7 @@ export class CartService {
             const product = cart.products[i];
             total += this.getTotalCostForProduct(product);
         }
-        return total;
+        return parseFloat((total).toFixed(2));
     }
 
     getOrderTotal(cart: Cart): number {
@@ -106,6 +106,6 @@ export class CartService {
     }
 
     getTotalSavings(cart: Cart): number {
-        return this.getTotalCost(cart) - cart.finalPrice;
+        return parseFloat((this.getTotalCost(cart) - cart.finalPrice).toFixed(2));
     }
 }
