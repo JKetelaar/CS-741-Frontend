@@ -66,8 +66,8 @@
                 <tr>
                     <th>
                         <form action="#" method="get" class="apply-coupon">
-                            <input class="search-field" type="text" placeholder="Coupon Code" value=""/>
-                            <a href="#" class="button gray">Apply Coupon</a>
+                            <input [(ngModel)]="promoCode" [ngModelOptions]="{standalone: true}" class="search-field" type="text" placeholder="Coupon Code" value=""/>
+                            <a href="javascript:void(0);" (click)="apply(promoCode)"  class="button gray">Apply Coupon</a>
                         </form>
 
                         <div class="cart-btns">

@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '@app/login/user.service';
 import {AuthenticationService} from '@app/core';
 import {Router} from '@angular/router';
+import {PromotionService} from '@app/promotion/promotion.service';
+import {CartService} from '@app/cart/cart.service';
 
 @Component({
     selector: 'app-promotion',
@@ -21,6 +23,9 @@ export class PromotionComponent implements OnInit {
 
     constructor(private router: Router,
                 private formBuilder: FormBuilder,
+                private promotionService: PromotionService,
+                private cartService: CartService
+
               ) {
         this.createPromotionForm();
         this.isValid = null;
@@ -37,6 +42,9 @@ export class PromotionComponent implements OnInit {
         this.isValid = true;
     }
 
+    apply(code: string) {
+        this.promotionService.apply({code: code}).pipe().subscribe();
+    }
 
     private createPromotionForm() {
         this.createPromoForm = this.formBuilder.group({
