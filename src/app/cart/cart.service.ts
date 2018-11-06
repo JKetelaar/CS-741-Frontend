@@ -4,7 +4,6 @@ import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Cart} from '@app/models/Cart';
 import {User} from '@app/models/User';
-import {Product} from '@app/models/Product';
 import {OrderItem} from '@app/models/OrderItem';
 
 const routes = {
@@ -39,7 +38,7 @@ export class CartService {
 
     getCart(): Observable<Cart> {
         return this.httpClient
-            // .cache()
+        // .cache()
             .get(routes.cart())
             .pipe(
                 map((body: any) => body),
@@ -90,7 +89,7 @@ export class CartService {
     }
 
     getOrderTotal(cart: Cart): number {
-        return parseFloat((this.getTotalCost(cart) - this.getTotalSavings(cart)).toFixed(2));
+        return cart.finalPrice;
     }
 
     getTotalCostForProduct(product: OrderItem): number {
@@ -107,12 +106,6 @@ export class CartService {
     }
 
     getTotalSavings(cart: Cart): number {
-        let total = 0;
-        for (let i = 0; i < cart.products.length; i++) {
-            const product = cart.products[i];
-            const promo = !product.product.promoPrice ? 0 : parseFloat((product.product.promoPrice).toFixed(2));
-            total += parseFloat(((product.price - promo) * product.quantity).toFixed(2));
-        }
-        return total === this.getTotal(cart) ? 0 : total;
+        return this.getTotalCost(cart) - cart.finalPrice;
     }
 }

@@ -26,7 +26,6 @@
     </div>
 
     <div class="sixteen columns">
-
         <!-- Promotions -->
         <table class="cart-table responsive-table">
             <tr>
@@ -41,33 +40,30 @@
                 <td><img src="images/small_product_list_08.jpg" alt=""/></td>
                 <td class="cart-title"><a href="#">Converse All Star Trainers</a></td>
                 <td>
-                    <input ngModel="code" type="code"
+                    <input [(ngModel)]="code" type="code"
                            class="input-text" name="code" id="code" value=""/>
                 </td>
                 <td>
-                    <input ngModel="expirationDate" type="expirationDate"
+                    <input [(ngModel)]="expirationDate" type="expirationDate"
                            class="input-text" name="expirationDate" id="expirationDate" value=""/>
                 </td>
                 <td>
-                    <input  ngModel="percentage" type="percentage"
-                           class="search-field" name="percentage" id="percentage" value=""/>
+                    <input [(ngModel)]="percentage" type="percentage"
+                           class="input-text" name="percentage" id="percentage" value=""/>
                 </td>
                 <td>
-                    <input type="submit" class="button" name="create" value="Create"/>
+                    <input (click)="create()" type="submit" class="button" name="create" value="Create"/>
                 </td>
             </tr>
-
-
         </table>
         <div *ngIf="isValid == false" class="notification error closeable">
             <p><span>Error!</span> Please provide valid credentials.</p>
-            <a class="close" href="#"></a>
+            <a class="close" routerLink="/promotion"></a>
         </div>
         <div *ngIf="isValid == true" class="notification success closeable">
-            <p><span>Success!</span> {{registerEmail}} registered!</p>
-            <a class="close" href="#"></a>
+            <p><span>Success!</span> Promotion {{code}} created!</p>
+            <a class="close" routerLink="/promotion"></a>
         </div>
-
         <br>
         <div class="clearfix"></div>
     </div>

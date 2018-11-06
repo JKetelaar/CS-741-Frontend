@@ -17,5 +17,4 @@ export class PromotionService {
 
     constructor(private httpClient: HttpClient) {
     }
-
 }

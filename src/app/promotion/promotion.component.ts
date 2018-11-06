@@ -32,6 +32,9 @@ export class PromotionComponent implements OnInit {
     create() {
         // this.service.register
         console.log(this.code);
+        console.log(this.expirationDate);
+        console.log(this.percentage);
+        this.isValid = true;
     }
 
 

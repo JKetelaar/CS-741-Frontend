@@ -8,4 +8,5 @@ export interface Cart {
     products: OrderItem[];
     user?: User;
     guestId?: string;
+    finalPrice: number;
 }
