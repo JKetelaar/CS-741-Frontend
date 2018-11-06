@@ -1,0 +1,128 @@
+<!-- Titlebar
+================================================== -->
+<section class="titlebar">
+    <div class="container">
+        <div class="sixteen columns">
+            <h2>Promotion Management</h2>
+
+            <nav id="breadcrumbs">
+                <ul>
+                    <li><a routerLink="/home">Home</a></li>
+                    <li>Promotion</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+
+<div class="container cart">
+
+
+    <!-- Create Promos -->
+    <div class="sixteen columns">
+        <h3 class="headline">Create Promotion</h3><span class="line margin-bottom-35"></span>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="sixteen columns">
+
+        <!-- Promotions -->
+        <table class="cart-table responsive-table">
+            <tr>
+                <th></th>
+                <th>Product Name</th>
+                <th>Promotion Code</th>
+                <th>Expiration Date</th>
+                <th>Percent</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><img src="images/small_product_list_08.jpg" alt=""/></td>
+                <td class="cart-title"><a href="#">Converse All Star Trainers</a></td>
+                <td>
+                    <input ngModel="code" type="code"
+                           class="input-text" name="code" id="code" value=""/>
+                </td>
+                <td>
+                    <input ngModel="expirationDate" type="expirationDate"
+                           class="input-text" name="expirationDate" id="expirationDate" value=""/>
+                </td>
+                <td>
+                    <input  ngModel="percentage" type="percentage"
+                           class="search-field" name="percentage" id="percentage" value=""/>
+                </td>
+                <td>
+                    <input type="submit" class="button" name="create" value="Create"/>
+                </td>
+            </tr>
+
+
+        </table>
+        <div *ngIf="isValid == false" class="notification error closeable">
+            <p><span>Error!</span> Please provide valid credentials.</p>
+            <a class="close" href="#"></a>
+        </div>
+        <div *ngIf="isValid == true" class="notification success closeable">
+            <p><span>Success!</span> {{registerEmail}} registered!</p>
+            <a class="close" href="#"></a>
+        </div>
+
+        <br>
+        <div class="clearfix"></div>
+    </div>
+
+
+    <!-- Active Promos -->
+    <div class="sixteen columns">
+        <h3 class="headline">Active Promotions</h3><span class="line margin-bottom-35"></span>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="sixteen columns">
+
+        <!-- Promotions -->
+        <table class="cart-table responsive-table">
+
+            <tr>
+                <th></th>
+                <th>Product Name</th>
+                <th>Promotion Code</th>
+                <th>Expiration Date</th>
+                <th>Percent</th>
+                <th></th>
+            </tr>
+
+            <!-- Item #1 -->
+            <tr>
+                <td><img src="images/small_product_list_08.jpg" alt=""/></td>
+                <td class="cart-title"><a href="#">Converse All Star Trainers</a></td>
+                <td>$79.00</td>
+                <td>
+                    In Stock
+                </td>
+                <td><a href="#" class="button color">Add to Cart</a></td>
+                <td><a href="#" class="cart-remove"></a></td>
+            </tr>
+
+            <!-- Item #2 -->
+            <tr>
+                <td><img src="images/small_product_list_09.jpg" alt=""/></td>
+                <td class="cart-title"><a href="#">Wool Two-Piece Suit</a></td>
+                <td>$99.00</td>
+                <td>
+                    In Stock
+                </td>
+                <td><a href="#" class="button color">Add to Cart</a></td>
+                <td><a href="#" class="cart-remove"></a></td>
+            </tr>
+
+        </table>
+
+        <br>
+        <div class="clearfix"></div>
+    </div>
+
+</div>
+
+<div class="margin-top-50"></div>
