@@ -105,7 +105,17 @@ export class CartService {
         return total;
     }
 
+    getPromoPercentage(cart: Cart): number {
+        return cart.promotion == null ? 0 : cart.promotion.percentage;
+    }
+
     getTotalSavings(cart: Cart): number {
-        return parseFloat((this.getTotalCost(cart) - cart.finalPrice).toFixed(2));
+        let total = 0;
+        for (let i = 0; i < cart.products.length; i++) {
+            const product = cart.products[i];
+            total += (product.quantity * product.product.promoPrice);
+        }
+        return total;
+        return parseFloat((this.getTotalCost(cart) - total).toFixed(2));
     }
 }

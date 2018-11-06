@@ -5,7 +5,6 @@ import {Cart} from '@app/models/Cart';
 import {ProductView} from '@app/models/ProductView';
 import {ProductsService} from '@app/product/products.service';
 import {HeaderComponent} from '@app/shell/header/header.component';
-import {Product} from '@app/models/Product';
 import {OrderItem} from '@app/models/OrderItem';
 
 @Component({
@@ -75,5 +74,9 @@ export class CartComponent implements OnInit {
 
     getImageURL(product: ProductView): string {
         return this.productsService.getImageURL(product.singleImage);
+    }
+
+    getPromoPercentage(): number {
+        return this.cartService.getPromoPercentage(this.cart);
     }
 }
