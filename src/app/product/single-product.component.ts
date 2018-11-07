@@ -5,7 +5,6 @@ import {ActivatedRoute} from '@angular/router';
 import {ProductImage} from '@app/models/ProductImage';
 import {CartService} from '@app/cart/cart.service';
 import {HeaderComponent} from '@app/shell/header/header.component';
-import {SlickModule} from 'ngx-slick';
 
 
 @Component({
@@ -23,8 +22,7 @@ export class SingleProductComponent implements OnInit {
     constructor(private productsService: ProductsService,
                 private cartService: CartService,
                 private route: ActivatedRoute,
-                private header: HeaderComponent,
-                private slick: SlickModule) {
+                private header: HeaderComponent) {
     }
 
     ngOnInit() {
