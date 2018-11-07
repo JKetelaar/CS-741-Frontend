@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import {PromotionService} from '@app/promotion/promotion.service';
 import {CartService} from '@app/cart/cart.service';
 import {Promotion} from '@app/models/Promotion';
+import {UserService} from '@app/login/user.service';
+import {User} from '@app/models/User';
 
 @Component({
     selector: 'app-promotion',
@@ -24,18 +26,29 @@ export class PromotionComponent implements OnInit {
     constructor(private router: Router,
                 private formBuilder: FormBuilder,
                 private promotionService: PromotionService,
-                private cartService: CartService
+                private cartService: CartService,
+                private userService: UserService
     ) {
         this.createPromotionForm();
         this.isValid = null;
     }
 
     ngOnInit() {
+        this.userService.getCurrentUser()
+            .pipe()
+            .subscribe((user: User) => {
+                if (!user) {
+                    this.router.navigate(['home']);
+                }
+                if (user.roles[0] !== 'ROLE_ADMIN') {
+                    this.router.navigate(['home']);
+                }
+            });
+
         this.promotionService.getPromotions()
             .pipe()
             .subscribe((promotions: Promotion[]) => {
                 this.promotions = promotions;
-                console.log(promotions);
             });
     }
 
