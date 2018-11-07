@@ -14,14 +14,12 @@ import {User} from '@app/models/User';
 })
 
 export class PromotionComponent implements OnInit {
-
     promotions: Promotion[];
     createPromoForm: FormGroup;
     code: string;
     expirationDate: Date;
     percentage: number;
     isValid: boolean;
-
 
     constructor(private router: Router,
                 private formBuilder: FormBuilder,
