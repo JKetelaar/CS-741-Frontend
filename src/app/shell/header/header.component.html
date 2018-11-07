@@ -152,6 +152,16 @@
                 <li class="demo-button">
                     <a routerLink="/account">My Account</a>
                 </li>
+
+                <li *ngIf="admin == true;" class="dropdown">
+                    <a class="with-ul" href="javascript:void(0);">Admin</a>
+                    <ul>
+                        <li><a routerLink="/promotion">Manage Promotions</a></li>
+                        <li><a routerLink="/">Manage Products</a></li>
+                        <li><a routerLink="/">Manage Users</a></li>
+                    </ul>
+                </li>
+
             </ul>
         </nav>
     </div>
