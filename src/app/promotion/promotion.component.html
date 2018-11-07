@@ -29,16 +29,13 @@
         <!-- Promotions -->
         <table class="cart-table responsive-table">
             <tr>
-                <th></th>
-                <th>Product Name</th>
                 <th>Promotion Code</th>
-                <th>Expiration Date</th>
+                <th>Expiration Date <br>
+                    YYYY-MM-DD HH:MM:SS</th>
                 <th>Percent</th>
                 <th></th>
             </tr>
             <tr>
-                <td><img src="images/small_product_list_08.jpg" alt=""/></td>
-                <td class="cart-title"><a href="#">Converse All Star Trainers</a></td>
                 <td>
                     <input [(ngModel)]="code" type="code"
                            class="input-text" name="code" id="code" value=""/>
@@ -79,40 +76,19 @@
 
         <!-- Promotions -->
         <table class="cart-table responsive-table">
-
             <tr>
-                <th></th>
-                <th>Product Name</th>
                 <th>Promotion Code</th>
                 <th>Expiration Date</th>
                 <th>Percent</th>
                 <th></th>
             </tr>
 
-            <!-- Item #1 -->
-            <tr>
-                <td><img src="images/small_product_list_08.jpg" alt=""/></td>
-                <td class="cart-title"><a href="#">Converse All Star Trainers</a></td>
-                <td>$79.00</td>
-                <td>
-                    In Stock
-                </td>
-                <td><a href="#" class="button color">Add to Cart</a></td>
-                <td><a href="#" class="cart-remove"></a></td>
+            <tr *ngFor="let promotion of promotions">
+                <td>{{promotion.code}}</td>
+                <td>{{promotion.expirationDate}}</td>
+                <td>{{promotion.percentage}}%</td>
+                <td><a href="javascript:void(0);" (click)="delete(promotion.id)"  class="cart-remove"></a></td>
             </tr>
-
-            <!-- Item #2 -->
-            <tr>
-                <td><img src="images/small_product_list_09.jpg" alt=""/></td>
-                <td class="cart-title"><a href="#">Wool Two-Piece Suit</a></td>
-                <td>$99.00</td>
-                <td>
-                    In Stock
-                </td>
-                <td><a href="#" class="button color">Add to Cart</a></td>
-                <td><a href="#" class="cart-remove"></a></td>
-            </tr>
-
         </table>
 
         <br>

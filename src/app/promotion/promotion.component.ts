@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '@app/login/user.service';
-import {AuthenticationService} from '@app/core';
 import {Router} from '@angular/router';
 import {PromotionService} from '@app/promotion/promotion.service';
 import {CartService} from '@app/cart/cart.service';
+import {Promotion} from '@app/models/Promotion';
 
 @Component({
     selector: 'app-promotion',
@@ -14,6 +13,7 @@ import {CartService} from '@app/cart/cart.service';
 
 export class PromotionComponent implements OnInit {
 
+    promotions: Promotion[];
     createPromoForm: FormGroup;
     code: string;
     expirationDate: Date;
@@ -25,21 +25,32 @@ export class PromotionComponent implements OnInit {
                 private formBuilder: FormBuilder,
                 private promotionService: PromotionService,
                 private cartService: CartService
-
-              ) {
+    ) {
         this.createPromotionForm();
         this.isValid = null;
     }
 
     ngOnInit() {
+        this.promotionService.getPromotions()
+            .pipe()
+            .subscribe((promotions: Promotion[]) => {
+                this.promotions = promotions;
+                console.log(promotions);
+            });
     }
 
     create() {
-        // this.service.register
-        console.log(this.code);
-        console.log(this.expirationDate);
-        console.log(this.percentage);
-        this.isValid = true;
+        this.promotionService.create(
+            {code: this.code, percentage: this.percentage, expirationDate: this.expirationDate}
+        ).subscribe(result => {
+            result === 'Error, could not create promotion' ? this.isValid = false : this.isValid = true;
+        });
+    }
+
+    delete(id: number) {
+        this.promotionService.delete({id: id}).pipe().subscribe(result => {
+            window.location.reload();
+        });
     }
 
     apply(code: string) {
