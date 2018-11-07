@@ -21,12 +21,12 @@
 
     <!-- Slider
     ================================================== -->
-    <div class="eight columns" >
+    <div class="eight columns">
         <div class="slider-padding">
             <div id="product-slider-vertical" class="royalSlider rsDefault">
-              <a *ngFor="let image of product.images" href="{{getImageURL(image)}}" class="mfp-gallery">
-                <img class="rsImg" src="{{getImageURL(image)}}" [attr.data-rsTmb]="getImageURL(image)" alt=""/>
-              </a>
+                <a *ngFor="let image of product.images" href="{{getImageURL(image)}}" class="mfp-gallery">
+                    <img class="rsImg" src="{{getImageURL(image)}}" [attr.data-rsTmb]="getImageURL(image)" alt=""/>
+                </a>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -48,7 +48,7 @@
                 </div>
 
                 <ng-template #other_content>
-                  <span class="product-price">{{product.price}}</span>
+                    <span class="product-price">{{product.price}}</span>
                 </ng-template>
 
             </section>
@@ -57,18 +57,7 @@
             <section>
                 <p class="margin-reset">{{product.description}}</p>
 
-                <!-- Share Buttons -->
-                <div class="share-buttons">
-                    <ul>
-                        <li><a href="#">Share</a></li>
-                        <li class="share-facebook"><a href="#">Facebook</a></li>
-                        <li class="share-twitter"><a href="#">Twitter</a></li>
-                        <li class="share-gplus"><a href="#">Google Plus</a></li>
-                        <li class="share-pinit"><a href="#">Pin It</a></li>
-                    </ul>
-                </div>
                 <div class="clearfix"></div>
-
             </section>
 
 
@@ -76,7 +65,7 @@
 
                 <form action='#'>
                     <div class="qtyminus"></div>
-                    <input type='text' name="quantity" value='1' class="qty" />
+                    <input type='text' name="quantity" value='1' class="qty"/>
                     <div class="qtyplus"></div>
                 </form>
 
@@ -93,95 +82,10 @@
 
 <div class="container">
     <div class="sixteen columns">
-        <!-- Tabs Navigation -->
-        <ul class="tabs-nav">
-            <li class="active"><a href="#tab1">Item Description</a></li>
-            <li><a href="#tab2">Additional Information</a></li>
-            <li><a href="#tab3">Reviews <span class="tab-reviews">(0)</span></a></li>
-        </ul>
 
-        <!-- Tabs Content -->
+        <h2>Item description</h2>
         <div class="tabs-container">
-
-            <div class="tab-content" id="tab1">
-                <p>{{product.description}}</p>
-            </div>
-
-            <div class="tab-content" id="tab2">
-
-                <table class="basic-table">
-                    <tr>
-                        <th>Material</th>
-                        <td>Wool</td>
-                    </tr>
-
-                    <tr>
-                        <th>Weight</th>
-                        <td>0.5 lbs</td>
-                    </tr>
-
-                    <tr>
-                        <th>Size</th>
-                        <td>Medium</td>
-                    </tr>
-                </table>
-
-            </div>
-
-            <div class="tab-content" id="tab3">
-
-                <!-- Reviews -->
-                <section class="comments">
-                    <p class="margin-bottom-10">There are no reviews yet.</p>
-
-                    <a href="#small-dialog" class="popup-with-zoom-anim button color margin-left-0">Add Review</a>
-
-                    <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-                        <h3 class="headline">Add Review</h3><span class="line margin-bottom-25"></span><div class="clearfix"></div>
-
-                        <!-- Form -->
-                        <form id="add-comment" class="add-comment">
-                            <fieldset>
-
-                                <div>
-                                    <label>Name:</label>
-                                    <input type="text" value=""/>
-                                </div>
-
-                                <div>
-                                    <label>Rating:</label>
-                                    <span class="rate">
-											<span class="star"></span>
-											<span class="star"></span>
-											<span class="star"></span>
-											<span class="star"></span>
-											<span class="star"></span>
-										</span>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                <div class="margin-top-20">
-                                    <label>Email: <span>*</span></label>
-                                    <input type="text" value=""/>
-                                </div>
-
-                                <div>
-                                    <label>Review: <span>*</span></label>
-                                    <textarea cols="40" rows="3"></textarea>
-                                </div>
-
-                            </fieldset>
-
-                            <a href="#" class="button color">Add Review</a>
-                            <div class="clearfix"></div>
-
-                        </form>
-                    </div>
-
-                </section>
-
-            </div>
-
+            <p>{{product.description}}</p>
         </div>
     </div>
 </div>
