@@ -5782,6 +5782,10 @@ a.product-button i {
     display: inline;
 }
 
+.product-price-discount::before {
+    content: "$";
+}
+
 .product-price-discount {
     color: #888;
     text-decoration: line-through;
@@ -5795,6 +5799,10 @@ a.product-button i {
     background-color: #ffecb7;
     padding: 3px 5px;
     margin: -1px 0 1px 4px;
+}
+
+.product-price::before {
+    content: "$";
 }
 
 .product-discount {

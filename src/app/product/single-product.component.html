@@ -1,294 +1,104 @@
-<!-- Titlebar
-================================================== -->
-<section class="titlebar">
-    <div class="container">
-        <div class="sixteen columns">
-            <h2>Shop</h2>
-
-            <nav id="breadcrumbs">
-                <ul>
-                    <li><a routerLink="/home">Home</a></li>
-                    <li><a routerLink="/products">Products</a></li>
-                    <li><a routerLink="/product/{{product.id}}">{{product.name}}</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</section>
-
-
-<div class="container">
-
-    <!-- Slider
+<div *ngIf="product != null">
+    <!-- Titlebar
     ================================================== -->
-    <div class="eight columns" >
-        <div class="slider-padding">
-            <div id="product-slider-vertical" class="royalSlider rsDefault">
-              <a *ngFor="let image of product.images" href="{{getImageURL(image)}}" class="mfp-gallery">
-                <img class="rsImg" src="{{getImageURL(image)}}" [attr.data-rsTmb]="getImageURL(image)" alt=""/>
-              </a>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
+    <section class="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <h2>Shop</h2>
 
-
-    <!-- Content
-    ================================================== -->
-    <div class="eight columns">
-        <div class="product-page">
-
-            <!-- Headline -->
-            <section class="title">
-                <h2>{{product.name}}</h2>
-
-                <div *ngIf="product.promo == true;else other_content">
-                    <span class="product-price-discount">{{product.price}}</span>
-                    <span class="product-price">{{product.promoPrice}}</span>
-                </div>
-
-                <ng-template #other_content>
-                  <span class="product-price">{{product.price}}</span>
-                </ng-template>
-
-            </section>
-
-            <!-- Text Parapgraph -->
-            <section>
-                <p class="margin-reset">{{product.description}}</p>
-
-                <!-- Share Buttons -->
-                <div class="share-buttons">
+                <nav id="breadcrumbs">
                     <ul>
-                        <li><a href="#">Share</a></li>
-                        <li class="share-facebook"><a href="#">Facebook</a></li>
-                        <li class="share-twitter"><a href="#">Twitter</a></li>
-                        <li class="share-gplus"><a href="#">Google Plus</a></li>
-                        <li class="share-pinit"><a href="#">Pin It</a></li>
+                        <li><a routerLink="/home">Home</a></li>
+                        <li><a routerLink="/products">Products</a></li>
+                        <li><a routerLink="/product/{{product.id}}">{{product.name}}</a></li>
                     </ul>
-                </div>
-                <div class="clearfix"></div>
-
-            </section>
-
-
-            <section class="linking">
-
-                <form action='#'>
-                    <div class="qtyminus"></div>
-                    <input type='text' name="quantity" value='1' class="qty" />
-                    <div class="qtyplus"></div>
-                </form>
-
-                <a href="javascript:void(0);" (click)="addToCart(product.id)" class="button adc">Add to Cart</a>
-                <div class="clearfix"></div>
-
-            </section>
-
+                </nav>
+            </div>
         </div>
-    </div>
-
-</div>
+    </section>
 
 
-<div class="container">
-    <div class="sixteen columns">
-        <!-- Tabs Navigation -->
-        <ul class="tabs-nav">
-            <li class="active"><a href="#tab1">Item Description</a></li>
-            <li><a href="#tab2">Additional Information</a></li>
-            <li><a href="#tab3">Reviews <span class="tab-reviews">(0)</span></a></li>
-        </ul>
+    <div class="container">
 
-        <!-- Tabs Content -->
-        <div class="tabs-container">
+        <!-- Slider
+        ================================================== -->
+        <div class="eight columns">
+            <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
+                <div ngxSlickItem *ngFor="let slide of product.images" class="slide">
+                    <img src="{{ getImageURL(slide) }}" alt="" width="100%">
+                </div>
+            </ngx-slick>
 
-            <div class="tab-content" id="tab1">
-                <p>{{product.description}}</p>
+            <div style="display: inline;">
+                <div class="icon-box" style="float: left;">
+                <span (click)="slickModal.slickPrev()">
+                    <i class="fa fa-backward"></i>
+                </span>
+                </div>
+                <div class="icon-box" style="float: right;">
+                <span (click)="slickModal.slickNext()">
+                    <i class="fa fa-forward"></i>
+                </span>
+                </div>
             </div>
+        </div>
 
-            <div class="tab-content" id="tab2">
 
-                <table class="basic-table">
-                    <tr>
-                        <th>Material</th>
-                        <td>Wool</td>
-                    </tr>
+        <!-- Content
+        ================================================== -->
+        <div class="eight columns">
+            <div class="product-page">
 
-                    <tr>
-                        <th>Weight</th>
-                        <td>0.5 lbs</td>
-                    </tr>
+                <!-- Headline -->
+                <section class="title">
+                    <h2>{{product.name}}</h2>
 
-                    <tr>
-                        <th>Size</th>
-                        <td>Medium</td>
-                    </tr>
-                </table>
-
-            </div>
-
-            <div class="tab-content" id="tab3">
-
-                <!-- Reviews -->
-                <section class="comments">
-                    <p class="margin-bottom-10">There are no reviews yet.</p>
-
-                    <a href="#small-dialog" class="popup-with-zoom-anim button color margin-left-0">Add Review</a>
-
-                    <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-                        <h3 class="headline">Add Review</h3><span class="line margin-bottom-25"></span><div class="clearfix"></div>
-
-                        <!-- Form -->
-                        <form id="add-comment" class="add-comment">
-                            <fieldset>
-
-                                <div>
-                                    <label>Name:</label>
-                                    <input type="text" value=""/>
-                                </div>
-
-                                <div>
-                                    <label>Rating:</label>
-                                    <span class="rate">
-											<span class="star"></span>
-											<span class="star"></span>
-											<span class="star"></span>
-											<span class="star"></span>
-											<span class="star"></span>
-										</span>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                <div class="margin-top-20">
-                                    <label>Email: <span>*</span></label>
-                                    <input type="text" value=""/>
-                                </div>
-
-                                <div>
-                                    <label>Review: <span>*</span></label>
-                                    <textarea cols="40" rows="3"></textarea>
-                                </div>
-
-                            </fieldset>
-
-                            <a href="#" class="button color">Add Review</a>
-                            <div class="clearfix"></div>
-
-                        </form>
+                    <div *ngIf="product.promo == true;else other_content">
+                        <span class="product-price-discount">{{product.price}}</span>
+                        <span class="product-price">{{product.promoPrice}}</span>
                     </div>
+
+                    <ng-template #other_content>
+                        <span class="product-price">{{product.price}}</span>
+                    </ng-template>
+
+                </section>
+
+                <!-- Text Parapgraph -->
+                <section>
+                    <p class="margin-reset">{{product.description}}</p>
+
+                    <div class="clearfix"></div>
+                </section>
+
+
+                <section class="linking">
+
+                    <form action='#'>
+                        <div class="qtyminus"></div>
+                        <input type='text' name="quantity" value='1' class="qty"/>
+                        <div class="qtyplus"></div>
+                    </form>
+
+                    <a href="javascript:void(0);" (click)="addToCart(product.id)" class="button adc">Add to Cart</a>
+                    <div class="clearfix"></div>
 
                 </section>
 
             </div>
-
         </div>
-    </div>
-</div>
 
-<!-- Related Products -->
-<div class="container margin-top-5">
-
-    <!-- Headline -->
-    <div class="sixteen columns">
-        <h3 class="headline">Related Products</h3>
-        <span class="line margin-bottom-0"></span>
     </div>
 
-    <!-- Products -->
-    <div class="products">
+    <hr/>
 
-        <!-- Product #1 -->
-        <div class="four columns">
-            <figure class="product">
-                <div class="mediaholder">
-                    <a href="#">
-                        <img alt="" src="/src/theme/css/images/shop_item_01.jpg"/>
-                        <div class="cover">
-                            <img alt="" src="/src/theme/css/images/shop_item_01_hover.jpg"/>
-                        </div>
-                    </a>
-                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                </div>
+    <div class="container">
+        <div class="sixteen columns">
 
-                <a href="#">
-                    <section>
-                        <span class="product-category">Skirts</span>
-                        <h5>Brown Mini Skirt</h5>
-                        <span class="product-price">$79.00</span>
-                    </section>
-                </a>
-            </figure>
+            <h2>Item description</h2>
+            <div class="tabs-container">
+                <p>{{product.description}}</p>
+            </div>
         </div>
-
-        <!-- Product #2 -->
-        <div class="four columns">
-            <figure class="product">
-                <div class="mediaholder">
-                    <a href="#">
-                        <img alt="" src="/src/theme/css/images/shop_item_04.jpg"/>
-                        <div class="cover">
-                            <img alt="" src="/src/theme/css/images/shop_item_04_hover.jpg"/>
-                        </div>
-                    </a>
-                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-
-                <a href="#">
-                    <section>
-                        <span class="product-category">Shirts</span>
-                        <h5>Vintage Stripe Jumper</h5>
-                        <span class="product-price">$49.00</span>
-                    </section>
-                </a>
-            </figure>
-        </div>
-
-        <!-- Product #3 -->
-        <div class="four columns">
-            <figure class="product">
-                <div class="mediaholder">
-                    <a href="#">
-                        <img alt="" src="/src/theme/css/images/shop_item_07.jpg"/>
-                        <div class="cover">
-                            <img alt="" src="/src/theme/css/images/shop_item_07_hover.jpg"/>
-                        </div>
-                    </a>
-                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-
-                <a href="#">
-                    <section>
-                        <span class="product-category">Shirts</span>
-                        <h5>Shirt in Navy Stripe</h5>
-                        <span class="product-price">$49.00</span>
-                    </section>
-                </a>
-            </figure>
-        </div>
-
-        <!-- Product #4 -->
-        <div class="four columns">
-            <figure class="product">
-                <div class="mediaholder">
-                    <a href="#">
-                        <img alt="" src="/src/theme/css/images/shop_item_09.jpg"/>
-                        <div class="cover">
-                            <img alt="" src="/src/theme/css/images/shop_item_09_hover.jpg"/>
-                        </div>
-                    </a>
-                    <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-
-                <a href="#">
-                    <section>
-                        <span class="product-category">Shirts</span>
-                        <h5>Long Sleeve Check Shirt</h5>
-                        <span class="product-price">$69.00</span>
-                    </section>
-                </a>
-            </figure>
-        </div>
-
     </div>
 </div>

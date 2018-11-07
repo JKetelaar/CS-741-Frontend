@@ -17,7 +17,12 @@ export class SingleProductComponent implements OnInit {
     product: Product;
     id: number;
 
-    constructor(private productsService: ProductsService, private cartService: CartService, private route: ActivatedRoute, private header: HeaderComponent) {
+    slideConfig = {'slidesToShow': 1, 'slidesToScroll': 1};
+
+    constructor(private productsService: ProductsService,
+                private cartService: CartService,
+                private route: ActivatedRoute,
+                private header: HeaderComponent) {
     }
 
     ngOnInit() {

@@ -9,7 +9,7 @@
 
         <nav id="breadcrumbs">
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a routerLink="/home">Home</a></li>
                 <li>Products</li>
             </ul>
         </nav>
@@ -35,7 +35,8 @@
                             <img alt="" src="{{getImageURL(product)}}"/>
                         </div>
                     </a>
-                    <a href="javascript:void(0);" (click)="addToCart(product.id)"  class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                    <a href="javascript:void(0);" (click)="addToCart(product.id)" class="product-button">
+                        <i class="fa fa-shopping-cart"></i> Add to Cart</a>
                 </div>
 
                 <a routerLink="/product/{{product.id}}">
@@ -47,7 +48,7 @@
                             <span class="product-price">{{product.finalPrice}}</span>
                         </div>
 
-                        <ng-template #other_content> <span class="product-price">{{product.price}}</span> </ng-template>
+                        <ng-template #other_content><span class="product-price">{{product.price}}</span></ng-template>
                     </section>
                 </a>
             </figure>
