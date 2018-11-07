@@ -20,6 +20,8 @@ import {SearchModule} from '@app/search/search.module';
 import {CookieService} from 'ngx-cookie-service';
 import {CartModule} from '@app/cart/cart.module';
 
+import { SlickModule } from 'ngx-slick';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -35,6 +37,7 @@ import {CartModule} from '@app/cart/cart.module';
         LoginModule,
         SearchModule,
         CartModule,
+        SlickModule.forRoot(),
         // Keep this module as last
         AppRoutingModule,
     ],

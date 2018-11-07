@@ -1,91 +1,104 @@
-<!-- Titlebar
-================================================== -->
-<section class="titlebar">
+<div *ngIf="product != null">
+    <!-- Titlebar
+    ================================================== -->
+    <section class="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <h2>Shop</h2>
+
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a routerLink="/home">Home</a></li>
+                        <li><a routerLink="/products">Products</a></li>
+                        <li><a routerLink="/product/{{product.id}}">{{product.name}}</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="container">
+
+        <!-- Slider
+        ================================================== -->
+        <div class="eight columns">
+            <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
+                <div ngxSlickItem *ngFor="let slide of product.images" class="slide">
+                    <img src="{{ getImageURL(slide) }}" alt="" width="100%">
+                </div>
+            </ngx-slick>
+
+            <div style="display: inline;">
+                <div class="icon-box" style="float: left;">
+                <span (click)="slickModal.slickPrev()">
+                    <i class="fa fa-backward"></i>
+                </span>
+                </div>
+                <div class="icon-box" style="float: right;">
+                <span (click)="slickModal.slickNext()">
+                    <i class="fa fa-forward"></i>
+                </span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Content
+        ================================================== -->
+        <div class="eight columns">
+            <div class="product-page">
+
+                <!-- Headline -->
+                <section class="title">
+                    <h2>{{product.name}}</h2>
+
+                    <div *ngIf="product.promo == true;else other_content">
+                        <span class="product-price-discount">{{product.price}}</span>
+                        <span class="product-price">{{product.promoPrice}}</span>
+                    </div>
+
+                    <ng-template #other_content>
+                        <span class="product-price">{{product.price}}</span>
+                    </ng-template>
+
+                </section>
+
+                <!-- Text Parapgraph -->
+                <section>
+                    <p class="margin-reset">{{product.description}}</p>
+
+                    <div class="clearfix"></div>
+                </section>
+
+
+                <section class="linking">
+
+                    <form action='#'>
+                        <div class="qtyminus"></div>
+                        <input type='text' name="quantity" value='1' class="qty"/>
+                        <div class="qtyplus"></div>
+                    </form>
+
+                    <a href="javascript:void(0);" (click)="addToCart(product.id)" class="button adc">Add to Cart</a>
+                    <div class="clearfix"></div>
+
+                </section>
+
+            </div>
+        </div>
+
+    </div>
+
+    <hr/>
+
     <div class="container">
         <div class="sixteen columns">
-            <h2>Shop</h2>
 
-            <nav id="breadcrumbs">
-                <ul>
-                    <li><a routerLink="/home">Home</a></li>
-                    <li><a routerLink="/products">Products</a></li>
-                    <li><a routerLink="/product/{{product.id}}">{{product.name}}</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</section>
-
-
-<div class="container">
-
-    <!-- Slider
-    ================================================== -->
-    <div class="eight columns">
-        <div class="slider-padding">
-            <div id="product-slider-vertical" class="royalSlider rsDefault">
-                <a *ngFor="let image of product.images" href="{{getImageURL(image)}}" class="mfp-gallery">
-                    <img class="rsImg" src="{{getImageURL(image)}}" [attr.data-rsTmb]="getImageURL(image)" alt=""/>
-                </a>
+            <h2>Item description</h2>
+            <div class="tabs-container">
+                <p>{{product.description}}</p>
             </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-
-
-    <!-- Content
-    ================================================== -->
-    <div class="eight columns">
-        <div class="product-page">
-
-            <!-- Headline -->
-            <section class="title">
-                <h2>{{product.name}}</h2>
-
-                <div *ngIf="product.promo == true;else other_content">
-                    <span class="product-price-discount">{{product.price}}</span>
-                    <span class="product-price">{{product.promoPrice}}</span>
-                </div>
-
-                <ng-template #other_content>
-                    <span class="product-price">{{product.price}}</span>
-                </ng-template>
-
-            </section>
-
-            <!-- Text Parapgraph -->
-            <section>
-                <p class="margin-reset">{{product.description}}</p>
-
-                <div class="clearfix"></div>
-            </section>
-
-
-            <section class="linking">
-
-                <form action='#'>
-                    <div class="qtyminus"></div>
-                    <input type='text' name="quantity" value='1' class="qty"/>
-                    <div class="qtyplus"></div>
-                </form>
-
-                <a href="javascript:void(0);" (click)="addToCart(product.id)" class="button adc">Add to Cart</a>
-                <div class="clearfix"></div>
-
-            </section>
-
-        </div>
-    </div>
-
-</div>
-
-
-<div class="container">
-    <div class="sixteen columns">
-
-        <h2>Item description</h2>
-        <div class="tabs-container">
-            <p>{{product.description}}</p>
         </div>
     </div>
 </div>
