@@ -35,10 +35,7 @@ export class PromotionComponent implements OnInit {
         this.userService.getCurrentUser()
             .pipe()
             .subscribe((user: User) => {
-                if (!user) {
-                    this.router.navigate(['home']);
-                }
-                if (user.roles[0] !== 'ROLE_ADMIN') {
+                if (user === null || user.roles[0] !== 'ROLE_ADMIN') {
                     this.router.navigate(['home']);
                 }
             });
