@@ -16,6 +16,7 @@ const routes = {
 
 export interface ProductContext {
     id: number;
+    quantity: number;
 }
 
 export interface AdjustContext {
@@ -47,8 +48,13 @@ export class CartService {
     }
 
     add(context: ProductContext) {
+        let body = 'product=' + context.id;
+        if (context.quantity != null) {
+            body += '&quantity=' + context.quantity;
+        }
+
         return this.httpClient
-            .post(routes.add(context), 'product=' + context.id, {
+            .post(routes.add(context), body, {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
             })
             .pipe(

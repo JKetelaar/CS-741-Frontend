@@ -75,12 +75,12 @@
             <section class="linking">
 
                 <form action='#'>
-                    <div class="qtyminus"></div>
-                    <input type='text' name="quantity" value='1' class="qty" />
-                    <div class="qtyplus"></div>
+                    <div (click)="decreaseQuantity()" class="qtyminus"></div>
+                    <input type='text' name="quantity" value='{{enteredQuantity}}' class="qty" />
+                    <div (click)="increaseQuantity()" class="qtyplus"></div>
                 </form>
 
-                <a href="javascript:void(0);" (click)="addToCart(product.id)" class="button adc">Add to Cart</a>
+                <a href="javascript:void(0);" (click)="addToCart(product.id, enteredQuantity)" class="button adc">Add to Cart</a>
                 <div class="clearfix"></div>
 
             </section>

@@ -43,14 +43,14 @@ export class CartComponent implements OnInit {
     }
 
     add(id: number) {
-        this.cartService.add({id: id}).pipe().subscribe(() => {
+        this.cartService.add({id: id, quantity: null}).pipe().subscribe(() => {
             this.loadCart();
             this.header.refreshCart(true);
         });
     }
 
     delete(id: number) {
-        this.cartService.delete({id: id}).pipe().subscribe(() => {
+        this.cartService.delete({id: id, quantity: null}).pipe().subscribe(() => {
             this.loadCart();
             this.header.refreshCart(true);
         });
