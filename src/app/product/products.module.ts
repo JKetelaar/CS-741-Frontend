@@ -9,6 +9,7 @@ import {ProductsService} from '@app/product/products.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {SingleProductComponent} from '@app/product/single-product.component';
 import {HeaderComponent} from '@app/shell/header/header.component';
+import {SlickModule} from 'ngx-slick';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {HeaderComponent} from '@app/shell/header/header.component';
         CoreModule,
         SharedModule,
         ProductsRoutingModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        SlickModule,
     ],
     declarations: [
         ProductsComponent,

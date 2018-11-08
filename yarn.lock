@@ -4992,6 +4992,10 @@ ngx-pagination@^3.2.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ngx-pagination/-/ngx-pagination-3.2.1.tgz#d82fe15b03a628621dabb835ebc90011f2557689"
 
+ngx-slick@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/ngx-slick/-/ngx-slick-0.2.1.tgz#63f2525b953977f7f8780dc8cebea46553642fec"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

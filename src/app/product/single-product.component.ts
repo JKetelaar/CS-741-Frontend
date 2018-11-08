@@ -19,6 +19,7 @@ export class SingleProductComponent implements OnInit {
     id: number;
     enteredQuantity: number;
     cart: Cart;
+    slideConfig = {'slidesToShow': 1, 'slidesToScroll': 1};
 
     constructor(private productsService: ProductsService,
                 private cartService: CartService,
