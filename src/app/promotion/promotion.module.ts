@@ -3,9 +3,9 @@ import {CommonModule} from '@angular/common';
 
 import {CoreModule} from '@app/core';
 import {SharedModule} from '@app/shared';
-import {CartRoutingModule} from './cart-routing.module';
-import {CartComponent} from './cart.component';
-import {CartService} from './cart.service';
+import {PromotionRoutingModule} from './promotion-routing.module';
+import {PromotionComponent} from './promotion.component';
+import {PromotionService} from './promotion.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
@@ -13,16 +13,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         CommonModule,
         CoreModule,
         SharedModule,
-        CartRoutingModule,
+        PromotionRoutingModule,
         FormsModule,
         ReactiveFormsModule
     ],
     declarations: [
-        CartComponent
+        PromotionComponent
     ],
     providers: [
-        CartService
+        PromotionService
     ]
 })
-export class CartModule {
+export class PromotionModule {
 }

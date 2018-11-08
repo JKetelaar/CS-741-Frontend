@@ -19,7 +19,7 @@ import {FooterComponent} from '@app/shell/footer/footer.component';
 import {SearchModule} from '@app/search/search.module';
 import {CookieService} from 'ngx-cookie-service';
 import {CartModule} from '@app/cart/cart.module';
-
+import {PromotionModule} from '@app/promotion/promotion.module';
 import { SlickModule } from 'ngx-slick';
 
 @NgModule({
@@ -37,6 +37,7 @@ import { SlickModule } from 'ngx-slick';
         LoginModule,
         SearchModule,
         CartModule,
+        PromotionModule,
         SlickModule.forRoot(),
         // Keep this module as last
         AppRoutingModule,

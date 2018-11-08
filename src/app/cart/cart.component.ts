@@ -5,8 +5,8 @@ import {Cart} from '@app/models/Cart';
 import {ProductView} from '@app/models/ProductView';
 import {ProductsService} from '@app/product/products.service';
 import {HeaderComponent} from '@app/shell/header/header.component';
-import {Product} from '@app/models/Product';
 import {OrderItem} from '@app/models/OrderItem';
+import {PromotionService} from '@app/promotion/promotion.service';
 
 @Component({
     selector: 'app-cart',
@@ -16,8 +16,12 @@ import {OrderItem} from '@app/models/OrderItem';
 
 export class CartComponent implements OnInit {
     cart: Cart;
+    promoCode: string;
 
-    constructor(private cartService: CartService, private productsService: ProductsService, private header: HeaderComponent) {
+    constructor(private cartService: CartService,
+                private productsService: ProductsService,
+                private header: HeaderComponent,
+                private promotionService: PromotionService) {
     }
 
     ngOnInit() {
@@ -32,15 +36,21 @@ export class CartComponent implements OnInit {
             });
     }
 
+    apply() {
+        this.promotionService.apply({code: this.promoCode}).pipe().subscribe(() => {
+            this.loadCart();
+        });
+    }
+
     add(id: number) {
-        this.cartService.add({id: id}).pipe().subscribe(() => {
+        this.cartService.add({id: id, quantity: null}).pipe().subscribe(() => {
             this.loadCart();
             this.header.refreshCart(true);
         });
     }
 
     delete(id: number) {
-        this.cartService.delete({id: id}).pipe().subscribe(() => {
+        this.cartService.delete({id: id, quantity: null}).pipe().subscribe(() => {
             this.loadCart();
             this.header.refreshCart(true);
         });
@@ -75,5 +85,9 @@ export class CartComponent implements OnInit {
 
     getImageURL(product: ProductView): string {
         return this.productsService.getImageURL(product.singleImage);
+    }
+
+    getPromoPercentage(): number {
+        return this.cartService.getPromoPercentage(this.cart);
     }
 }

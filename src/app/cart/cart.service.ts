@@ -4,7 +4,6 @@ import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Cart} from '@app/models/Cart';
 import {User} from '@app/models/User';
-import {Product} from '@app/models/Product';
 import {OrderItem} from '@app/models/OrderItem';
 
 const routes = {
@@ -17,6 +16,7 @@ const routes = {
 
 export interface ProductContext {
     id: number;
+    quantity: number;
 }
 
 export interface AdjustContext {
@@ -39,7 +39,7 @@ export class CartService {
 
     getCart(): Observable<Cart> {
         return this.httpClient
-            // .cache()
+        // .cache()
             .get(routes.cart())
             .pipe(
                 map((body: any) => body),
@@ -48,8 +48,13 @@ export class CartService {
     }
 
     add(context: ProductContext) {
+        let body = 'product=' + context.id;
+        if (context.quantity != null) {
+            body += '&quantity=' + context.quantity;
+        }
+
         return this.httpClient
-            .post(routes.add(context), 'product=' + context.id, {
+            .post(routes.add(context), body, {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
             })
             .pipe(
@@ -86,15 +91,15 @@ export class CartService {
             const product = cart.products[i];
             total += this.getTotalCostForProduct(product);
         }
-        return total;
+        return parseFloat((total).toFixed(2));
     }
 
     getOrderTotal(cart: Cart): number {
-        return parseFloat((this.getTotalCost(cart) - this.getTotalSavings(cart)).toFixed(2));
+        return cart.finalPrice;
     }
 
     getTotalCostForProduct(product: OrderItem): number {
-        return parseFloat((product.price * product.quantity).toFixed(2));
+        return parseFloat((product.product.price * product.quantity).toFixed(2));
     }
 
     getTotal(cart: Cart): number {
@@ -106,13 +111,17 @@ export class CartService {
         return total;
     }
 
+    getPromoPercentage(cart: Cart): number {
+        return cart.promotion == null ? 0 : cart.promotion.percentage;
+    }
+
     getTotalSavings(cart: Cart): number {
         let total = 0;
         for (let i = 0; i < cart.products.length; i++) {
             const product = cart.products[i];
-            const promo = !product.product.promoPrice ? 0 : parseFloat((product.product.promoPrice).toFixed(2));
-            total += parseFloat(((product.price - promo) * product.quantity).toFixed(2));
+            total += (product.quantity * product.product.promoPrice);
         }
-        return total === this.getTotal(cart) ? 0 : total;
+        return total;
+        return parseFloat((this.getTotalCost(cart) - total).toFixed(2));
     }
 }

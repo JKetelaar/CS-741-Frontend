@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
     }
 
     addToCart(id: number) {
-        this.cartService.add({id: id}).pipe().subscribe(() => {
+        this.cartService.add({id: id, quantity: null}).pipe().subscribe(() => {
             this.header.refreshCart(true);
         });
     }

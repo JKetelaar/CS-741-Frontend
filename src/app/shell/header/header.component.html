@@ -82,7 +82,8 @@
 
                     <ul *ngFor="let product of cart.products">
                         <li>
-                            <a href="product/{{product.id}}"><img src="src/theme/css/images/small_product_list_08.jpg" alt=""/></a>
+                            <a href="product/{{product.id}}"><img src="src/theme/css/images/small_product_list_08.jpg"
+                                                                  alt=""/></a>
                             <a href="product/{{product.id}}">{{product.name}}</a>
                             <span>{{product.quantity}} x ${{product.price}}</span>
                             <div class="clearfix"></div>
@@ -127,7 +128,7 @@
             <ul class="menu" id="responsive">
 
                 <li>
-                  <a routerLink="/home" class="current homepage" id="current">Home</a>
+                    <a routerLink="/home" class="current homepage" id="current">Home</a>
                 </li>
 
                 <li class="demo-button">
@@ -152,6 +153,16 @@
                 <li class="demo-button">
                     <a routerLink="/account">My Account</a>
                 </li>
+
+                <li *ngIf="admin == true;" class="dropdown">
+                    <a class="with-ul" href="javascript:void(0);">Admin</a>
+                    <ul>
+                        <li><a routerLink="/promotion">Manage Promotions</a></li>
+                        <li><a routerLink="/">Manage Products</a></li>
+                        <li><a routerLink="/">Manage Users</a></li>
+                    </ul>
+                </li>
+
             </ul>
         </nav>
     </div>

@@ -6,5 +6,6 @@ export interface User {
     password: string;
     billingAddress: string;
     shippingAddress: string;
+    roles: string[];
 }
 

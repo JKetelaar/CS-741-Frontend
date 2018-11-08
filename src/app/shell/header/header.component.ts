@@ -6,6 +6,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {Cart} from '@app/models/Cart';
 import {CartService} from '@app/cart/cart.service';
 import {UserService} from '@app/login/user.service';
+import {User} from '@app/models/User';
 
 @Component({
     selector: 'app-header',
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit {
     menuHidden = true;
     loggedIn: boolean = null;
     cart: Cart;
+    admin = false;
 
     constructor(private router: Router,
                 private authenticationService: AuthenticationService,
@@ -27,6 +29,13 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.userService.getCurrentUser()
+            .pipe()
+            .subscribe((user: User) => {
+                if (user.roles[0] === 'ROLE_ADMIN') {
+                    this.admin = true;
+                }
+            });
         this.loadCart();
     }
 

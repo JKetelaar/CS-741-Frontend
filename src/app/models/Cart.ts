@@ -1,6 +1,6 @@
 import {User} from '@app/models/User';
-import {Product} from '@app/models/Product';
 import {OrderItem} from '@app/models/OrderItem';
+import {Promotion} from '@app/models/Promotion';
 
 export interface Cart {
     changed: number;
@@ -8,4 +8,6 @@ export interface Cart {
     products: OrderItem[];
     user?: User;
     guestId?: string;
+    finalPrice: number;
+    promotion?: Promotion;
 }
