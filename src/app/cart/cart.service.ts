@@ -11,6 +11,7 @@ const routes = {
     add: (c: ProductContext) => `/cart/add`,
     delete: (c: ProductContext) => `/cart/delete`,
     adjust: (c: ProductContext) => `/cart/adjust`,
+    clear: () => `/cart/clear`,
 
 };
 
@@ -60,6 +61,15 @@ export class CartService {
             .pipe(
                 map((body: any) => body),
                 catchError(() => of('Error, could not add product'))
+            );
+    }
+
+    clear() {
+        return this.httpClient
+            .post(routes.clear(), null)
+            .pipe(
+                map((body: any) => body),
+                catchError(() => 'Error, could not delete cart')
             );
     }
 

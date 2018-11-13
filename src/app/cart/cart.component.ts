@@ -36,6 +36,13 @@ export class CartComponent implements OnInit {
             });
     }
 
+    clear() {
+        this.cartService.clear()
+            .pipe().subscribe(() => {
+            window.location.reload();
+        });
+    }
+
     apply() {
         this.promotionService.apply({code: this.promoCode}).pipe().subscribe(() => {
             this.loadCart();
