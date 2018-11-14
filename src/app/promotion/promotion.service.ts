@@ -6,7 +6,7 @@ import {Promotion} from '@app/models/Promotion';
 
 const routes = {
     promotion: () => `/admin/promotion/`,
-    apply: (c: PromotionContext) => '/admin/promotion/apply',
+    apply: (c: PromotionContext) => '/promotion/apply',
     delete: (c: DeletePromotionContext) => `/admin/promotion/${c.id}`,
     create: (c: CreatePromotionContext) => '/admin/promotion/new'
 
