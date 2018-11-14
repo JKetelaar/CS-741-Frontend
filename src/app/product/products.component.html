@@ -30,9 +30,9 @@
             <figure class="product">
                 <div class="mediaholder">
                     <a routerLink="/product/{{product.id}}">
-                        <img alt="" src="{{getImageURL(product)}}"/>
+                        <img alt="" style="height: 200px;" src="{{getImageURL(product)}}"/>
                         <div class="cover">
-                            <img alt="" src="{{getImageURL(product)}}"/>
+                            <img alt="" style="height: 200px;" src="{{getImageURL(product)}}"/>
                         </div>
                     </a>
                     <a href="javascript:void(0);" (click)="addToCart(product.id)" class="product-button">

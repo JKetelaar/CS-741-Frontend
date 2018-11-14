@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
         this.userService.getCurrentUser()
             .pipe()
             .subscribe((user: User) => {
-                if (user.roles[0] === 'ROLE_ADMIN') {
+                if (user !== null && user.roles[0] === 'ROLE_ADMIN') {
                     this.admin = true;
                 }
             });
