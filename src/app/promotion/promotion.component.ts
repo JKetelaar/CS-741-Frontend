@@ -40,6 +40,10 @@ export class PromotionComponent implements OnInit {
                 }
             });
 
+        this.loadPromotions();
+    }
+
+    loadPromotions() {
         this.promotionService.getPromotions()
             .pipe()
             .subscribe((promotions: Promotion[]) => {
@@ -52,12 +56,14 @@ export class PromotionComponent implements OnInit {
             {code: this.code, percentage: this.percentage, expirationDate: this.expirationDate}
         ).subscribe(result => {
             result === 'Error, could not create promotion' ? this.isValid = false : this.isValid = true;
+
+            this.loadPromotions();
         });
     }
 
     delete(id: number) {
         this.promotionService.delete({id: id}).pipe().subscribe(result => {
-            window.location.reload();
+            this.loadPromotions();
         });
     }
 
