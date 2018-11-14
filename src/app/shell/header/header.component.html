@@ -1,5 +1,6 @@
 <!-- Top Bar
 ================================================== -->
+
 <div id="top-bar">
     <div class="container">
 
@@ -36,7 +37,7 @@
                 <li><a routerLink="/cart">Shopping Cart</a></li>
                 <li><a routerLink="/checkout">Checkout</a></li>
                 <li *ngIf="isLoggedIn()"><a routerLink="/account">My Account</a></li>
-                <li *ngIf="!isLoggedIn()"><a routerLink="/login">Login</a></li>
+                <li *ngIf="!isLoggedIn()"><a href="/login">Login</a></li>
             </ul>
         </div>
     </div>
