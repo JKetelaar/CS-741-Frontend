@@ -50,7 +50,7 @@
                     <td>
                         <form action='#'>
                             <div (click)="adjust(product.product.id, product.quantity - 1)" class="qtyminus"></div>
-                            <input type='text' name="quantity" value={{product.quantity}} class="qty"/>
+                            <input type='text' readonly name="quantity" value={{product.quantity}} class="qty"/>
                             <div (click)="add(product.product.id)" class="qtyplus"></div>
                         </form>
                     </td>
