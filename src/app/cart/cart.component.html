@@ -79,6 +79,14 @@
                 </tr>
 
             </table>
+            <div *ngIf="isValid == false" class="notification error closeable">
+                <p><span>Error!</span> Invalid promotion code.</p>
+                <a class="close" href="#"></a>
+            </div>
+            <div *ngIf="isValid == true" class="notification success closeable">
+                <p><span>Success!</span> Promotion code applied!</p>
+                <a class="close" href="#"></a>
+            </div>
         </div>
 
 
