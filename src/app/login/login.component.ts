@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         result === 'Error, could not login user' ? this.isValid = false : this.isValid = true;
 
         if (this.isValid) {
-          this.router.navigate(['/home']);
+          window.location.href = '/home';
         }
       });
   }
