@@ -17,14 +17,18 @@ import {PromotionService} from '@app/promotion/promotion.service';
 export class CartComponent implements OnInit {
     cart: Cart;
     promoCode: string;
+    isValid: boolean;
+
 
     constructor(private cartService: CartService,
                 private productsService: ProductsService,
                 private header: HeaderComponent,
                 private promotionService: PromotionService) {
+        this.isValid = null;
     }
 
     ngOnInit() {
+        this.isValid = null;
         this.loadCart();
     }
 
@@ -44,7 +48,8 @@ export class CartComponent implements OnInit {
     }
 
     apply() {
-        this.promotionService.apply({code: this.promoCode}).pipe().subscribe(() => {
+        this.promotionService.apply({code: this.promoCode}).pipe().subscribe(result => {
+            result === 'Error, could not apply promotion' ? this.isValid = false : this.isValid = true;
             this.loadCart();
         });
     }
