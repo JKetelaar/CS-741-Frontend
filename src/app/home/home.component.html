@@ -59,9 +59,9 @@
             <figure class="product">
                 <div class="mediaholder">
                     <a routerLink="/product/{{product.id}}">
-                        <img alt="" src="src/theme/css/images/shop_item_01.jpg"/>
+                        <img alt="" style="height: 200px;" src="{{getImageURL(product)}}"/>
                         <div class="cover">
-                            <img alt="" src="src/theme/css/images/shop_item_01_hover.jpg"/>
+                            <img alt="" style="height: 200px;" src="{{getImageURL(product)}}"/>
                         </div>
                     </a>
                     <a href="javascript:void(0);" (click)="addToCart(product.id)" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>

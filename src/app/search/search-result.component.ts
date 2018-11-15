@@ -22,4 +22,8 @@ export class SearchResultComponent implements OnInit {
                 this.searchQuery = results;
             });
     }
+
+    getImageURL(product: ProductView): string {
+        return this.productsService.getImageURL(product.singleImage);
+    }
 }

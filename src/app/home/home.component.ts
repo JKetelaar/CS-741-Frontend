@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
         this.productsService.getProductsBy({orderby: 'creationDate', limit: 4  })
             .pipe()
             .subscribe((products: ProductView[]) => {
-              console.log(products)
                 this.latestProducts = products;
             });
     }
@@ -31,5 +30,9 @@ export class HomeComponent implements OnInit {
         this.cartService.add({id: id, quantity: null}).pipe().subscribe(() => {
             this.header.refreshCart(true);
         });
+    }
+
+    getImageURL(product: ProductView): string {
+        return this.productsService.getImageURL(product.singleImage);
     }
 }
