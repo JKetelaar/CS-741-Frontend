@@ -21,6 +21,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {CartModule} from '@app/cart/cart.module';
 import {PromotionModule} from '@app/promotion/promotion.module';
 import { SlickModule } from 'ngx-slick';
+import {CheckoutModule} from '@app/checkout/checkout.module';
 
 @NgModule({
     imports: [
@@ -38,6 +39,7 @@ import { SlickModule } from 'ngx-slick';
         SearchModule,
         CartModule,
         PromotionModule,
+        CheckoutModule,
         SlickModule.forRoot(),
         // Keep this module as last
         AppRoutingModule,

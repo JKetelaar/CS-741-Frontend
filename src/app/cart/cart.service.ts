@@ -125,6 +125,10 @@ export class CartService {
         return cart.promotion == null ? 0 : cart.promotion.percentage;
     }
 
+    getPromoName(cart: Cart): string {
+        return cart.promotion == null ? '' : cart.promotion.code;
+    }
+
     getTotalSavings(cart: Cart): number {
         let total = 0;
         for (let i = 0; i < cart.products.length; i++) {

@@ -1,0 +1,396 @@
+<!-- Titlebar
+================================================== -->
+<section class="titlebar">
+    <div class="container">
+        <div class="sixteen columns">
+            <h2>Checkout</h2>
+
+            <nav id="breadcrumbs">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Checkout</a></li>
+                    <li>Billing Details</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+
+<!-- Content
+================================================== -->
+
+<!-- Container -->
+<div class="container">
+
+    <div class="eight columns">
+
+        <!-- Billing Details Content -->
+        <!-- If user is null -->
+        <div *ngIf="user == null;else other_content">
+            <div class="checkout-section"><span>1</span> Billing Details</div>
+            <div class="checkout-content">
+                <div class="half first"><label>First Name: <abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                        value=""/></div>
+                <div class="half"><label>Last Name: <abbr>*</abbr></label><input type="text" placeholder="" value=""/>
+                </div>
+
+
+                <label>Street Address: <abbr>*</abbr></label><input type="text" class="input-text " value=""/>
+
+
+                <div class="half first"><label>Town / City: <abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                         value=""/></div>
+                <div class="half"><label>Postcode / Zip:<abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                     value=""/>
+                </div>
+
+
+                <!-- States -->
+                <div class="fullwidth">
+                    <label>State: <abbr>*</abbr></label>
+                    <select>
+                        <option value="">Select a state&hellip;</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="DC">District Of Columbia</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                        <option value="AA">Armed Forces (AA)</option>
+                        <option value="AE">Armed Forces (AE)</option>
+                        <option value="AP">Armed Forces (AP)</option>
+                        <option value="AS">American Samoa</option>
+                        <option value="GU">Guam</option>
+                        <option value="MP">Northern Mariana Islands</option>
+                        <option value="PR">Puerto Rico</option>
+                        <option value="UM">US Minor Outlying Islands</option>
+                        <option value="VI">US Virgin Islands</option>
+                    </select>
+                </div>
+
+
+                <div class="half first"><label>Email Adress: <abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                          value=""/></div>
+                <div class="half"><label>Phone: <abbr>*</abbr></label><input type="text" placeholder="" value=""/></div>
+
+
+                <div class="clearfix"></div>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="checkout-section"><span>2</span> Shipping Details</div>
+            <div class="checkout-content">
+                <div class="half first"><label>First Name: <abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                        value=""/></div>
+                <div class="half"><label>Last Name: <abbr>*</abbr></label><input type="text" placeholder="" value=""/>
+                </div>
+
+
+                <label>Street Address: <abbr>*</abbr></label><input type="text" class="input-text " value=""/>
+
+
+                <div class="half first"><label>Town / City: <abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                         value=""/></div>
+                <div class="half"><label>Postcode / Zip:<abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                     value=""/>
+                </div>
+
+
+                <!-- States -->
+                <div class="fullwidth">
+                    <label>State: <abbr>*</abbr></label>
+                    <select>
+                        <option value="">Select a state&hellip;</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="DC">District Of Columbia</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                        <option value="AA">Armed Forces (AA)</option>
+                        <option value="AE">Armed Forces (AE)</option>
+                        <option value="AP">Armed Forces (AP)</option>
+                        <option value="AS">American Samoa</option>
+                        <option value="GU">Guam</option>
+                        <option value="MP">Northern Mariana Islands</option>
+                        <option value="PR">Puerto Rico</option>
+                        <option value="UM">US Minor Outlying Islands</option>
+                        <option value="VI">US Virgin Islands</option>
+                    </select>
+                </div>
+
+
+                <div class="half first"><label>Email Adress: <abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                          value=""/></div>
+                <div class="half"><label>Phone: <abbr>*</abbr></label><input type="text" placeholder="" value=""/></div>
+
+
+                <div class="clearfix"></div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <!-- If user is logged in/registered -->
+        <ng-template #other_content>
+            <div class="checkout-section"><span>1</span> Billing Details</div>
+            <div class="checkout-content">
+                <div class="fullwidth"><label>Name: <abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                        value="{{user.billingAddress.fullname}}"/></div>
+
+
+                <label>Street Address: <abbr>*</abbr></label><input type="text" class="input-text " value="{{user.billingAddress.address}}"/>
+                <label>Secondary Address: <abbr>*</abbr></label><input type="text" class="input-text " value="{{user.billingAddress.secondaryAddress}}"/>
+
+
+                <div class="half first"><label>Town / City: <abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                         value="{{user.billingAddress.city}}"/></div>
+                <div class="half"><label>Postcode / Zip:<abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                     value="{{user.billingAddress.zipCode}}"/>
+                </div>
+
+
+                <!-- States -->
+                <div class="fullwidth"><label>State:<abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                     value="{{user.billingAddress.state}}"/>
+                </div>
+                <div class="half first"><label>Email Adress: <abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                          value="{{user.email}}"/></div>
+                <div class="half"><label>Phone: <abbr>*</abbr></label><input type="text" placeholder="" value="{{user.billingAddress.phoneNumber}}"/></div>
+
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="checkout-section"><span>2</span> Shipping Details</div>
+            <div class="checkout-content">
+                <div class="fullwidth"><label>Name: <abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                 value="{{user.shippingAddress.fullname}}"/></div>
+
+
+                <label>Street Address: <abbr>*</abbr></label><input type="text" class="input-text " value="{{user.shippingAddress.address}}"/>
+                <label>Secondary Address: <abbr>*</abbr></label><input type="text" class="input-text " value="{{user.shippingAddress.secondaryAddress}}"/>
+
+
+                <div class="half first"><label>Town / City: <abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                         value="{{user.shippingAddress.city}}"/></div>
+                <div class="half"><label>Postcode / Zip:<abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                     value="{{user.shippingAddress.zipCode}}"/>
+                </div>
+
+
+                <!-- States -->
+                <div class="fullwidth"><label>State:<abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                 value="{{user.shippingAddress.state}}"/>
+                </div>
+                <div class="half first"><label>Email Adress: <abbr>*</abbr></label><input type="text" placeholder=""
+                                                                                          value="{{user.email}}"/></div>
+                <div class="half"><label>Phone: <abbr>*</abbr></label><input type="text" placeholder="" value="{{user.shippingAddress.phoneNumber}}"/></div>
+
+
+                <div class="clearfix"></div>
+            </div>
+        </ng-template>
+
+
+        <div class="clearfix"></div>
+
+        <!-- Payment -->
+        <div class="checkout-section"><span>3</span> Payment & Order Review</div>
+        <div class="checkout-summary">
+            <div class="eight columns alpha omega">
+                <ul class="address-review summary">
+                    <li><strong>Credit Card</strong></li>
+                    <li class="credit-card-fields">
+                        <span><label>Credit Card Number:</label><input type="text" value=""/></span>
+
+                        <span><label>Month:</label>
+							<select>
+								<option value="">01</option>
+								<option value="">02</option>
+								<option value="">03</option>
+								<option value="">04</option>
+								<option value="">05</option>
+								<option value="">06</option>
+								<option value="">07</option>
+								<option value="">08</option>
+								<option value="">09</option>
+								<option value="">10</option>
+								<option value="">11</option>
+								<option value="">12</option>
+							</select></span>
+
+                        <span><label>Year:</label>
+							<select>
+								<option value="">2014</option>
+								<option value="">2015</option>
+								<option value="">2016</option>
+								<option value="">2017</option>
+								<option value="">2018</option>
+							</select></span>
+                        <div class="clearfix"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Billing Details / Enc -->
+
+
+    <!-- Checkout Cart -->
+    <div class="eight columns">
+        <div class="checkout-section cart">Shopping Cart</div>
+        <!-- Cart -->
+        <table class="checkout cart-table responsive-table">
+
+            <tr>
+                <th class="hide-on-mobile">Item</th>
+                <th></th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+            </tr>
+
+            <tr *ngFor="let product of cart.products">
+                <td class="hide-on-mobile"><img src="images/small_product_list_08.jpg" alt=""/></td>
+                <td class="cart-title"><a href="product/{{product.id}}">{{product.name}}</a></td>
+                <td>{{product.product.price}}</td>
+                <td>{{product.quantity}}</td>
+                <td class="cart-total">{{getTotalCostForProduct(product)}}</td>
+            </tr>
+        </table>
+
+        <!-- Apply Coupon Code / Buttons -->
+        <table class="cart-table bottom">
+            <tr>
+                <th class="checkout-totals">
+                    <div class="checkout-subtotal">
+                        Savings: <span>- ${{getTotalSavings()}}</span>
+                    </div>
+                </th>
+                <th class="checkout-totals">
+                    <div class="checkout-subtotal">
+                        Cart Subtotal: <span>${{getTotalCost()}}</span>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th class="checkout-totals">
+                    <div class="checkout-subtotal">
+                        Promotion: {{getPromoName()}} <span>- %{{getPromoPercentage()}}</span>
+                    </div>
+                </th>
+                <th class="checkout-totals">
+                    <div class="checkout-subtotal">
+                        Order Total:<span>${{getOrderTotal()}}</span>
+                    </div>
+                </th>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <a href="#" class="continue button color" style="background-color: rgb(58, 207, 135);">Place Order</a>
+
+    </div>
+
+
+    <!-- Checkout Cart / End -->
+
+
+</div>
+<!-- Container / End -->
+
+
+<div class="margin-top-50"></div>
