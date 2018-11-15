@@ -7,6 +7,7 @@ import {PromotionRoutingModule} from './promotion-routing.module';
 import {PromotionComponent} from './promotion.component';
 import {PromotionService} from './promotion.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         SharedModule,
         PromotionRoutingModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgDatepickerModule
     ],
     declarations: [
         PromotionComponent

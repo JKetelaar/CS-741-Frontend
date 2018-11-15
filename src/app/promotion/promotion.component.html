@@ -41,8 +41,9 @@
                            class="input-text" name="code" id="code" value=""/>
                 </td>
                 <td>
-                    <input [(ngModel)]="expirationDate" type="expirationDate"
-                           class="input-text" name="expirationDate" id="expirationDate" value=""/>
+                    <ng-datepicker [(ngModel)]="expirationDate"></ng-datepicker>
+                    <!--<input [(ngModel)]="expirationDate" type="expirationDate"-->
+                           <!--class="input-text" name="expirationDate" id="expirationDate" value=""/>-->
                 </td>
                 <td>
                     <input [(ngModel)]="percentage" type="percentage"
