@@ -135,7 +135,6 @@ export class CartService {
             const product = cart.products[i];
             total += (product.quantity * product.product.promoPrice);
         }
-        return total;
         return parseFloat((this.getTotalCost(cart) - total).toFixed(2));
     }
 }
