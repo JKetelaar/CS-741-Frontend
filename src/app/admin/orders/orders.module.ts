@@ -1,28 +1,27 @@
 import {NgModule} from '@angular/core';
+import {PromotionRoutingModule} from '@app/admin/promotion/promotion-routing.module';
 import {CommonModule} from '@angular/common';
-
 import {CoreModule} from '@app/core';
 import {SharedModule} from '@app/shared';
-import {PromotionRoutingModule} from './promotion-routing.module';
-import {PromotionComponent} from './promotion.component';
-import {PromotionService} from './promotion.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {OrdersComponent} from '@app/admin/orders/orders.component';
+import {OrdersService} from '@app/admin/orders/orders.service';
 
 @NgModule({
     imports: [
         CommonModule,
         CoreModule,
         SharedModule,
-        PromotionRoutingModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        PromotionRoutingModule
     ],
     declarations: [
-        PromotionComponent
+        OrdersComponent
     ],
     providers: [
-        PromotionService
+        OrdersService
     ]
 })
-export class PromotionModule {
+export class OrdersModule {
 }

@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {PromotionService} from '@app/promotion/promotion.service';
 import {CartService} from '@app/cart/cart.service';
 import {Promotion} from '@app/models/Promotion';
 import {UserService} from '@app/login/user.service';
 import {User} from '@app/models/User';
+import {PromotionService} from '@app/admin/promotion/promotion.service';
 
 @Component({
     selector: 'app-promotion',

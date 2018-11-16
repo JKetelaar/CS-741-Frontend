@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
-import {Promotion} from '@app/models/Promotion';
+import {Promotion} from '../../models/Promotion';
 
 const routes = {
     promotion: () => `/admin/promotion/`,
