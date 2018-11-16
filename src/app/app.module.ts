@@ -22,6 +22,7 @@ import {CartModule} from '@app/cart/cart.module';
 import {PromotionModule} from '@app/promotion/promotion.module';
 import { SlickModule } from 'ngx-slick';
 import {CheckoutModule} from '@app/checkout/checkout.module';
+import {SummaryModule} from '@app/summary/summary.module';
 
 @NgModule({
     imports: [
@@ -40,6 +41,7 @@ import {CheckoutModule} from '@app/checkout/checkout.module';
         CartModule,
         PromotionModule,
         CheckoutModule,
+        SummaryModule,
         SlickModule.forRoot(),
         // Keep this module as last
         AppRoutingModule,

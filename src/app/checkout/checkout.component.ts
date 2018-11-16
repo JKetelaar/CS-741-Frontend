@@ -8,6 +8,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CheckoutService} from '@app/checkout/checkout.service';
 import {OrderAddress} from '@app/models/OrderAddress';
 import {Purchase} from '@app/models/Purchase';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-checkout',
@@ -30,6 +31,7 @@ export class CheckoutComponent implements OnInit {
                 private userService: UserService,
                 private formBuilder: FormBuilder,
                 private checkoutService: CheckoutService,
+                private router: Router
     ) {
         this.createOrderForm();
         this.isValid = null;
@@ -67,8 +69,7 @@ export class CheckoutComponent implements OnInit {
         this.checkoutService.order({id: id})
             .pipe()
             .subscribe(result => {
-                // TODO: Tank you
-                window.location.href = '/home';
+                this.router.navigate(['/summary/' + id]);
             });
     }
 
