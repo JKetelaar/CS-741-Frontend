@@ -4,9 +4,13 @@ import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 
 const routes = {
-    promotion: () => `/admin/orders/`,
-
+    orders: () => `/admin/purchase/`,
+    order: (o: OrderContext) => `/admin/purchase/${o.id}`,
 };
+
+export interface OrderContext {
+    id: number;
+}
 
 @Injectable()
 export class OrdersService {
@@ -16,7 +20,16 @@ export class OrdersService {
 
     getOrders(): Observable<any[]> {
         return this.httpClient
-            .get(routes.promotion())
+            .get(routes.orders())
+            .pipe(
+                map((body: any) => body),
+                catchError(() => of('Error, could not get orders'))
+            );
+    }
+
+    getOrder(context: OrderContext): Observable<any> {
+        return this.httpClient
+            .get(routes.order(context))
             .pipe(
                 map((body: any) => body),
                 catchError(() => of('Error, could not get orders'))

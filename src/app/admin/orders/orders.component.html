@@ -35,9 +35,9 @@
             </tr>
 
             <tr *ngFor="let order of orders">
-                <td>{{order.id}}</td>
+                <td><a routerLink="/admin/orders/{{order.id}}"># {{order.id}}</a></td>
                 <td>{{order.date}}</td>
-                <td>{{order.totalPrice}}%</td>
+                <td>${{order.finalPrice}}</td>
             </tr>
         </table>
 
