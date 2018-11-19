@@ -1,0 +1,50 @@
+<!-- Titlebar
+================================================== -->
+<section class="titlebar">
+    <div class="container">
+        <div class="sixteen columns">
+            <h2>Order Management</h2>
+
+            <nav id="breadcrumbs">
+                <ul>
+                    <li><a routerLink="/home">Home</a></li>
+                    <li>Orders</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+
+<div class="container cart">
+
+    <!-- Orders -->
+    <div class="sixteen columns">
+        <h3 class="headline">Orders</h3><span class="line margin-bottom-35"></span>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="sixteen columns">
+
+        <!-- Promotions -->
+        <table class="cart-table responsive-table">
+            <tr>
+                <th>Order ID</th>
+                <th>Order date</th>
+                <th>Order price</th>
+            </tr>
+
+            <tr *ngFor="let order of orders">
+                <td><a routerLink="/admin/orders/{{order.id}}"># {{order.id}}</a></td>
+                <td>{{order.date}}</td>
+                <td>${{order.finalPrice}}</td>
+            </tr>
+        </table>
+
+        <br>
+        <div class="clearfix"></div>
+    </div>
+
+</div>
+
+<div class="margin-top-50"></div>

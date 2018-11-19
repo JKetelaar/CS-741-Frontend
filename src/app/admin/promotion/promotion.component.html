@@ -1,0 +1,101 @@
+<!-- Titlebar
+================================================== -->
+<section class="titlebar">
+    <div class="container">
+        <div class="sixteen columns">
+            <h2>Promotion Management</h2>
+
+            <nav id="breadcrumbs">
+                <ul>
+                    <li><a routerLink="/home">Home</a></li>
+                    <li>Promotion</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+
+<div class="container cart">
+
+
+    <!-- Create Promos -->
+    <div class="sixteen columns">
+        <h3 class="headline">Create Promotion</h3><span class="line margin-bottom-35"></span>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="sixteen columns">
+        <!-- Promotions -->
+        <table class="cart-table responsive-table">
+            <tr>
+                <th>Promotion Code</th>
+                <th>Expiration Date <br>
+                    YYYY-MM-DD HH:MM:SS</th>
+                <th>Percent</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    <input [(ngModel)]="code" type="code"
+                           class="input-text" name="code" id="code" value=""/>
+                </td>
+                <td>
+                    <ng-datepicker [(ngModel)]="expirationDate"></ng-datepicker>
+                    <!--<input [(ngModel)]="expirationDate" type="expirationDate"-->
+                           <!--class="input-text" name="expirationDate" id="expirationDate" value=""/>-->
+                </td>
+                <td>
+                    <input [(ngModel)]="percentage" type="percentage"
+                           class="input-text" name="percentage" id="percentage" value=""/>
+                </td>
+                <td>
+                    <input (click)="create()" type="submit" class="button" name="create" value="Create"/>
+                </td>
+            </tr>
+        </table>
+        <div *ngIf="isValid == false" class="notification error closeable">
+            <p><span>Error!</span> Please provide valid values.</p>
+            <a class="close" routerLink="/promotion"></a>
+        </div>
+        <div *ngIf="isValid == true" class="notification success closeable">
+            <p><span>Success!</span> Promotion {{code}} created!</p>
+            <a class="close" routerLink="/promotion"></a>
+        </div>
+        <br>
+        <div class="clearfix"></div>
+    </div>
+
+
+    <!-- Active Promos -->
+    <div class="sixteen columns">
+        <h3 class="headline">Active Promotions</h3><span class="line margin-bottom-35"></span>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="sixteen columns">
+
+        <!-- Promotions -->
+        <table class="cart-table responsive-table">
+            <tr>
+                <th>Promotion Code</th>
+                <th>Expiration Date</th>
+                <th>Percent</th>
+                <th></th>
+            </tr>
+
+            <tr *ngFor="let promotion of promotions">
+                <td>{{promotion.code}}</td>
+                <td>{{promotion.expirationDate}}</td>
+                <td>{{promotion.percentage}}%</td>
+                <td><a href="javascript:void(0);" (click)="delete(promotion.id)"  class="cart-remove"></a></td>
+            </tr>
+        </table>
+
+        <br>
+        <div class="clearfix"></div>
+    </div>
+
+</div>
+
+<div class="margin-top-50"></div>
