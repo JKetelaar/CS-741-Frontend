@@ -23,6 +23,9 @@ import {PromotionModule} from '@app/promotion/promotion.module';
 import { SlickModule } from 'ngx-slick';
 import {CheckoutModule} from '@app/checkout/checkout.module';
 import {SummaryModule} from '@app/summary/summary.module';
+import {AdminModule} from '@app/admin/admin.module';
+
+
 
 @NgModule({
     imports: [
@@ -42,7 +45,12 @@ import {SummaryModule} from '@app/summary/summary.module';
         PromotionModule,
         CheckoutModule,
         SummaryModule,
+        PromotionModule,
+        CheckoutModule,
+        SummaryModule,
+        AdminModule,
         SlickModule.forRoot(),
+
         // Keep this module as last
         AppRoutingModule,
     ],
