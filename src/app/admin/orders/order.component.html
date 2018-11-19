@@ -1,0 +1,106 @@
+<div *ngIf="order !== null">
+    <!-- Titlebar
+    ================================================== -->
+    <section class="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <h2>Order #{{order.id}}</h2>
+
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a routerLink="/home">Home</a></li>
+                        <li>Orders</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="container cart">
+
+        <!-- Orders -->
+        <div class="sixteen columns">
+            <h3 class="headline">Orders</h3>
+            <span class="line margin-bottom-35"></span>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="sixteen columns">
+
+            <!-- Products -->
+            <div class="sixteen columns">
+                <h4 class="headline">Products</h4>
+                <span class="line margin-bottom-35"></span>
+                <div class="clearfix"></div>
+            </div>
+
+            <table class="cart-table responsive-table">
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tr *ngFor="let product of order.products">
+                    <td>{{product.name}}</td>
+                    <td>${{product.price}}</td>
+                </tr>
+            </table>
+            <!-- Products -->
+
+            <br/>
+
+            <!-- Address -->
+            <div class="sixteen columns">
+                <h4 class="headline">Addresses</h4>
+                <span class="line margin-bottom-35"></span>
+                <div class="clearfix"></div>
+            </div>
+            <table class="cart-table responsive-table">
+                <thead>
+                <tr>
+                    <th>Shipping</th>
+                    <th>Billing</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td>{{order.billingAddress.address}}, {{order.billingAddress.zipCode}}, {{order.billingAddress.city}}, {{order.billingAddress.state}}</td>
+                    <td>{{order.shippingAddress.address}}, {{order.shippingAddress.zipCode}}, {{order.shippingAddress.city}}, {{order.shippingAddress.state}}</td>
+                </tr>
+            </table>
+            <!-- Address -->
+
+            <br/>
+
+            <!-- Total price -->
+            <div class="sixteen columns">
+                <h4 class="headline">Total price</h4>
+                <span class="line margin-bottom-35"></span>
+                <div class="clearfix"></div>
+            </div>
+            <table class="cart-table responsive-table">
+                <tr>
+                    <td>Final price</td>
+                    <td>${{order.finalPrice}}</td>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                    <td>${{order.tax}}</td>
+                </tr>
+                <tr>
+                    <td>Promotion code</td>
+                    <td *ngIf="order.promotion !== null">%{{order.promotion.percentage}}</td>
+                    <td *ngIf="order.promotion === null">No code applied</td>
+                </tr>
+            </table>
+            <!-- Total price -->
+
+            <br>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+
+    <div class="margin-top-50"></div>
+</div>

@@ -6,7 +6,7 @@ import {ProductView} from '@app/models/ProductView';
 import {ProductsService} from '@app/product/products.service';
 import {HeaderComponent} from '@app/shell/header/header.component';
 import {OrderItem} from '@app/models/OrderItem';
-import {PromotionService} from '@app/promotion/promotion.service';
+import {PromotionService} from '@app/admin/promotion/promotion.service';
 
 @Component({
     selector: 'app-cart',

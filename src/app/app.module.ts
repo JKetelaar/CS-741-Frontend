@@ -19,13 +19,11 @@ import {FooterComponent} from '@app/shell/footer/footer.component';
 import {SearchModule} from '@app/search/search.module';
 import {CookieService} from 'ngx-cookie-service';
 import {CartModule} from '@app/cart/cart.module';
-import {PromotionModule} from '@app/promotion/promotion.module';
-import { SlickModule } from 'ngx-slick';
+import {PromotionModule} from '@app/admin/promotion/promotion.module';
 import {CheckoutModule} from '@app/checkout/checkout.module';
 import {SummaryModule} from '@app/summary/summary.module';
+import {SlickModule} from 'ngx-slick';
 import {AdminModule} from '@app/admin/admin.module';
-
-
 
 @NgModule({
     imports: [

@@ -1937,6 +1937,10 @@ data-uri-to-buffer@1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-1.2.0.tgz#77163ea9c20d8641b4707e8f18abdf9a78f34835"
 
+date-fns@^1.29.0:
+  version "1.29.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.29.0.tgz#12e609cdcb935127311d04d33334e2960a2a54e6"
+
 date-format@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/date-format/-/date-format-1.2.0.tgz#615e828e233dd1ab9bb9ae0950e0ceccfa6ecad8"
@@ -4984,6 +4988,13 @@ netmask@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-1.0.6.tgz#20297e89d86f6f6400f250d9f4f6b4c1945fcd35"
 
+ng2-datepicker@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/ng2-datepicker/-/ng2-datepicker-3.1.1.tgz#d6cb4938c790983f05fcdbbc1aae902edfd77b95"
+  dependencies:
+    date-fns "^1.29.0"
+    ngx-slimscroll "^5.0.0"
+
 ngx-cookie-service@^1.0.10:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/ngx-cookie-service/-/ngx-cookie-service-1.0.10.tgz#dc17ff4f1a0224cf3b0c7a7f52bff2b798396e3d"
@@ -4995,6 +5006,10 @@ ngx-pagination@^3.2.0:
 ngx-slick@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/ngx-slick/-/ngx-slick-0.2.1.tgz#63f2525b953977f7f8780dc8cebea46553642fec"
+
+ngx-slimscroll@^5.0.0:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/ngx-slimscroll/-/ngx-slimscroll-5.2.2.tgz#5183d3037e31720ad34637a044f0f48a0f3391ae"
 
 nice-try@^1.0.4:
   version "1.0.5"
