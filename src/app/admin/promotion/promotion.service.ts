@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Promotion} from '../../models/Promotion';
+import {PromotionComponent} from '@app/admin/promotion/promotion.component';
 
 const routes = {
     promotion: () => `/admin/promotion/`,
@@ -68,7 +69,7 @@ export class PromotionService {
             .post(routes.create(context),
                 'code=' + encodeURI(context.code) +
                 '&percentage=' + context.percentage +
-                '&expirationDate=' + context.expirationDate,
+                '&expirationDate=' + PromotionComponent.toReadableDate(context.expirationDate, false),
                 {
                     headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
                 }

@@ -20,6 +20,29 @@ export class PromotionComponent implements OnInit {
     expirationDate: Date;
     percentage: number;
     isValid: boolean;
+    calendarOptions: any;
+
+    public static toReadableDate(date: Date, withHours: boolean = false, includeHours: boolean = true) {
+        let readableDate =
+            date.getFullYear() + '-' +
+            PromotionComponent.pad(date.getMonth() + 1) + '-' +
+            PromotionComponent.pad(date.getDate());
+
+        if (includeHours) {
+            readableDate += ' ' +
+                (withHours ?
+                    (PromotionComponent.pad(date.getHours()) + ':' +
+                        PromotionComponent.pad(date.getMinutes()) + ':' +
+                        PromotionComponent.pad(date.getSeconds()))
+                    : '23:59:59');
+        }
+
+        return readableDate;
+    }
+
+    private static pad(n: number) {
+        return n < 10 ? '0' + n : n;
+    }
 
     constructor(private router: Router,
                 private formBuilder: FormBuilder,
@@ -29,6 +52,22 @@ export class PromotionComponent implements OnInit {
     ) {
         this.createPromotionForm();
         this.isValid = null;
+        this.calendarOptions = {
+            displayFormat: 'MMM D[,] YYYY',
+            barTitleFormat: 'MMMM YYYY',
+            dayNamesFormat: 'dd',
+            firstCalendarDay: 1,
+            minDate: new Date(Date.now()),
+            barTitleIfEmpty: 'Click to select a date',
+            placeholder: 'Click to select a date',
+            addClass: 'form-control',
+            useEmptyBarTitle: true,
+        };
+    }
+
+    parseDate(date: string, includeHours: boolean = true) {
+        const parsedDate = new Date(date);
+        return PromotionComponent.toReadableDate(parsedDate, false, includeHours);
     }
 
     ngOnInit() {
