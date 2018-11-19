@@ -25,7 +25,6 @@
                 <div class="clearfix"></div>
 
                 <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
-
                     <p class="form-row form-row-wide">
                         <label for="username">Username or Email Address: <span class="required">*</span></label>
                         <input [ngModelOptions]="{standalone: true}" [(ngModel)]="loginUsername" type="text"
