@@ -64,9 +64,7 @@
                                                                                  type="text" placeholder=""
                                                                                  value="{{billingAddress.state}}"/>
                 </div>
-                <div class="half first"><label>Email Adress: <abbr>*</abbr></label><input type="text" placeholder=""
-                                                                                          value="{{email}}"/>
-                </div>
+
                 <div class="half"><label>Phone: <abbr>*</abbr></label><input [ngModelOptions]="{standalone: true}"
                                                                              [(ngModel)]="billingAddress.phoneNumber"
                                                                              type="text" placeholder=""
@@ -112,9 +110,7 @@
                                                                                  type="text" placeholder=""
                                                                                  value="{{shippingAddress.state}}"/>
                 </div>
-                <div class="half first"><label>Email Adress: <abbr>*</abbr></label><input type="text" placeholder=""
-                                                                                          value="{{email}}"/>
-                </div>
+
                 <div class="half"><label>Phone: <abbr>*</abbr></label><input [ngModelOptions]="{standalone: true}"
                                                                              [(ngModel)]="shippingAddress.phoneNumber"
                                                                              type="text" placeholder=""
@@ -170,7 +166,8 @@
                 </ul>
             </div>
         </div>
-        <a *ngIf="purchase !== null" ref="javascript:void(0);" (click)=order(purchase.id) class="button gray cart-btns">Complete Order</a>
+        <a *ngIf="purchase !== null" ref="javascript:void(0);" (click)=order(purchase.id) class="button gray cart-btns">Complete
+            Order</a>
 
     </div>
     <!-- Billing Details / Enc -->

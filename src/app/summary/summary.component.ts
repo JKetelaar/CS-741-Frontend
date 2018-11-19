@@ -22,8 +22,7 @@ export class SummaryComponent implements OnInit {
                 private route: ActivatedRoute,
                 ) {
     }
-
-
+    
     ngOnInit() {
         this.summaryService.getSummary({id: parseInt(this.route.snapshot.paramMap.get('id'), 10)})
             .pipe()
@@ -31,7 +30,4 @@ export class SummaryComponent implements OnInit {
                 this.purchase = purchase;
             });
     }
-
-
-
 }
