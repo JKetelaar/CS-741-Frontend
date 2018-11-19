@@ -6,6 +6,7 @@ import {CommonModule} from '@angular/common';
 import {CoreModule} from '@app/core';
 import {SharedModule} from '@app/shared';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 @NgModule({
     imports: [
@@ -14,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         SharedModule,
         FormsModule,
         ReactiveFormsModule,
+        NgDatepickerModule,
         PromotionRoutingModule
     ],
     declarations: [

@@ -30,8 +30,7 @@
         <table class="cart-table responsive-table">
             <tr>
                 <th>Promotion Code</th>
-                <th>Expiration Date <br>
-                    YYYY-MM-DD HH:MM:SS</th>
+                <th>Expiration Date</th>
                 <th>Percent</th>
                 <th></th>
             </tr>
@@ -41,11 +40,10 @@
                            class="input-text" name="code" id="code" value=""/>
                 </td>
                 <td>
-                    <input [(ngModel)]="expirationDate" type="expirationDate"
-                           class="input-text" name="expirationDate" id="expirationDate" value=""/>
+                    <ng-datepicker [(ngModel)]="expirationDate" [options]="calendarOptions"></ng-datepicker>
                 </td>
                 <td>
-                    <input [(ngModel)]="percentage" type="percentage"
+                    <input [(ngModel)]="percentage" type="number"
                            class="input-text" name="percentage" id="percentage" value=""/>
                 </td>
                 <td>
@@ -85,9 +83,9 @@
 
             <tr *ngFor="let promotion of promotions">
                 <td>{{promotion.code}}</td>
-                <td>{{promotion.expirationDate}}</td>
+                <td>{{parseDate(promotion.expirationDate, false)}}</td>
                 <td>{{promotion.percentage}}%</td>
-                <td><a href="javascript:void(0);" (click)="delete(promotion.id)"  class="cart-remove"></a></td>
+                <td><a href="javascript:void(0);" (click)="delete(promotion.id)" class="cart-remove"></a></td>
             </tr>
         </table>
 

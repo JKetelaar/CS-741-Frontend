@@ -9165,3 +9165,15 @@ div.layout-style {
         display: none;
     }
 }
+
+.ngx-datepicker-calendar-container {
+    z-index: 10;
+}
+
+.ngx-datepicker-container[_ngcontent-c5] .ngx-datepicker-calendar-container[_ngcontent-c5] .topbar-container[_ngcontent-c5] {
+    width: auto !important;
+}
+
+.ngx-datepicker-container[_ngcontent-c5] .ngx-datepicker-calendar-container[_ngcontent-c5] .main-calendar-container[_ngcontent-c5] {
+    width: auto !important;
+}
