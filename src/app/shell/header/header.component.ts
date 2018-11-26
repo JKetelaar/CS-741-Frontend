@@ -14,7 +14,7 @@ import {User} from '@app/models/User';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+    searchQuery: string;
     menuHidden = true;
     loggedIn: boolean = null;
     cart: Cart;
@@ -83,4 +83,8 @@ export class HeaderComponent implements OnInit {
         return this.cartService.getTotal(this.cart);
     }
 
+    search() {
+        this.router.navigate(['search/result/' + this.searchQuery]);
+        window.location.reload(); // Avoids loading cached page
+    }
 }

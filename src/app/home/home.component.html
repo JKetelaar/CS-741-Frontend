@@ -6,37 +6,15 @@
         <h3 class="headline">Featured Categories</h3>
         <span class="line margin-bottom-0"></span>
     </div>
-    <div class="one-third column">
+
+    <div class="one-third column" *ngFor="let categery of categeries">
         <a href="#" class="img-caption">
             <figure>
                 <img src="/src/theme/css/images/featured_img_1.jpg" alt=""/>
                 <figcaption>
-                    <h3>Men's Shirts</h3>
-                    <span>25% Off Summer Styles</span>
-                </figcaption>
-            </figure>
-        </a>
-    </div>
-
-    <div class="one-third column">
-        <a href="#" class="img-caption">
-            <figure>
-                <img src="/src/theme/css/images/featured_img_2.jpg" alt=""/>
-                <figcaption>
-                    <h3>Running Shoes</h3>
-                    <span>Sports Discount</span>
-                </figcaption>
-            </figure>
-        </a>
-    </div>
-
-    <div class="one-third column">
-        <a href="#" class="img-caption">
-            <figure>
-                <img src="/src/theme/css/images/featured_img_3.jpg" alt=""/>
-                <figcaption>
-                    <h3>Winter Jackets</h3>
-                    <span>End-of Season Sales</span>
+                    <h3>{{categery.name}}</h3>
+                    <span *ngIf="categery.products.length > 1">With over {{categery.products.length}} products</span>
+                    <span *ngIf="categery.products.length <= 1">With over {{categery.products.length}} product</span>
                 </figcaption>
             </figure>
         </a>
@@ -64,7 +42,8 @@
                             <img alt="" style="height: 200px;" src="{{getImageURL(product)}}"/>
                         </div>
                     </a>
-                    <a href="javascript:void(0);" (click)="addToCart(product.id)" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                    <a href="javascript:void(0);" (click)="addToCart(product.id)" class="product-button"><i
+                        class="fa fa-shopping-cart"></i> Add to Cart</a>
                 </div>
 
                 <a routerLink="/product/{{product.id}}">
@@ -76,7 +55,7 @@
                             <span class="product-price">{{product.finalPrice}}</span>
                         </div>
 
-                        <ng-template #other_content> <span class="product-price">{{product.price}}</span> </ng-template>
+                        <ng-template #other_content><span class="product-price">{{product.price}}</span></ng-template>
                     </section>
                 </a>
             </figure>

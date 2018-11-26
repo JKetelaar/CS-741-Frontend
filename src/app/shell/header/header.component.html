@@ -7,8 +7,14 @@
         <!-- Top Bar Menu -->
         <div class="ten columns">
             <ul class="top-bar-menu">
-                <li><i class="fa fa-phone"></i> (123) 456 7890</li>
-                <li><i class="fa fa-envelope"></i> <a href="#">contact@cs741.com</a></li>
+                <li>
+                    <i class="fa fa-phone"></i>
+                    <a href="tel:(123) 456 7890">(123) 456 7890</a>
+                </li>
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:contact@cs741.com">contact@cs741.com</a>
+                </li>
             </ul>
         </div>
 
@@ -93,9 +99,9 @@
 
                     <div class="cart-buttons button">
                         <a routerLink="/cart" class="view-cart"><span
-                                data-hover="View Cart"><span>View Cart</span></span></a>
+                            data-hover="View Cart"><span>View Cart</span></span></a>
                         <a routerLink="/checkout" class="checkout"><span
-                                data-hover="Checkout">Checkout</span></a>
+                            data-hover="Checkout">Checkout</span></a>
                     </div>
                     <div class="clearfix">
 
@@ -107,10 +113,8 @@
 
         <!-- Search -->
         <nav class="top-search">
-            <form action="#" method="get">
-                <button><i class="fa fa-search"></i></button>
-                <input class="search-field" type="text" placeholder="Search" value=""/>
-            </form>
+            <button><i class="fa fa-search"></i></button>
+            <input [(ngModel)]="searchQuery" value="" (keydown.enter)="search()" name="s" id="s" placeholder="e.g. t-shirt" autocomplete="off" type="text">
         </nav>
 
     </div>
@@ -134,10 +138,6 @@
 
                 <li class="demo-button">
                     <a routerLink="/products">Products</a>
-                </li>
-
-                <li class="demo-button">
-                    <a routerLink="/categories">Categories</a>
                 </li>
 
 
