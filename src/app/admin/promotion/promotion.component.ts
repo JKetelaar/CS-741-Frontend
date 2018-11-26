@@ -22,6 +22,14 @@ export class PromotionComponent implements OnInit {
     isValid: boolean;
     calendarOptions: any;
 
+
+    /**
+     * Converts DateTime to readable date.
+     *
+     * @param date - The date to be converted
+     * @param withHours - Boolean whether to include the hours in the date
+     * @param includeHours - Boolean whether to include the hours in the date
+     */
     public static toReadableDate(date: Date, withHours: boolean = false, includeHours: boolean = true) {
         let readableDate =
             date.getFullYear() + '-' +
@@ -40,10 +48,26 @@ export class PromotionComponent implements OnInit {
         return readableDate;
     }
 
+    /**
+     * Pads number n with a leading 0.
+     *
+     * @param n - The number to be padded
+     */
     private static pad(n: number) {
         return n < 10 ? '0' + n : n;
     }
 
+    /**
+     * Constructor to initialize the services, and instance variables.
+     *
+     * @param router - Provides the navigation and url manipulation capabilities.
+     * @param formBuilder -  The `FormBuilder` provides syntactic sugar that shortens creating instances
+     * of a `FormControl`, `FormGroup`, or `FormArray`. It reduces the amount of boilerplate needed to build complex
+     * forms.
+     * @param promotionService - The Promotion Service class
+     * @param cartService - The Cart Service class
+     * @param userService - The User Service class
+     */
     constructor(private router: Router,
                 private formBuilder: FormBuilder,
                 private promotionService: PromotionService,
@@ -65,11 +89,20 @@ export class PromotionComponent implements OnInit {
         };
     }
 
+    /**
+     * Parses date to readable date.
+     *
+     * @param date - The date to be parsed.
+     * @param includeHours - Boolean whether to include hours.
+     */
     parseDate(date: string, includeHours: boolean = true) {
         const parsedDate = new Date(date);
         return PromotionComponent.toReadableDate(parsedDate, false, includeHours);
     }
 
+    /**
+     * Gets the current user and routes them to the home page if the user is registered and not an admin.
+     */
     ngOnInit() {
         this.userService.getCurrentUser()
             .pipe()
@@ -82,6 +115,9 @@ export class PromotionComponent implements OnInit {
         this.loadPromotions();
     }
 
+    /**
+     * Gets current promotions.
+     */
     loadPromotions() {
         this.promotionService.getPromotions()
             .pipe()
@@ -90,6 +126,9 @@ export class PromotionComponent implements OnInit {
             });
     }
 
+    /**
+     * Method to create a new promotion.
+     */
     create() {
         this.promotionService.create(
             {code: this.code, percentage: this.percentage, expirationDate: this.expirationDate}
@@ -100,16 +139,29 @@ export class PromotionComponent implements OnInit {
         });
     }
 
+    /**
+     * Deletes promotion assoicated with the passed id.
+     *
+     * @param id - id of promotion to be deleted.
+     */
     delete(id: number) {
         this.promotionService.delete({id: id}).pipe().subscribe(result => {
             this.loadPromotions();
         });
     }
 
+    /**
+     * Promotion code to be applied to the cart.
+     *
+     * @param code - the code to be applied.
+     */
     apply(code: string) {
         this.promotionService.apply({code: code}).pipe().subscribe();
     }
 
+    /**
+     * Method to create the form that the user submits in order to attempt to apply promotion.
+     */
     private createPromotionForm() {
         this.createPromoForm = this.formBuilder.group({
             code: ['', Validators.required],

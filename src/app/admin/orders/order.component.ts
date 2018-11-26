@@ -40,6 +40,9 @@ export class OrderComponent implements OnInit {
         this.loadOrder();
     }
 
+    /**
+     * Method to load the current order by the orderId.
+     */
     loadOrder() {
         this.promotionService.getOrder({id: this.orderId})
             .pipe()

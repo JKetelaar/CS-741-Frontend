@@ -35,6 +35,9 @@ export class OrdersComponent implements OnInit {
         this.loadOrders();
     }
 
+    /**
+     * Method to load the current orders.
+     */
     loadOrders() {
         this.promotionService.getOrders()
             .pipe()

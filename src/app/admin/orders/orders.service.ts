@@ -18,6 +18,9 @@ export class OrdersService {
     constructor(private httpClient: HttpClient) {
     }
 
+    /**
+     * Method to get the current orders.
+     */
     getOrders(): Observable<any[]> {
         return this.httpClient
             .get(routes.orders())
@@ -27,6 +30,11 @@ export class OrdersService {
             );
     }
 
+    /**
+     * Method to get a specific order by the order id.
+     *
+     * @param context - Order context containing the id of the order to be retrieved.
+     */
     getOrder(context: OrderContext): Observable<any> {
         return this.httpClient
             .get(routes.order(context))
