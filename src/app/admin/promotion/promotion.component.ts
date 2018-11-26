@@ -56,18 +56,7 @@ export class PromotionComponent implements OnInit {
     private static pad(n: number) {
         return n < 10 ? '0' + n : n;
     }
-
-    /**
-     * Constructor to initialize the services, and instance variables.
-     *
-     * @param router - Provides the navigation and url manipulation capabilities.
-     * @param formBuilder -  The `FormBuilder` provides syntactic sugar that shortens creating instances
-     * of a `FormControl`, `FormGroup`, or `FormArray`. It reduces the amount of boilerplate needed to build complex
-     * forms.
-     * @param promotionService - The Promotion Service class
-     * @param cartService - The Cart Service class
-     * @param userService - The User Service class
-     */
+    
     constructor(private router: Router,
                 private formBuilder: FormBuilder,
                 private promotionService: PromotionService,
