@@ -1,7 +1,7 @@
 <!-- Products -->
 <div class="container">
     <div class="products">
-        <div *ngIf="searchQuery.length == 0;else other_content">
+        <div *ngIf="searchQuery != null && searchQuery.length == 0;else other_content">
             <section class="titlebar">
                 <div class="container">
                     <div class="sixteen columns">
