@@ -34,12 +34,22 @@ export class HomeComponent implements OnInit {
             });
     }
 
+    /**
+     * Method to add product to cart.
+     *
+     * @param id - Id of the item to be added to the cart.
+     */
     addToCart(id: number) {
         this.cartService.add({id: id, quantity: null}).pipe().subscribe(() => {
             this.header.refreshCart(true);
         });
     }
 
+    /**
+     * Method to get the image url of a single product.
+     *
+     * @param product - The ProductView object containing a single image.
+     */
     getImageURL(product: ProductView): string {
         return this.productsService.getImageURL(product.singleImage);
     }
