@@ -1,20 +1,6 @@
-# ngX Starter Kit
+# Josh & Jeroen Shopping Cart Software
 
-Web project starter kit including modern tools and workflow based on
-[angular-cli](https://github.com/angular/angular-cli), best practices from the community, a scalable base template and
-a good learning base.
-
-Generated using [ngX-Rocket](https://github.com/ngx-rocket/generator-ngx-rocket).
-
-### Benefits
-
-- Quickstart a project in seconds and focus on features, not on frameworks or tools
-
-- Industrial-grade tools, ready for usage in a continuous integration environment and DevOps
-
-- Scalable architecture with base app template including example components, services and tests
-
-# Getting started
+## Getting started
 
 1. Go to project folder and install dependencies:
  ```bash
@@ -26,7 +12,7 @@ Generated using [ngX-Rocket](https://github.com/ngx-rocket/generator-ngx-rocket)
  npm start
  ```
  
-# Project structure
+## Project structure
 
 ```
 dist/                        compiled version
@@ -53,7 +39,7 @@ reports/                     test and coverage reports
 proxy.conf.js                backend proxy configuration
 ```
 
-# Main tasks
+## Main tasks
 
 Task automation is based on [NPM scripts](https://docs.npmjs.com/misc/scripts).
 
@@ -73,13 +59,13 @@ forget to prepend `--` to pass arguments to npm scripts).
 
 The default build environment is `prod`.
 
-## Development server
+### Development server
 
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change
 any of the source files.
 You should not use `ng serve` directly, as it does not use the backend proxy configuration by default.
 
-## Code scaffolding
+### Code scaffolding
 
 Run `npm run generate -- component <name>` to generate a new component. You can also use
 `npm run generate -- directive|pipe|service|class|module`.
@@ -87,12 +73,12 @@ Run `npm run generate -- component <name>` to generate a new component. You can 
 If you have installed [angular-cli](https://github.com/angular/angular-cli) globally with `npm install -g @angular/cli`,
 you can also use the command `ng generate` directly.
 
-## Additional tools
+### Additional tools
 
 Tasks are mostly based on the `angular-cli` tool. Use `ng help` to get more help or go check out the
 [Angular-CLI README](https://github.com/angular/angular-cli).
 
-# What's in the box
+## What's in the box
 
 The app template is based on [HTML5](http://whatwg.org/html), [TypeScript](http://www.typescriptlang.org) and
 [Sass](http://sass-lang.com). The translation files use the common [JSON](http://www.json.org) format.
@@ -139,27 +125,3 @@ Development, build and quality processes are based on [angular-cli](https://gith
 - [Updating dependencies and tools](docs/updating.md)
 - [Using a backend proxy for development](docs/backend-proxy.md)
 - [Browser routing](docs/routing.md)
-
-# Licence
-
-The MIT License (MIT)
-
-Copyright (c) 2016-2018 Thales Services SAS
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
