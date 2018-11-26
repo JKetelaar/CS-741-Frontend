@@ -39,6 +39,9 @@ export class LoginComponent implements OnInit {
         });
     }
 
+    /**
+     * Method to login user into the system.
+     */
     login() {
         this.userService.login({username: this.loginUsername, password: this.loginPassword})
             .subscribe(result => {
@@ -50,6 +53,9 @@ export class LoginComponent implements OnInit {
             });
     }
 
+    /**
+     * Method to register the user into the system.
+     */
     register() {
         this.userService.register(
             {email: this.registerEmail, password: this.registerPassword1, password2: this.registerPassword2}
@@ -59,10 +65,16 @@ export class LoginComponent implements OnInit {
             });
     }
 
+    /**
+     * Method to reset the validation on the register/login form.
+     */
     resetValid() {
         this.isValid = null;
     }
 
+    /**
+     * Method to create the form that the user submits in order to attempt to login
+     */
     private createLoginForm() {
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
@@ -71,6 +83,9 @@ export class LoginComponent implements OnInit {
         });
     }
 
+    /**
+     * Method to create the form that the user submits in order to attempt to register.
+     */
     private createRegisterForm() {
         this.registerForm = this.formBuilder.group({
             username: ['', Validators.required],
