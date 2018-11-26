@@ -27,6 +27,11 @@ export class CheckoutService {
     constructor(private httpClient: HttpClient) {
     }
 
+    /**
+     * Method to create an order.
+     *
+     * @param context - The final order context containing the id of the order
+     */
     order(context: FinalOrderContext) {
         return this.httpClient
             .post(routes.order(context), 'id=' + context.id, {
@@ -39,6 +44,11 @@ export class CheckoutService {
 
     }
 
+    /**
+     * Method to place an order with all credentials filled out.
+     *
+     * @param context - The order context with billing and shipping address.
+     */
     placeOrder(context: OrderContext): Observable<Purchase> {
         return this.httpClient
             .post(routes.checkout(),
