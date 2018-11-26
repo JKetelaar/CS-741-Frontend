@@ -113,10 +113,8 @@
 
         <!-- Search -->
         <nav class="top-search">
-            <form action="#" method="get">
-                <button><i class="fa fa-search"></i></button>
-                <input class="search-field" type="text" placeholder="Search" value=""/>
-            </form>
+            <button><i class="fa fa-search"></i></button>
+            <input [(ngModel)]="searchQuery" value="" (keydown.enter)="search()" name="s" id="s" placeholder="e.g. t-shirt" autocomplete="off" type="text">
         </nav>
 
     </div>
