@@ -28,10 +28,20 @@ export class ProductsComponent implements OnInit {
             });
     }
 
+    /**
+     * Method to get the image url of a single product.
+     *
+     * @param product - The ProductView object containing a single image.
+     */
     getImageURL(product: ProductView): string {
         return this.productsService.getImageURL(product.singleImage);
     }
 
+    /**
+     * Method to add product to the cart.
+     *
+     * @param id - Id of the product to be added.
+     */
     addToCart(id: number) {
         this.cartService.add({id: id, quantity: null}).pipe().subscribe(() => {
             this.header.refreshCart(true);
