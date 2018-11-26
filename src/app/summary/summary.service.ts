@@ -20,6 +20,11 @@ export class SummaryService {
     constructor(private httpClient: HttpClient) {
     }
 
+    /**
+     * Method to get the order summary.
+     *
+     * @param context - The purchase context with the id of the order.
+     */
     getSummary(context: PurchaseContext): Observable<Purchase> {
         return this.httpClient
             .get(routes.purchase(context))
