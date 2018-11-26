@@ -35,6 +35,9 @@ export class ProductsService {
     constructor(private httpClient: HttpClient) {
     }
 
+    /**
+     * Method to get all products in the system.
+     */
     getProducts(): Observable<ProductView[]> {
         return this.httpClient
             .cache()
@@ -45,6 +48,11 @@ export class ProductsService {
             );
     }
 
+    /**
+     * Method to get the products by a certain search criteria.
+     *
+     * @param context - context containing the orderby parameter.
+     */
     getProductsBy(context: ProductByContext): Observable<ProductView[]> {
         return this.httpClient
             .cache()
@@ -55,6 +63,11 @@ export class ProductsService {
             );
     }
 
+    /**
+     * Method to get a single product.
+     *
+     * @param context - Context containing the single product id.
+     */
     getProduct(context: ProductContext): Observable<Product> {
         return this.httpClient
             .cache()
@@ -65,6 +78,11 @@ export class ProductsService {
             );
     }
 
+    /**
+     * Method to search for a product.
+     *
+     * @param context - Context containing the search query as a stirng.
+     */
     searchProduct(context: SearchProductContext): Observable<ProductView[]> {
         return this.httpClient
             .cache()
@@ -75,10 +93,18 @@ export class ProductsService {
             );
     }
 
+    /**
+     * Method to get the image url of a single product.
+     *
+     * @param product - The ProductView object containing a single image.
+     */
     getImageURL(productImage: ProductImage): string {
         return environment.imageUrl + '/' + productImage.filename;
     }
 
+    /**
+     * Method to get all categories.
+     */
     getCategories(): Observable<Category[]> {
         return this.httpClient
             .cache()

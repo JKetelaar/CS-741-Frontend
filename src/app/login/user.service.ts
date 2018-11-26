@@ -40,6 +40,11 @@ export class UserService {
   constructor(private httpClient: HttpClient, private router: Router) {
   }
 
+    /**
+     * Method to register user to the system.
+     *
+     * @param context - Register context containing the email, and the password.
+     */
   register(context: RegisterContext): Observable<string> {
     return this.httpClient
       .post(routes.register(),
@@ -56,6 +61,11 @@ export class UserService {
       );
   }
 
+    /**
+     * Method to login user to the system.
+     *
+     * @param context - Login context containing the username and the password.
+     */
   login(context: LoginContext) {
     return this.httpClient
       .post(routes.login(),
@@ -71,6 +81,9 @@ export class UserService {
       );
   }
 
+    /**
+     * Method to retrieve the current user if currently logged in.
+     */
   getCurrentUser(): Observable<User> {
     return this.httpClient
       .get(routes.currentUser())
@@ -86,6 +99,11 @@ export class UserService {
       );
   }
 
+    /**
+     * Method to get the user based on the id.
+     *
+     * @param context - User context containing the id.
+     */
   getUser(context: UserContext): Observable<User> {
     return this.httpClient
       .cache()
@@ -96,6 +114,9 @@ export class UserService {
       );
   }
 
+    /**
+     * Method to get all users registered in the system.
+     */
   getUsers(): Observable<User[]> {
     return this.httpClient
       .cache()

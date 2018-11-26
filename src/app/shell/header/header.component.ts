@@ -39,10 +39,18 @@ export class HeaderComponent implements OnInit {
         this.loadCart();
     }
 
+    /**
+     * Method to refresh the cart for front end reasons.
+     */
     loadCart() {
         this.refreshCart(false);
     }
 
+    /**
+     * Method to retrieve the cart.
+     *
+     * @param reload - Whether or not to refresh the page after the cart has been reloaded.
+     */
     refreshCart(reload: boolean) {
         this.cartService.getCart()
             .pipe()
@@ -54,16 +62,24 @@ export class HeaderComponent implements OnInit {
             });
     }
 
+    /**
+     * Method to toggle the menu.
+     */
     toggleMenu() {
         this.menuHidden = !this.menuHidden;
     }
 
-
+    /**
+     * Method to logout.
+     */
     logout() {
         this.authenticationService.logout()
             .subscribe(() => this.router.navigate(['/login'], {replaceUrl: true}));
     }
 
+    /**
+     * Method to check whether a user is logged in or is a guest.,
+     */
     isLoggedIn(): boolean {
         if (this.loggedIn === null) {
             this.userService.getCurrentUser().subscribe(user => {
@@ -75,14 +91,23 @@ export class HeaderComponent implements OnInit {
         return this.loggedIn === true;
     }
 
+    /**
+     * Method to get the total cost of a cart.
+     */
     getTotalCost(): number {
         return this.cartService.getTotalCost(this.cart);
     }
 
+    /**
+     * Method to get the total quantity of items in a cart.
+     */
     getTotal(): number {
         return this.cartService.getTotal(this.cart);
     }
 
+    /**
+     * Method to search for a product with specific search query.
+     */
     search() {
         this.router.navigate(['search/result/' + this.searchQuery]);
         window.location.reload(); // Avoids loading cached page

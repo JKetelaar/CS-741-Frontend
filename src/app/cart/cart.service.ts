@@ -38,6 +38,9 @@ export class CartService {
     constructor(private httpClient: HttpClient) {
     }
 
+    /**
+     * Returns the cart object.
+     */
     getCart(): Observable<Cart> {
         return this.httpClient
         // .cache()
@@ -48,6 +51,11 @@ export class CartService {
             );
     }
 
+    /**
+     * Method to add a product to a cart.
+     *
+     * @param context - Product context containing the product id and quantity.
+     */
     add(context: ProductContext) {
         let body = 'product=' + context.id;
         if (context.quantity != null) {
@@ -64,6 +72,9 @@ export class CartService {
             );
     }
 
+    /**
+     * Method to clear the cart. Removes all items from the cart.
+     */
     clear() {
         return this.httpClient
             .post(routes.clear(), null)
@@ -73,6 +84,12 @@ export class CartService {
             );
     }
 
+    /**
+     * Method to delete a product from the cart.
+     *
+     * @param context - The product context containing the product id. Deletes all quanitites of an item
+     * from the cart.
+     */
     delete(context: ProductContext) {
         return this.httpClient
             .delete('/cart/delete?product=' + context.id, {
@@ -84,6 +101,11 @@ export class CartService {
             );
     }
 
+    /**
+     * Method to adjust the quantity of a product in the cart.
+     *
+     * @param context - The adjust context containing the id of the product and the updated quantity.
+     */
     adjust(context: AdjustContext) {
         return this.httpClient
             .put(routes.adjust(context), 'product=' + context.id + '&quantity=' + context.quantity, {
@@ -95,6 +117,11 @@ export class CartService {
             );
     }
 
+    /**
+     * Method to get the total cost of the cart.
+     *
+     * @param cart - The cart object.
+     */
     getTotalCost(cart: Cart): number {
         let total = 0;
         for (let i = 0; i < cart.products.length; i++) {
@@ -104,14 +131,29 @@ export class CartService {
         return parseFloat((total).toFixed(2));
     }
 
+    /**
+     * Returns the total cost before any promotions or discounts.
+     *
+     * @param cart - The cart object.
+     */
     getOrderTotal(cart: Cart): number {
         return cart.finalPrice;
     }
 
+    /**
+     * Returns the total for a specific product including quantities but excluding promotions.
+     *
+     * @param product - An OrderItem object.
+     */
     getTotalCostForProduct(product: OrderItem): number {
         return parseFloat((product.product.price * product.quantity).toFixed(2));
     }
 
+    /**
+     * Returns the total quantity of items in the cart.
+     *
+     * @ param cart - The cart object.
+     */
     getTotal(cart: Cart): number {
         let total = 0;
         for (let i = 0; i < cart.products.length; i++) {
@@ -121,14 +163,29 @@ export class CartService {
         return total;
     }
 
+    /**
+     * Returns the promo percentage of the cart.
+     *
+     * @ param cart - The cart object.
+     */
     getPromoPercentage(cart: Cart): number {
         return cart.promotion == null ? 0 : cart.promotion.percentage;
     }
 
+    /**
+     * Returms the promotion code if exists.
+     *
+     * @param cart - The cart object with optional promotion applied.
+     */
     getPromoName(cart: Cart): string {
         return cart.promotion == null ? '' : cart.promotion.code;
     }
 
+    /**
+     * Returns the total amount saved due to discounts or promotions.
+     *
+     * @param cart - The cart object.
+     */
     getTotalSavings(cart: Cart): number {
         let total = 0;
         for (let i = 0; i < cart.products.length; i++) {

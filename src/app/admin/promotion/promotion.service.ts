@@ -33,6 +33,11 @@ export class PromotionService {
     constructor(private httpClient: HttpClient) {
     }
 
+    /**
+     * Method to apply the promotion to the current cart.
+     *
+     * @param context - The Promotion Context
+     */
     apply(context: PromotionContext) {
         return this.httpClient
             .post(routes.apply(context), 'code=' + context.code, {
@@ -44,6 +49,9 @@ export class PromotionService {
             );
     }
 
+    /**
+     * Method to return all current promotions
+     */
     getPromotions(): Observable<Promotion[]> {
         return this.httpClient
             .get(routes.promotion())
@@ -53,6 +61,11 @@ export class PromotionService {
             );
     }
 
+    /**
+     * Method to delete a promotion.
+     *
+     * @param context - The promotion context with id to be deleted.
+     */
     delete(context: DeletePromotionContext) {
         return this.httpClient
             .delete(routes.delete(context), {
@@ -64,6 +77,12 @@ export class PromotionService {
             );
     }
 
+    /**
+     * Method to create a new promotion.
+     *
+     * @param context - The promotion context containing the code, expiration date, and percentage
+     * of the new promotion.
+     */
     create(context: CreatePromotionContext): Observable<string> {
         return this.httpClient
             .post(routes.create(context),
