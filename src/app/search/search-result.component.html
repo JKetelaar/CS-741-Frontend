@@ -39,7 +39,8 @@
                                 <img alt="" style="height: 200px;" src="{{getImageURL(result)}}"/>
                             </div>
                         </a>
-                        <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                        <a href="javascript:void(0);" (click)="addToCart(result.id)" class="product-button">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart</a>
                     </div>
 
                     <a href="variable-product-page.html">
