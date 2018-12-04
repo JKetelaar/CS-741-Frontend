@@ -190,8 +190,10 @@ export class CartService {
         let total = 0;
         for (let i = 0; i < cart.products.length; i++) {
             const product = cart.products[i];
-            total += (product.quantity * product.product.promoPrice);
+            if (product.product.promoPrice != null) {
+                total += (product.quantity * product.product.promoPrice);
+            }
         }
-        return parseFloat((this.getTotalCost(cart) - total).toFixed(2));
+        return total !== 0 ? parseFloat((this.getTotalCost(cart) - total).toFixed(2)) : 0;
     }
 }

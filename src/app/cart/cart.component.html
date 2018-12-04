@@ -45,7 +45,7 @@
 
                 <tr *ngFor="let product of cart.products">
                     <td> </td>
-                    <td class="cart-title"><a href="product/{{product.id}}">{{product.name}}</a></td>
+                    <td class="cart-title"><a href="product/{{product.product.id}}">{{product.name}}</a></td>
                     <td>{{product.product.price}}</td>
                     <td>
                         <form action='#'>

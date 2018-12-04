@@ -56,7 +56,7 @@ export class PromotionComponent implements OnInit {
     private static pad(n: number) {
         return n < 10 ? '0' + n : n;
     }
-    
+
     constructor(private router: Router,
                 private formBuilder: FormBuilder,
                 private promotionService: PromotionService,
