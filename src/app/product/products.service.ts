@@ -40,7 +40,6 @@ export class ProductsService {
      */
     getProducts(): Observable<ProductView[]> {
         return this.httpClient
-            .cache()
             .get(routes.products())
             .pipe(
                 map((body: any) => body),
