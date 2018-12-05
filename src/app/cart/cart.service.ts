@@ -187,11 +187,6 @@ export class CartService {
      * @param cart - The cart object.
      */
     getTotalSavings(cart: Cart): number {
-        let total = 0;
-        for (let i = 0; i < cart.products.length; i++) {
-            const product = cart.products[i];
-            total += (product.quantity * product.product.promoPrice);
-        }
-        return parseFloat((this.getTotalCost(cart) - total).toFixed(2));
+        return parseFloat((this.getTotalCost(cart) - cart.finalPrice).toFixed(2));
     }
 }

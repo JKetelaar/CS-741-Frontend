@@ -112,4 +112,11 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['search/result/' + this.searchQuery]);
         window.location.reload(); // Avoids loading cached page
     }
+
+    /**
+     * Returns the total cost of the cart after promotions and discounts are applied.
+     */
+    getOrderTotal(): number {
+        return this.cartService.getOrderTotal(this.cart);
+    }
 }

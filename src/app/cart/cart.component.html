@@ -45,7 +45,7 @@
 
                 <tr *ngFor="let product of cart.products">
                     <td> </td>
-                    <td class="cart-title"><a href="product/{{product.id}}">{{product.name}}</a></td>
+                    <td class="cart-title"><a href="product/{{product.product.id}}">{{product.name}}</a></td>
                     <td>{{product.product.price}}</td>
                     <td>
                         <form action='#'>
@@ -54,7 +54,7 @@
                             <div (click)="add(product.product.id)" class="qtyplus"></div>
                         </form>
                     </td>
-                    <td class="cart-total">{{getTotalCostForProduct(product)}}</td>
+                    <td class="cart-total">{{product.product.promo == true ? product.product.promoPrice : product.product.price}}</td>
                     <td><a href="javascript:void(0);" (click)="delete(product.product.id)"  class="cart-remove"></a></td>
                 </tr>
 
