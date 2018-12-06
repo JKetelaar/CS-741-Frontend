@@ -35,12 +35,6 @@
                 <th>Product Description</th>
             </tr>
             <tr>
-                <th>Promo Price</th>
-                <th>Promo To</th>
-                <th>Promo From</th>
-                <th></th>
-            </tr>
-            <tr>
                 <td>
                     <input [(ngModel)]="name" type="name"
                            class="input-text" name="name" id="name" value=""/>
@@ -59,6 +53,12 @@
                 </td>
             </tr>
             <tr>
+                <th>Promo Price</th>
+                <th>Promo To</th>
+                <th>Promo From</th>
+                <th></th>
+            </tr>
+            <tr>
                 <td>
                     <input [(ngModel)]="promoPrice" type="number"
                            class="input-text" name="promoPrice" id="promoPrice" value=""/>
@@ -72,7 +72,7 @@
                 <td>
                     <input (click)="clear()" type="submit" class="button" name="clear" value="Clear"/>
                     <input
-                        (click)="id == null ? create({id:id, name:name, price:price, description:description, quantity:quantity, promoPrice:promoPrice, promoTo: promoTo, promoFrom: promoFrom}) : edit({id:id, name:name, price:price, description:description, quantity:quantity, promoPrice:promoPrice, promoTo: promoTo, promoFrom: promoFrom})"
+                        (click)="id == null ? create() : edit({id:id, name:name, price:price, description:description, quantity:quantity, promoPrice:promoPrice, promoTo: promoTo, promoFrom: promoFrom})"
                         type="submit" class="button" name="create" value="Save"/>
                 </td>
             </tr>

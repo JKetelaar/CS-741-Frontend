@@ -60,9 +60,11 @@ export class ProductManagementService {
                 '&price=' + encodeURI(context.price + '') +
                 '&description=' + encodeURI(context.description) +
                 '&quantity=' + encodeURI(context.quantity + '') +
-                '&promoPrice=' + encodeURI(context.promoPrice + '') +
-                '&promoFrom=' + PromotionComponent.toReadableDate(context.promoFrom, false) +
-                '&promoTo=' + PromotionComponent.toReadableDate(context.promoTo, false),
+                (context.promoPrice != null && context.promoPrice > 0 ?
+                    '&promoPrice=' + encodeURI(context.promoPrice + '') +
+                    '&promoFrom=' + PromotionComponent.toReadableDate(context.promoFrom, false) +
+                    '&promoTo=' + PromotionComponent.toReadableDate(context.promoTo, false)
+                    : ''),
                 {
                     headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
                 }
@@ -85,9 +87,11 @@ export class ProductManagementService {
                 '&price=' + encodeURI(context.price + '') +
                 '&description=' + encodeURI(context.description) +
                 '&quantity=' + encodeURI(context.quantity + '') +
-                '&promoPrice=' + encodeURI(context.promoPrice + '') +
-                '&promoFrom=' + PromotionComponent.toReadableDate(context.promoFrom, false) +
-                '&promoTo=' + PromotionComponent.toReadableDate(context.promoTo, false),
+                (context.promoPrice != null && context.promoPrice > 0 ?
+                    '&promoPrice=' + encodeURI(context.promoPrice + '') +
+                    '&promoFrom=' + PromotionComponent.toReadableDate(context.promoFrom, false) +
+                    '&promoTo=' + PromotionComponent.toReadableDate(context.promoTo, false)
+                    : ''),
                 {
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'

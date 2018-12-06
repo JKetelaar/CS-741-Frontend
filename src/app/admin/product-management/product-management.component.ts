@@ -84,12 +84,14 @@ export class ProductManagementComponent implements OnInit {
     ) {
         this.createProductForm();
         this.isValid = null;
+        const dday = new Date(Date.now());
+        dday.setDate(dday.getDate() - 1);
         this.calendarOptions = {
             displayFormat: 'MMM D[,] YYYY',
             barTitleFormat: 'MMMM YYYY',
             dayNamesFormat: 'dd',
             firstCalendarDay: 1,
-            minDate: new Date(Date.now()),
+            minDate: dday,
             barTitleIfEmpty: 'Click to select a date',
             placeholder: 'Click to select a date',
             addClass: 'form-control',
@@ -138,17 +140,17 @@ export class ProductManagementComponent implements OnInit {
     /**
      * Method to create a new promotion.
      */
-    create(context: ChangeProductContext) {
+    create() {
         this.productManagementService.create(
             {
-                id: context.id,
-                name: context.name,
-                description: context.description,
-                price: context.price,
-                quantity: context.quantity,
-                promoPrice: context.promoPrice,
-                promoFrom: context.promoFrom,
-                promoTo: context.promoTo
+                id: this.id,
+                name: this.name,
+                description: this.description,
+                price: this.price,
+                quantity: this.quantity,
+                promoPrice: this.promoPrice,
+                promoFrom: this.promoFrom,
+                promoTo: this.promoTo
             }
         ).subscribe(result => {
             result === 'Error, could not create product' ? this.isValid = false : this.isValid = true;
