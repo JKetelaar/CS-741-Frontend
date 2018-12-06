@@ -118,7 +118,6 @@ export class ProductManagementComponent implements OnInit {
         this.productsService.getProducts()
             .pipe()
             .subscribe((products: ProductView[]) => {
-                console.log(products);
                 this.products = products;
             });
     }
