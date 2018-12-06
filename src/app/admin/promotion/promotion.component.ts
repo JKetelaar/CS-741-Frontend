@@ -31,6 +31,9 @@ export class PromotionComponent implements OnInit {
      * @param includeHours - Boolean whether to include the hours in the date
      */
     public static toReadableDate(date: Date, withHours: boolean = false, includeHours: boolean = true) {
+        if (!(date instanceof Date)) {
+            date = new Date(date);
+        }
         let readableDate =
             date.getFullYear() + '-' +
             PromotionComponent.pad(date.getMonth() + 1) + '-' +
