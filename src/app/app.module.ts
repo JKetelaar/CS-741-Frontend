@@ -24,6 +24,7 @@ import {CheckoutModule} from '@app/checkout/checkout.module';
 import {SummaryModule} from '@app/summary/summary.module';
 import {SlickModule} from 'ngx-slick';
 import {AdminModule} from '@app/admin/admin.module';
+import {ProductManagementModule} from '@app/admin/product-management/product-management.module';
 
 @NgModule({
     imports: [
@@ -47,6 +48,7 @@ import {AdminModule} from '@app/admin/admin.module';
         CheckoutModule,
         SummaryModule,
         AdminModule,
+        ProductManagementModule,
         SlickModule.forRoot(),
 
         // Keep this module as last

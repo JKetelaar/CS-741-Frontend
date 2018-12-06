@@ -7236,6 +7236,35 @@ a.cart-remove {
     color: #a0a0a0;
 }
 
+a.cart-edit {
+    background: #c0c0c0;
+    color: #fff;
+    border: none;
+    float: left;
+    font-family: "FontAwesome";
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    font-size: 13px;
+    outline: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+a.cart-edit {
+    background-color: #f6f6f6;
+    color: #a0a0a0;
+}
+
 .qtyplus:hover,
 .qtyminus:hover {
     background: #808080;
@@ -7244,6 +7273,11 @@ a.cart-remove {
 
 a.cart-remove:hover {
     background: #df2727;
+    color: #fff;
+}
+
+a.cart-edit:hover {
+    background: #808080;
     color: #fff;
 }
 
@@ -7259,6 +7293,10 @@ a.cart-remove:hover {
     content: "";
 }
 
+.cart-edit:before {
+    content: "\f040";
+}
+
 .qtyplus:before,
 .qtyminus:before {
     position: relative;
@@ -7268,6 +7306,13 @@ a.cart-remove:hover {
 }
 
 .cart-remove:before {
+    position: relative;
+    display: block;
+    top: 8px;
+    left: 15px;
+}
+
+.cart-edit:before {
     position: relative;
     display: block;
     top: 8px;
