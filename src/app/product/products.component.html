@@ -1,0 +1,66 @@
+<!-- Titlebar
+================================================== -->
+<section class="parallax-titlebar fullwidth-element" data-background="#000" data-opacity="0.45" data-height="160">
+
+    <div class="parallax-overlay"></div>
+
+    <div class="parallax-content">
+        <h2>Shop <span>Our Products</span></h2>
+
+        <nav id="breadcrumbs">
+            <ul>
+                <li><a routerLink="/home">Home</a></li>
+                <li>Products</li>
+            </ul>
+        </nav>
+    </div>
+
+</section>
+
+
+<div class="container">
+
+    <!-- Content
+    ================================================== -->
+
+    <!-- Products -->
+    <div class="products">
+
+        <div class="four columns" *ngFor="let product of products | paginate: { itemsPerPage: 12, currentPage: page }">
+            <figure class="product">
+                <div class="mediaholder">
+                    <a routerLink="/product/{{product.id}}">
+                        <img alt="" style="height: 200px;" src="{{getImageURL(product)}}"/>
+                        <div class="cover">
+                            <img alt="" style="height: 200px;" src="{{getImageURL(product)}}"/>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0);" (click)="addToCart(product.id)" class="product-button">
+                        <i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                </div>
+
+                <a routerLink="/product/{{product.id}}">
+                    <section>
+                        <span class="product-category">Skirts</span>
+                        <h5>{{product.name}}</h5>
+                        <div *ngIf="product.finalPrice != product.price;else other_content">
+                            <span class="product-price-discount">{{product.price}}</span>
+                            <span class="product-price">{{product.finalPrice}}</span>
+                        </div>
+
+                        <ng-template #other_content><span class="product-price">{{product.price}}</span></ng-template>
+                    </section>
+                </a>
+            </figure>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!-- Pagination -->
+        <div class="pagination-container">
+            <pagination-controls class="pagination" (pageChange)="page = $event"></pagination-controls>
+        </div>
+
+    </div>
+
+</div>

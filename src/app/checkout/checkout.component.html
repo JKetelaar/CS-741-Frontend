@@ -1,0 +1,253 @@
+<!-- Titlebar
+================================================== -->
+<section class="titlebar">
+    <div class="container">
+        <div class="sixteen columns">
+            <h2>Checkout</h2>
+
+            <nav id="breadcrumbs">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Checkout</a></li>
+                    <li>Billing Details</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+
+<!-- Content
+================================================== -->
+
+<!-- Container -->
+<div class="container" *ngIf="loaded === true">
+
+    <div class="eight columns">
+
+        <form (ngSubmit)="placeOrder()" [formGroup]="orderForm" novalidate>
+
+            <div class="checkout-section"><span>1</span> Billing Details</div>
+            <div class="checkout-content">
+                <div class="fullwidth"><label>Name: <abbr>*</abbr></label><input [ngModelOptions]="{standalone: true}"
+                                                                                 [(ngModel)]="billingAddress.fullname"
+                                                                                 type="text" placeholder=""
+                                                                                 value="{{billingAddress.fullname}}"/>
+                </div>
+
+
+                <label>Street Address: <abbr>*</abbr></label><input [ngModelOptions]="{standalone: true}"
+                                                                    [(ngModel)]="billingAddress.address" type="text"
+                                                                    class="input-text "
+                                                                    value="{{billingAddress.address}}"/>
+                <label>Secondary Address: <abbr>*</abbr></label><input [ngModelOptions]="{standalone: true}"
+                                                                       [(ngModel)]="billingAddress.secondaryAddress"
+                                                                       type="text" class="input-text "
+                                                                       value="{{billingAddress.secondaryAddress}}"/>
+
+
+                <div class="half first"><label>Town / City: <abbr>*</abbr></label><input
+                    [ngModelOptions]="{standalone: true}" [(ngModel)]="billingAddress.city" type="text" placeholder=""
+                    value="{{billingAddress.city}}"/>
+                </div>
+                <div class="half"><label>Postcode / Zip:<abbr>*</abbr></label><input
+                    [ngModelOptions]="{standalone: true}" [(ngModel)]="billingAddress.zipCode" type="text"
+                    placeholder=""
+                    value="{{billingAddress.zipCode}}"/>
+                </div>
+
+
+                <!-- States -->
+                <div class="fullwidth"><label>State:<abbr>*</abbr></label><input [ngModelOptions]="{standalone: true}"
+                                                                                 [(ngModel)]="billingAddress.state"
+                                                                                 type="text" placeholder=""
+                                                                                 value="{{billingAddress.state}}"/>
+                </div>
+
+                <div class="half"><label>Phone: <abbr>*</abbr></label><input [ngModelOptions]="{standalone: true}"
+                                                                             [(ngModel)]="billingAddress.phoneNumber"
+                                                                             type="text" placeholder=""
+                                                                             value="{{billingAddress.phoneNumber}}"/>
+                </div>
+
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="checkout-section"><span>2</span> Shipping Details</div>
+            <div class="checkout-content">
+                <div class="fullwidth"><label>Name: <abbr>*</abbr></label><input [ngModelOptions]="{standalone: true}"
+                                                                                 [(ngModel)]="shippingAddress.fullname"
+                                                                                 type="text" placeholder=""
+                                                                                 value="{{shippingAddress.fullname}}"/>
+                </div>
+
+
+                <label>Street Address: <abbr>*</abbr></label><input [ngModelOptions]="{standalone: true}"
+                                                                    [(ngModel)]="shippingAddress.address" type="text"
+                                                                    class="input-text "
+                                                                    value="{{shippingAddress.address}}"/>
+                <label>Secondary Address: <abbr>*</abbr></label><input [ngModelOptions]="{standalone: true}"
+                                                                       [(ngModel)]="shippingAddress.secondaryAddress"
+                                                                       type="text" class="input-text "
+                                                                       value="{{shippingAddress.secondaryAddress}}"/>
+
+
+                <div class="half first"><label>Town / City: <abbr>*</abbr></label><input
+                    [ngModelOptions]="{standalone: true}" [(ngModel)]="shippingAddress.city" type="text" placeholder=""
+                    value="{{shippingAddress.city}}"/>
+                </div>
+                <div class="half"><label>Postcode / Zip:<abbr>*</abbr></label><input
+                    [ngModelOptions]="{standalone: true}" [(ngModel)]="shippingAddress.zipCode" type="text"
+                    placeholder=""
+                    value="{{shippingAddress.zipCode}}"/>
+                </div>
+
+
+                <!-- States -->
+                <div class="fullwidth"><label>State:<abbr>*</abbr></label><input [ngModelOptions]="{standalone: true}"
+                                                                                 [(ngModel)]="shippingAddress.state"
+                                                                                 type="text" placeholder=""
+                                                                                 value="{{shippingAddress.state}}"/>
+                </div>
+
+                <div class="half"><label>Phone: <abbr>*</abbr></label><input [ngModelOptions]="{standalone: true}"
+                                                                             [(ngModel)]="shippingAddress.phoneNumber"
+                                                                             type="text" placeholder=""
+                                                                             value="{{shippingAddress.phoneNumber}}"/>
+                </div>
+
+
+                <div class="clearfix"></div>
+            </div>
+            <input type="submit" style="background-color: rgb(58, 207, 135);" class="continue button color"
+                   name="checkout" value="Submit"/>
+
+        </form>
+
+
+        <div class="clearfix"></div>
+
+        <!-- Payment -->
+        <div class="checkout-section"><span>3</span> Payment & Order Review</div>
+        <div class="checkout-summary">
+            <div class="eight columns alpha omega">
+                <ul class="address-review summary">
+                    <li><strong>Credit Card</strong></li>
+                    <li class="credit-card-fields">
+                        <span><label>Credit Card Number:</label><input type="text" value=""/></span>
+
+                        <span><label>Month:</label>
+							<select>
+								<option value="">01</option>
+								<option value="">02</option>
+								<option value="">03</option>
+								<option value="">04</option>
+								<option value="">05</option>
+								<option value="">06</option>
+								<option value="">07</option>
+								<option value="">08</option>
+								<option value="">09</option>
+								<option value="">10</option>
+								<option value="">11</option>
+								<option value="">12</option>
+							</select></span>
+
+                        <span><label>Year:</label>
+							<select>
+								<option value="">2014</option>
+								<option value="">2015</option>
+								<option value="">2016</option>
+								<option value="">2017</option>
+								<option value="">2018</option>
+							</select></span>
+                        <div class="clearfix"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <a *ngIf="purchase !== null" ref="javascript:void(0);" (click)=order(purchase.id) class="button gray cart-btns">Complete
+            Order</a>
+
+    </div>
+    <!-- Billing Details / Enc -->
+
+
+    <!-- Checkout Cart -->
+    <div class="eight columns">
+        <div class="checkout-section cart">Shopping Cart</div>
+        <!-- Cart -->
+        <table class="checkout cart-table responsive-table">
+
+            <tr>
+                <th class="hide-on-mobile">Item</th>
+                <th></th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+            </tr>
+
+            <tr *ngFor="let product of cart.products">
+                <td class="hide-on-mobile"><img src="images/small_product_list_08.jpg" alt=""/></td>
+                <td class="cart-title"><a href="product/{{product.id}}">{{product.name}}</a></td>
+                <td>{{product.product.price}}</td>
+                <td>{{product.quantity}}</td>
+                <td class="cart-total">{{getTotalCostForProduct(product)}}</td>
+            </tr>
+        </table>
+
+        <!-- Apply Coupon Code / Buttons -->
+        <table class="cart-table bottom">
+            <tr>
+                <th class="checkout-totals">
+                    <div class="checkout-subtotal">
+                        Savings: <span>- ${{getTotalSavings()}}</span>
+                    </div>
+                </th>
+                <th class="checkout-totals">
+                    <div class="checkout-subtotal">
+                        Cart Subtotal: <span>${{getTotalCost()}}</span>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th class="checkout-totals">
+                    <div class="checkout-subtotal">
+                        Promotion: {{getPromoName()}} <span>- %{{getPromoPercentage()}}</span>
+                    </div>
+                </th>
+                <th class="checkout-totals">
+                    <div class="checkout-subtotal">
+                        Order Total:<span>${{getOrderTotal()}}</span>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th class="checkout-totals" *ngIf="purchase !== null">
+                    <div class="checkout-subtotal">
+                        Tax: <span>${{purchase.tax}}</span>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th class="checkout-totals" *ngIf="purchase !== null">
+                    <div class="checkout-subtotal">
+                        Final Price: <span>${{purchase.finalPrice}}</span>
+                    </div>
+                </th>
+            </tr>
+
+        </table>
+        <br>
+        <br>
+    </div>
+
+
+    <!-- Checkout Cart / End -->
+
+
+</div>
+<!-- Container / End -->
+
+
+<div class="margin-top-50"></div>

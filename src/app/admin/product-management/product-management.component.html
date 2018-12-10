@@ -1,0 +1,126 @@
+<!-- Titlebar
+================================================== -->
+<section class="titlebar">
+    <div class="container">
+        <div class="sixteen columns">
+            <h2>Product Management</h2>
+
+            <nav id="breadcrumbs">
+                <ul>
+                    <li><a routerLink="/home">Home</a></li>
+                    <li>Product Management</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+
+<div class="container cart">
+
+
+    <!-- Create Promos -->
+    <div class="sixteen columns">
+        <h3 class="headline">Create Product</h3><span class="line margin-bottom-35"></span>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="sixteen columns">
+        <!-- Promotions -->
+        <table class="cart-table responsive-table" style="overflow-x: auto; white-space: nowrap; ">
+            <tr>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Quantity</th>
+                <th>Product Description</th>
+            </tr>
+            <tr>
+                <td>
+                    <input [(ngModel)]="name" type="name"
+                           class="input-text" name="name" id="name" value=""/>
+                </td>
+                <td>
+                    <input [(ngModel)]="price" type="number"
+                           class="input-text" name="price" id="price" value=""/>
+                </td>
+                <td>
+                    <input [(ngModel)]="quantity" type="number"
+                           class="input-text" name="quantity" id="quantity" value=""/>
+                </td>
+                <td>
+                    <input [(ngModel)]="description" type="name"
+                           class="input-text" name="description" id="description" value=""/>
+                </td>
+            </tr>
+            <tr>
+                <th>Promo Price</th>
+                <th>Promo To</th>
+                <th>Promo From</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    <input [(ngModel)]="promoPrice" type="number"
+                           class="input-text" name="promoPrice" id="promoPrice" value=""/>
+                </td>
+                <td>
+                    <ng-datepicker [(ngModel)]="promoFrom" [options]="calendarOptions"></ng-datepicker>
+                </td>
+                <td>
+                    <ng-datepicker [(ngModel)]="promoTo" [options]="calendarOptions"></ng-datepicker>
+                </td>
+                <td>
+                    <input (click)="clear()" type="submit" class="button" name="clear" value="Clear"/>
+                    <input
+                        (click)="id == null ? create() : edit({id:id, name:name, price:price, description:description, quantity:quantity, promoPrice:promoPrice, promoTo: promoTo, promoFrom: promoFrom})"
+                        type="submit" class="button" name="create" value="Save"/>
+                </td>
+            </tr>
+        </table>
+        <div *ngIf="isValid == false" class="notification error closeable">
+            <p><span>Error!</span> Please provide valid values.</p>
+            <a class="close" routerLink="/promotion"></a>
+        </div>
+        <div *ngIf="isValid == true" class="notification success closeable">
+            <p><span>Success!</span> Product created!</p>
+            <a class="close" routerLink="/promotion"></a>
+        </div>
+        <br>
+        <div class="clearfix"></div>
+    </div>
+
+
+    <!-- Active Promos -->
+    <div class="sixteen columns">
+        <h3 class="headline">Active Products</h3><span class="line margin-bottom-35"></span>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="sixteen columns">
+
+        <!-- Promotions -->
+        <table class="cart-table responsive-table">
+            <tr>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Description</th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            <tr *ngFor="let product of products">
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.description}}</td>
+                <td><a href="javascript:void(0);" (click)="prepareToEdit(product.id)" class="cart-edit"></a></td>
+                <td><a href="javascript:void(0);" (click)="delete(product.id)" class="cart-remove"></a></td>
+            </tr>
+        </table>
+
+        <br>
+        <div class="clearfix"></div>
+    </div>
+
+</div>
+
+<div class="margin-top-50"></div>

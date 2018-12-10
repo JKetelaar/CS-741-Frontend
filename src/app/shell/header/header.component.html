@@ -1,42 +1,170 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="https://github.com/ngx-rocket" translate>APP_NAME</a>
-    <button class="navbar-toggler" type="button" aria-controls="navbar-menu"
-            aria-label="Toggle navigation" (click)="toggleMenu()" [attr.aria-expanded]="!menuHidden">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link text-uppercase" routerLink="/home" routerLinkActive="active">
-          <i class="fas fa-home"></i>
-          <span translate>Home</span>
-        </a>
-        <a class="nav-item nav-link text-uppercase" routerLink="/about" routerLinkActive="active">
-          <i class="fas fa-question-circle"></i>
-          <span translate>About</span>
-        </a>
-      </div>
-      <div class="navbar-nav ml-auto">
-        <div class="nav-item" ngbDropdown placement="bottom-right">
-          <a id="language-dropdown" class="nav-link" ngbDropdownToggle>{{currentLanguage}}</a>
-          <div ngbDropdownMenu aria-labelledby="language-dropdown">
-            <button class="dropdown-item" *ngFor="let language of languages" (click)="setLanguage(language)">
-              {{language}}
-            </button>
-          </div>
+<!-- Top Bar
+================================================== -->
+
+<div id="top-bar">
+    <div class="container">
+
+        <!-- Top Bar Menu -->
+        <div class="ten columns">
+            <ul class="top-bar-menu">
+                <li>
+                    <i class="fa fa-phone"></i>
+                    <a href="tel:(123) 456 7890">(123) 456 7890</a>
+                </li>
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:contact@cs741.com">contact@cs741.com</a>
+                </li>
+            </ul>
         </div>
-        <div class="nav-item" ngbDropdown placement="bottom-right">
-          <a id="user-dropdown" class="nav-link" ngbDropdownToggle>
-            <i class="fas fa-user-circle"></i>
-          </a>
-          <div ngbDropdownMenu aria-labelledby="user-dropdown">
-            <h6 class="dropdown-header">
-              <span translate>Logged in as</span> <b>{{username}}</b></h6>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item" (click)="logout()" translate>Logout</button>
-          </div>
-        </div>
-      </div>
+
     </div>
-  </nav>
-</header>
+</div>
+
+<div class="clearfix"></div>
+
+
+<!-- Header
+================================================== -->
+<div class="container">
+
+
+    <!-- Logo -->
+    <div class="four columns">
+        <div id="logo">
+            <h1><a routerLink="/home"><img src="src/theme/css/images/logo.png"/></a></h1>
+        </div>
+    </div>
+
+    <!-- Additional Menu -->
+    <div class="eight columns" style="float: right;">
+        <div id="additional-menu">
+            <ul>
+                <li><a routerLink="/cart">Shopping Cart</a></li>
+                <li><a routerLink="/checkout">Checkout</a></li>
+                <li *ngIf="isLoggedIn()"><a routerLink="/account">My Account</a></li>
+                <li *ngIf="!isLoggedIn()"><a href="/login">Login</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <p *ngIf="cart != null">{{cart.changed}}</p>
+    <!-- Shopping Cart -->
+    <div class="eight columns" style="float: right;">
+
+        <div id="cart">
+
+            <div *ngIf="cart == null || cart.products.length == 0;else other_content">
+                <!-- Button -->
+                <div class="cart-btn">
+                    <a href="cart" class="button adc">$0.00</a>
+                </div>
+
+                <div class="cart-list">
+
+                    <div class="arrow"></div>
+
+                    <div class="cart-amount">
+                        <span>0 items in the shopping cart</span>
+                    </div>
+                    <div class="clearfix">
+
+                    </div>
+                </div>
+            </div>
+
+            <ng-template #other_content>
+                <!-- Button -->
+                <div class="cart-btn">
+                    <a href="cart" class="button adc">${{getOrderTotal()}}</a>
+                </div>
+
+                <div class="cart-list">
+
+                    <div class="arrow"></div>
+
+                    <div class="cart-amount">
+                        <span>{{getTotal()}} items in the shopping cart</span>
+                    </div>
+
+                    <ul *ngFor="let product of cart.products">
+                        <li>
+                            <a href="product/{{product.id}}"><img src="src/theme/css/images/small_product_list_08.jpg"
+                                                                  alt=""/></a>
+                            <a href="product/{{product.id}}">{{product.name}}</a>
+                            <span>{{product.quantity}} x ${{product.price}}</span>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+
+                    <div class="cart-buttons button">
+                        <a routerLink="/cart" class="view-cart"><span
+                            data-hover="View Cart"><span>View Cart</span></span></a>
+                        <a routerLink="/checkout" class="checkout"><span
+                            data-hover="Checkout">Checkout</span></a>
+                    </div>
+                    <div class="clearfix">
+
+                    </div>
+                </div>
+            </ng-template>
+
+        </div>
+
+        <!-- Search -->
+        <nav class="top-search">
+            <button><i class="fa fa-search"></i></button>
+            <input [(ngModel)]="searchQuery" value="" (keydown.enter)="search()" name="s" id="s" placeholder="e.g. t-shirt" autocomplete="off" type="text">
+        </nav>
+
+    </div>
+
+</div>
+
+
+<!-- Navigation
+================================================== -->
+<div class="container">
+    <div class="sixteen columns">
+
+        <a href="#menu" class="menu-trigger"><i class="fa fa-bars"></i> Menu</a>
+
+        <nav id="navigation">
+            <ul class="menu" id="responsive">
+
+                <li>
+                    <a routerLink="/home" class="current homepage" id="current">Home</a>
+                </li>
+
+                <li class="demo-button">
+                    <a routerLink="/products">Products</a>
+                </li>
+
+
+                <li class="demo-button">
+                    <a routerLink="/search">Search</a>
+                </li>
+
+
+                <li class="demo-button">
+                    <a routerLink="/cart">Shopping Cart</a>
+                </li>
+
+
+                <li class="demo-button">
+                    <a routerLink="/account">My Account</a>
+                </li>
+
+                <li *ngIf="admin == true;" class="dropdown">
+                    <a class="with-ul" href="javascript:void(0);">Admin</a>
+                    <ul>
+                        <li><a routerLink="/admin/promotion">Manage Promotions</a></li>
+                        <li><a routerLink="/admin/orderss">Manage Orders</a></li>
+                        <li><a routerLink="/admin/product">Manage Products</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</div>

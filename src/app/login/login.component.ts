@@ -1,68 +1,96 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { finalize } from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { environment } from '@env/environment';
-import { Logger, I18nService, AuthenticationService } from '@app/core';
-
-const log = new Logger('Login');
+import {AuthenticationService} from '@app/core';
+import {UserService} from '@app/login/user.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
-  version: string = environment.version;
-  error: string;
-  loginForm: FormGroup;
-  isLoading = false;
+    error: string;
+    loginForm: FormGroup;
+    registerForm: FormGroup;
+    isValid: boolean;
+    loginUsername: string;
+    loginPassword: string;
+    registerEmail: string;
+    registerPassword1: string;
+    registerPassword2: string;
 
-  constructor(private router: Router,
-              private formBuilder: FormBuilder,
-              private i18nService: I18nService,
-              private authenticationService: AuthenticationService) {
-    this.createForm();
-  }
+    constructor(private router: Router,
+                private formBuilder: FormBuilder,
+                private authenticationService: AuthenticationService,
+                private userService: UserService) {
+        this.createLoginForm();
+        this.createRegisterForm();
+        this.isValid = null;
+    }
 
-  ngOnInit() { }
+    ngOnInit() {
+        this.userService.getCurrentUser().subscribe(user => {
+            if (user !== null) {
+                this.router.navigate(['/home']);
+            }
+        });
+    }
 
-  login() {
-    this.isLoading = true;
-    this.authenticationService.login(this.loginForm.value)
-      .pipe(finalize(() => {
-        this.loginForm.markAsPristine();
-        this.isLoading = false;
-      }))
-      .subscribe(credentials => {
-        log.debug(`${credentials.username} successfully logged in`);
-        this.router.navigate(['/'], { replaceUrl: true });
-      }, error => {
-        log.debug(`Login error: ${error}`);
-        this.error = error;
-      });
-  }
+    /**
+     * Method to login user into the system.
+     */
+    login() {
+        this.userService.login({username: this.loginUsername, password: this.loginPassword})
+            .subscribe(result => {
+                result === 'Error, could not login user' ? this.isValid = false : this.isValid = true;
 
-  setLanguage(language: string) {
-    this.i18nService.language = language;
-  }
+                if (this.isValid) {
+                    window.location.href = '/home';
+                }
+            });
+    }
 
-  get currentLanguage(): string {
-    return this.i18nService.language;
-  }
+    /**
+     * Method to register the user into the system.
+     */
+    register() {
+        this.userService.register(
+            {email: this.registerEmail, password: this.registerPassword1, password2: this.registerPassword2}
+        )
+            .subscribe(result => {
+                result === 'Error, could not register user' ? this.isValid = false : this.isValid = true;
+            });
+    }
 
-  get languages(): string[] {
-    return this.i18nService.supportedLanguages;
-  }
+    /**
+     * Method to reset the validation on the register/login form.
+     */
+    resetValid() {
+        this.isValid = null;
+    }
 
-  private createForm() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      remember: true
-    });
-  }
+    /**
+     * Method to create the form that the user submits in order to attempt to login
+     */
+    private createLoginForm() {
+        this.loginForm = this.formBuilder.group({
+            username: ['', Validators.required],
+            password: ['', Validators.required],
+            remember: true
+        });
+    }
 
+    /**
+     * Method to create the form that the user submits in order to attempt to register.
+     */
+    private createRegisterForm() {
+        this.registerForm = this.formBuilder.group({
+            username: ['', Validators.required],
+            password: ['', Validators.required],
+            passwordValidate: ['', Validators.required],
+        });
+    }
 }
